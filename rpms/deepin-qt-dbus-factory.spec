@@ -11,7 +11,7 @@ License:        GPLv3+ and LGPLv2+
 URL:            https://github.com/linuxdeepin/dde-qt-dbus-factory
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 
-BuildRequires:  python-devel
+BuildRequires:  python3
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -29,6 +29,7 @@ Header files and libraries for %{name}.
 
 %prep
 %setup -q -n %{repo}-%{version}
+sed -i 's|python|python3|' libdframeworkdbus/libdframeworkdbus.pro
 
 %build
 %qmake_qt5 LIB_INSTALL_DIR=%{_libdir}
