@@ -4,7 +4,7 @@
 %global plug_ver 1.1.11
 
 Name:           deepin-qt5integration
-Version:        0.3.3
+Version:        0.3.4
 Release:        1%{?dist}
 Summary:        Qt platform theme integration plugins for DDE
 # The entire source code is GPLv3+ except styles/ which is BSD,
@@ -86,6 +86,9 @@ pushd %{plug}-%{plug_ver}
 %{_qt5_plugindir}/imageformats/libdsvg.so
 
 %changelog
+* Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 0.3.4-1
+- Update to 0.3.4
+
 * Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 0.3.3-1
 - Update to 0.3.3
 
