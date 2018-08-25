@@ -1,7 +1,7 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.6.4
+Version:        4.4.9.1
 Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
@@ -12,12 +12,9 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  deepin-dock-devel
 BuildRequires:  file-devel
-BuildRequires:  jemalloc-devel
-BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
-BuildRequires:  pkgconfig(deepin-anything-server-lib)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -82,7 +79,7 @@ sed -i 's|lib/gvfs|libexec|' %{repo}-lib/gvfs/networkmanager.cpp
 sed -i 's|%{_datadir}|%{_libdir}|' dde-sharefiles/appbase.pri
 
 %build
-%qmake_qt5 PREFIX=%{_prefix} QMAKE_CFLAGS_ISYSTEM= CONFIG+=DISABLE_FFMPEG
+%qmake_qt5 PREFIX=%{_prefix} QMAKE_CFLAGS_ISYSTEM= IS_PLATFORM_FEDORA=YES
 %make_build
 
 %install
@@ -103,6 +100,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/com.deepin.filemanager.daemon.conf
 %config(noreplace) %{_sysconfdir}/xdg/autostart/%{repo}-xdg-autostart.desktop
 %config(noreplace) %{_sysconfdir}/xdg/autostart/%{repo}-dialog-autostart.desktop
+%{_sysconfdir}/xdg/deepin/%{repo}/dde-desktop.ini
+%{_sysconfdir}/xdg/deepin/%{repo}/%{repo}.ini
 %{_bindir}/%{repo}
 %{_bindir}/%{repo}-daemon
 %{_bindir}/%{repo}-pkexec
@@ -112,9 +111,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_bindir}/usb-device-formatter-pkexec
 %{_libdir}/lib%{repo}.so.*
 %{_libdir}/dde-dock/plugins/*.so
-%{_libdir}/deepin-anything-server-lib/
 %{_libdir}/%{repo}/
 %{_datadir}/%{repo}/
+%{_datadir}/dman/%{repo}/
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/applications/%{repo}.desktop
 %{_datadir}/dbus-1/interfaces/com.deepin.filemanager.filedialog.xml
@@ -124,7 +123,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/system-services/com.deepin.filemanager.daemon.service
 %dir %{_datadir}/usb-device-formatter
 %{_datadir}/usb-device-formatter/translations/
-%{_unitdir}/dde-filemanager-daemon.service
 %{_polkit_qt_policydir}/com.deepin.filemanager.daemon.policy
 %{_polkit_qt_policydir}/com.deepin.pkexec.dde-file-manager.policy
 %{_polkit_qt_policydir}/com.deepin.pkexec.usb-device-formatter.policy
@@ -146,11 +144,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
-* Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 4.6.4-1
-- Update to 4.6.4
-
-* Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 4.6.2-1
-- Update to 4.6.2
+* Wed Aug 15 2018 mosquito <sensor.wen@gmail.com> - 4.4.9.1-1
+- Update to 4.4.9.1
 
 * Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 4.4.8.3-1
 - Update to 4.4.8.3
