@@ -1,5 +1,5 @@
 Name:           startdde
-Version:        3.1.35
+Version:        3.1.33
 Release:        1%{?dist}
 Summary:        Starter of deepin desktop environment
 License:        GPLv3
@@ -9,10 +9,11 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
 BuildRequires:  golang jq
 BuildRequires:  deepin-gir-generator
-BuildRequires:  golang-deepin-dbus-factory-devel
-BuildRequires:  golang(pkg.deepin.io/dde/api/dxinput)
-BuildRequires:  golang(pkg.deepin.io/lib)
+BuildRequires:  golang-deepin-dbus-factory-devel >= 3.1.16
+BuildRequires:  golang(pkg.deepin.io/dde/api/dxinput) >= 3.1.26
+BuildRequires:  golang(pkg.deepin.io/lib) >= 1.2.11
 BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory)
+BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
 BuildRequires:  golang(github.com/cryptix/wav)
 BuildRequires:  golang(github.com/BurntSushi/xgb)
 BuildRequires:  golang(github.com/BurntSushi/xgbutil)
@@ -72,11 +73,8 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %{_datadir}/%{name}/memchecker.json
 
 %changelog
-* Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 3.1.35-1
-- Update to 3.1.35
-
-* Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.34-1
-- Update to 3.1.34
+* Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.33-1
+- Update to 3.1.33
 
 * Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.26-1
 - Update to 3.1.26

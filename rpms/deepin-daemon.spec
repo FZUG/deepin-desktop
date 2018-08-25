@@ -2,7 +2,7 @@
 %global ds_url https://github.com/linuxdeepin/default-settings
 
 Name:           deepin-daemon
-Version:        3.2.23
+Version:        3.2.20
 Release:        1%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
@@ -44,10 +44,10 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  golang-deepin-dbus-factory-devel
-BuildRequires:  golang(pkg.deepin.io/lib)
+BuildRequires:  golang-deepin-dbus-factory-devel >= 3.1.16
+BuildRequires:  golang(pkg.deepin.io/lib) >= 1.2.11
 BuildRequires:  golang(pkg.deepin.io/lib/fsnotify)
-BuildRequires:  golang(pkg.deepin.io/dde/api/dxinput)
+BuildRequires:  golang(pkg.deepin.io/dde/api/dxinput) >= 3.1.26
 BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory)
 BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
 BuildRequires:  golang(github.com/BurntSushi/xgb)
@@ -189,14 +189,8 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Accounts.pkla
 
 %changelog
-* Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 3.2.23-1
-- Update to 3.2.23
-
-* Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 3.2.22-1
-- Update to 3.2.22
-
-* Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.2.21-1
-- Update to 3.2.21
+* Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.2.20-1
+- Update to 3.2.20
 
 * Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 3.2.12-1
 - Update to 3.2.12

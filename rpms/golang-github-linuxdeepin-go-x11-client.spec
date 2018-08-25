@@ -7,12 +7,12 @@
 # https://github.com/linuxdeepin/go-x11-client
 %global   provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %global   import_path     %{provider_prefix}
-%global   commit          70dbb86c0a0cb10ebc4e6cbbb21dfa5d5aff5570
+%global   commit          71929bb36dcea8827ea19a0f23b03e98e1b0df18
 %global   shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           golang-%{provider}-%{project}-%{repo}
 Version:        0
-Release:        0.3.git%{shortcommit}%{?dist}
+Release:        0.4.git%{shortcommit}%{?dist}
 Summary:        A X11 client Go bindings for Deepin Desktop Environment
 License:        GPLv3
 URL:            https://%{provider_prefix}
@@ -126,6 +126,9 @@ export GOPATH=%{buildroot}%{gopath}:%{gopath}
 %files unit-test-devel -f unit-test-devel.file-list
 
 %changelog
+* Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 0-0.4.git71929bb
+- Update to 71929bb
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 0-0.3.git70dbb86
 - Update to 70dbb86
 
