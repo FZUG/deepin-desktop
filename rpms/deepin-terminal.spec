@@ -1,7 +1,7 @@
 %global _terminals gnome-terminal mate-terminal xfce4-terminal lxterminal qterminal qterminal-qt5 terminology yakuake fourterm roxterm lilyterm termit xterm mrxvt
 
 Name:           deepin-terminal
-Version:        3.0.1
+Version:        3.0.3
 Release:        1%{?dist}
 Summary:        Default terminal emulation application for Deepin
 License:        GPLv3
@@ -46,14 +46,13 @@ The %{name}-data package provides shared data for Deepin Terminal.
 %patch0 -p1 -b .unbundle_vte
 sed -i 's|/usr/lib/%{name}/zssh|%{_bindir}/zssh|' ssh_login.sh
 sed -i '/ssh_login/s|lib|libexec|' lib/utils.vala
-sed -i 's|2.7|3.0|' lib/constant.vala
 
 # remove es_419 locale
 rm -rf po/es_419/
 sed -i '/es_419/d' deepin-terminal.desktop
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake -DCMAKE_BUILD_TYPE=Release -DVERSION=%{version}
 %make_build
 
 %install
@@ -103,6 +102,9 @@ fi
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.0.3-1
+- Update to 3.0.3
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 3.0.1-1
 - Update to 3.0.1
 

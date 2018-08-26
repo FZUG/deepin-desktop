@@ -8,7 +8,7 @@
  pkg_check_modules(GEE REQUIRED gee-0.8)
  pkg_check_modules(GIO REQUIRED gio-unix-2.0)
  pkg_check_modules(RSVG REQUIRED librsvg-2.0)
-@@ -44,22 +45,6 @@
+@@ -59,22 +60,6 @@
  )
  endif()
  
@@ -31,7 +31,7 @@
  set(CFLAGS
  	${GIO_CFLAGS}
  	${GTK3_CFLAGS} ${GTK3_CFLAGS_OTHER}
-@@ -79,9 +64,8 @@
+@@ -94,9 +79,8 @@
  	${RSVG_INCLUDE_DIRS}
  	${JsonGlib_INCLUDE_DIRS}
  	${LIBSECRET_INCLUDE_DIRS}
@@ -42,7 +42,7 @@
  include_directories(${INCLUDE_PATHS})
  set(LIBS
  	${GIO_LIBRARIES}
-@@ -91,17 +75,12 @@
+@@ -106,17 +90,12 @@
  	${RSVG_LIBRARIES}
  	${JsonGlib_LIBRARIES}
  	${LIBSECRET_LIBRARIES}
@@ -61,7 +61,7 @@
  )
  SET(APP_SOURCES, "")
  FILE(GLOB valalist LIST_FILES true */*.vala)
-@@ -137,8 +116,7 @@
+@@ -152,8 +131,7 @@
  	librsvg-2.0
  )
  add_executable(${target} ${VALA_C} ${CMAKE_SOURCE_DIR}/project_path.c ${CMAKE_SOURCE_DIR}/lib/font.c)
@@ -71,7 +71,7 @@
  
  FILE(GLOB children LIST_DIRECTORIES true po/*)
  SET(dirlist "")
-@@ -170,7 +148,7 @@
+@@ -185,7 +163,7 @@
  ENDFOREACH(lang)
  
  INSTALL (TARGETS ${target} DESTINATION bin)
