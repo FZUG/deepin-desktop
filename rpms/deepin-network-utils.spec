@@ -8,6 +8,7 @@ License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-network-utils
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  qt5-linguist
@@ -34,13 +35,10 @@ sed -i 's|/lib$|/%{_lib}|' dde-network-utils.pro
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 %files
 %doc README.md
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.1
+%{_libdir}/lib*.so.1.*
 %{_datadir}/%{repo}/
 
 %files devel
