@@ -6,6 +6,7 @@ License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-editor
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  freeimage-devel
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
@@ -45,6 +46,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %license LICENSE
 %{_bindir}/%{name}
 %{_bindir}/%{name}-daemon
+%dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/words.db
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/system.d/com.deepin.editor.conf
