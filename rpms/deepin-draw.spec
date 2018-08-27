@@ -6,6 +6,7 @@ License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-draw
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  freeimage-devel
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dtkwm)
@@ -40,7 +41,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_datadir}/%{name}/translations/%{name}*.qm
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/services/com.deepin.Draw.service
 %{_datadir}/icons/deepin/apps/scalable/%{name}.svg
