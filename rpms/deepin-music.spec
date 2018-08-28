@@ -7,7 +7,6 @@ License:        GPLv3
 Url:            https://github.com/linuxdeepin/deepin-music
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  python
 BuildRequires:  desktop-file-utils
 BuildRequires:  qt5-linguist
 BuildRequires:  pkgconfig(dtkcore)
@@ -16,6 +15,7 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libcue)
+BuildRequires:  pkgconfig(mpris-qt5)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -26,7 +26,7 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Multimedia)
-Provides:       deepin-music-player%{?_isa} = %{version}-%{release}
+Requires:       hicolor-icon-theme
 
 %description
 Deepin Music Player with brilliant and tweakful UI Deepin-UI based,
@@ -47,12 +47,10 @@ Header files and libraries for %{name}.
 
 %prep
 %setup -q
-sed -i 's|lrelease|lrelease-qt5|g' tool/translate_generation.*
-sed -i '/%1/s|lib|%{_lib}|' music-player/core/pluginmanager.cpp
-sed -i '/target.path/s|lib|%{_lib}|' libdmusic/libdmusic.pro \
-    plugin/netease-meta-search/netease-meta-search.pro \
-    vendor/src/dbusextended-qt/src/src.pro \
-    vendor/src/mpris-qt/src/src.pro
+sed -i '/vendor/d' src/src.pro
+sed -i '/%1/s|lib|%{_lib}|' src/music-player/core/pluginmanager.cpp
+sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \
+    src/plugin/netease-meta-search/netease-meta-search.pro
 
 %build
 %qmake_qt5 PREFIX=%{_prefix}
@@ -61,27 +59,16 @@ sed -i '/target.path/s|lib|%{_lib}|' libdmusic/libdmusic.pro \
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 
-%post
-/sbin/ldconfig
-/bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null ||:
-/usr/bin/update-desktop-database -q ||:
-
-%postun
-/sbin/ldconfig
-if [ $1 -eq 0 ]; then
-    /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null ||:
-    /usr/bin/gtk-update-icon-cache -f -t -q %{_datadir}/icons/hicolor ||:
-fi
-/usr/bin/update-desktop-database -q ||:
-
-%posttrans
-/usr/bin/gtk-update-icon-cache -f -t -q %{_datadir}/icons/hicolor ||:
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 
 %files
-%doc AUTHORS README.md
-%license COPYING
+%doc README.md
+%license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/lib*.so.*
+%dir %{_libdir}/%{name}/
+%dir %{_libdir}/%{name}/plugins/
 %{_libdir}/%{name}/plugins/lib*.so.*
 %{_datadir}/%{name}/
 %{_datadir}/dman/%{name}/
@@ -89,12 +76,8 @@ fi
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %files devel
-%{_includedir}/DBusExtended/
-%{_includedir}/MprisQt/
-%{_qt5_archdatadir}/mkspecs/features/*-qt5.prf
 %{_libdir}/lib*.so
 %{_libdir}/%{name}/plugins/lib*.so
-%{_libdir}/pkgconfig/*-qt5.pc
 
 %changelog
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.1.8.4-1
