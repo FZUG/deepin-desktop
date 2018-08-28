@@ -4,9 +4,10 @@ Name:           libdbusextended-qt5
 Summary:        Extended DBus for Qt
 Version:        0.0.3
 Release:        1%{?dist}
-License:        LGPLv2.1
+License:        LGPLv2+
 URL:            https://github.com/nemomobile/qtdbusextended
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 
@@ -34,6 +35,7 @@ Header files and libraries for %{name}.
 %{_libdir}/lib*.so.1*
 
 %files devel
+%dir %{_qt5_includedir}/DBusExtended/
 %{_qt5_includedir}/DBusExtended/DBusExtended
 %{_qt5_includedir}/DBusExtended/DBusExtendedAbstractInterface
 %{_qt5_includedir}/DBusExtended/dbusextended.h
