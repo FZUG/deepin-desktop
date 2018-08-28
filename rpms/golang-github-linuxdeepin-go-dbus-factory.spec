@@ -1,27 +1,19 @@
-%global   debug_package   %{nil}
+# Run tests in check section
+# disable for bootstrapping
+%bcond_with check
 
-%global   provider        github
-%global   provider_tld    com
-%global   project         linuxdeepin
-%global   repo            go-dbus-factory
-# https://github.com/linuxdeepin/go-dbus-factory
-%global   provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global   import_path     %{provider_prefix}
-%global   commit          e843337f18df28808b053301f512e6d72ee11ec8
-%global   shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global goipath github.com/linuxdeepin/go-dbus-factory
+%global commit  e843337f18df28808b053301f512e6d72ee11ec8
 
-Name:           golang-%{provider}-%{project}-%{repo}
-Version:        0
-Release:        0.3.git%{shortcommit}%{?dist}
+%gometa
+
+Name:           %{goname}
+Version:        0.0.7
+Release:        1%{?dist}
 Summary:        GO DBus factory for Deepin Desktop Environment
 License:        GPLv3
-URL:            https://%{provider_prefix}
-Source0:        %{url}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
-
-# e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
-ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
-# If go_compiler is not set to 1, there is no virtual provide. Use golang instead.
-BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
+URL:            %{gourl}
+Source0:        %{gosource}
 
 %description
 %{summary}.
@@ -29,73 +21,30 @@ BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
 %package devel
 Summary:        %{summary}
 BuildArch:      noarch
-Provides:       golang(%{import_path}) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.api.cursorhelper) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.api.device) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.api.localehelper) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.api.pinyin) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.api.xeventmonitor) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.accounts) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.apps) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.audio) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.daemon) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.display) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.gesture) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.greeter) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.helper.backlight) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.inputdevices) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.network) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.sessionwatcher) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.daemon.timedated) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.dde.daemon.dock) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.dde.daemon.launcher) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.dde.launcher) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.lastore) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.sessionmanager) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.system.power) = %{version}-%{release}
-Provides:       golang(%{import_path}/com.deepin.wm) = %{version}-%{release}
-Provides:       golang(%{import_path}/net.hadess.sensorproxy) = %{version}-%{release}
-Provides:       golang(%{import_path}/net.reactivated.fprint) = %{version}-%{release}
-Provides:       golang(%{import_path}/object_manager) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.ayatana.bamf) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.bluez) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.colormanager) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.dbus) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.login1) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.miracle.wfd) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.miracle.wifi) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.modemmanager1) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.networkmanager) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.notifications) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.policykit1) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.screensaver) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.secrets) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.timedate1) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.freedesktop.udisks2) = %{version}-%{release}
-Provides:       golang(%{import_path}/org.mpris.mediaplayer2) = %{version}-%{release}
 
 %description devel
 %{summary}.
 
 This package contains library source intended for
 building other packages which use import path with
-%{import_path} prefix.
+%{goipath} prefix.
 
 %prep
-%setup -q -n %{repo}-%{commit}
-
-%build
+%forgeautosetup
 
 %install
-install -d %{buildroot}%{gopath}/src/%{import_path}/
-cp -a com.* org.* net.* object_manager %{buildroot}%{gopath}/src/%{import_path}/
+%goinstall
 
-%files devel
+%if %{with check}
+%check
+%gochecks
+%endif
+
+%files devel -f devel.file-list
 %doc README.md
-%{gopath}/src/%{import_path}/
 
 %changelog
-* Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 0-0.3.gite843337
+* Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 0.0.7-1.20180827gite843337
 - Update to e843337
 
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 0-0.2.git6184b97
