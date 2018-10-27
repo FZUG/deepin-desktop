@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 mosquito -->
+<component type="desktop">
+  <id>deepin-movie.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Deepin Movie</name>
+  <name xml:lang="zh_CN">深度影院</name>
+  <summary>Deepin Movie is a well-designed and full-featured video player with simple borderless design.</summary>
+  <summary xml:lang="zh_CN">深度影院是一款设计精良、功能全面的视频播放器。</summary>
+  <description>
+    <p>
+      Deepin Movie is a well-designed and full-featured video player with simple borderless design. It supports local and streaming media play with multiple video formats.
+    </p>
+    <p xml:lang="zh_CN">
+      深度影院是一款设计精良、功能全面的视频播放器。
+    </p>
+  </description>
+  <url type="homepage">https://github.com/linuxdeepin/deepin-movie-reborn/</url>
+  <url type="bugtracker">https://github.com/linuxdeepin/deepin-movie-reborn/issues/</url>
+  <releases>
+    <release version="3.2.11" date="2018-10-25"></release>
+  </releases>
+  <project_license>GPL-3.0</project_license>
+  <developer_name>Linux Deepin</developer_name>
+  <screenshots>
+    <screenshot type="default">https://www.deepin.org/wp-content/uploads/2016/12/deepin-movie-3-1.png</screenshot>
+  </screenshots>
+</component>

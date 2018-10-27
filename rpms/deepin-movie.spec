@@ -1,11 +1,12 @@
 Name:           deepin-movie
-Version:        3.2.9
+Version:        3.2.11
 Release:        1%{?dist}
 Summary:        Deepin movie based on mpv
 Summary(zh_CN): 深度影音
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-movie-reborn
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}-appdata.xml
 
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5DBus)
@@ -63,6 +64,7 @@ sed -i '/dtk2/s|lib|libexec|' src/CMakeLists.txt
 %license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/libdmr.so.*
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/%{name}/translations/%{name}*.qm
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -73,6 +75,9 @@ sed -i '/dtk2/s|lib|libexec|' src/CMakeLists.txt
 %{_libdir}/libdmr.so
 
 %changelog
+* Sat Oct 27 2018 Zamir SUN <zsun@fedoraproject.org> - 3.2.11-1
+- Update to 3.2.11
+
 * Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 3.2.9-1
 - Update to 3.2.9
 
