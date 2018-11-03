@@ -1,13 +1,15 @@
 %global repo go-gir-generator
 
 Name:           deepin-gir-generator
-Version:        1.0.4
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Generate static golang bindings for GObject
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/go-gir-generator
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 Patch0:         SettingsBackendLike.patch
+# https://github.com/linuxdeepin/developer-center/issues/604
+Patch1:         launch_uris_as_manager_with_fds.patch
 
 # e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
@@ -27,6 +29,7 @@ if [ $GIO_VER -ge 1521 ]; then
 # Our gobject-introspection is too new
 # https://cr.deepin.io/#/c/16880/
 %patch0 -p1
+%patch1 -p1
 fi
 
 %build
@@ -43,6 +46,9 @@ export GOPATH="%{gopath}"
 %{gopath}/src/gir/
 
 %changelog
+* Thu Nov  1 2018 mosquito <sensor.wen@gmail.com> - 1.1.0-1
+- Update to 1.1.0
+
 * Fri Aug 17 2018 mosquito <sensor.wen@gmail.com> - 1.0.4-1
 - Update to 1.0.4
 
