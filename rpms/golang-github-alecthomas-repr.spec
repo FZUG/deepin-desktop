@@ -1,27 +1,19 @@
-%global   debug_package   %{nil}
+# Run tests in check section
+# disable for bootstrapping
+%bcond_with check
 
-%global   provider        github
-%global   provider_tld    com
-%global   project         alecthomas
-%global   repo            repr
-# https://github.com/alecthomas/repr
-%global   provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global   import_path     %{provider_prefix}
-%global   commit          d44565ca483f0ed23c2ac9cda62c966b116e77a3
-%global   shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global goipath github.com/alecthomas/repr
+%global commit  d37bc2a10ba1a7951e19dd5dc10f7d59b142d8d7
 
-Name:           golang-%{provider}-%{project}-%{repo}
+%gometa
+
+Name:           %{goname}
 Version:        0
-Release:        0.1.git%{shortcommit}%{?dist}
+Release:        0.2%{?dist}
 Summary:        Python's repr() for Go
 License:        MIT
-URL:            https://%{provider_prefix}
-Source0:        %{url}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
-
-# e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
-ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
-# If go_compiler is not set to 1, there is no virtual provide. Use golang instead.
-BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
+URL:            %{gourl}
+Source0:        %{gosource}
 
 %description
 %{summary}.
@@ -30,7 +22,6 @@ BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
 Summary:        %{summary}
 BuildArch:      noarch
 BuildRequires:  golang(github.com/stretchr/testify/assert)
-Provides:       golang(%{import_path}) = %{version}-%{release}
 
 %description devel
 %{summary}.
@@ -39,48 +30,24 @@ This package contains library source intended for
 building other packages which use import path with
 %{import_path} prefix.
 
-%package unit-test-devel
-Summary:        Unit tests for %{name} package
-BuildArch:      noarch
-# test subpackage tests code from devel subpackage
-Requires:       %{name}-devel = %{version}-%{release}
-
-%description unit-test-devel
-%{summary}.
-
-This package contains unit tests for project
-providing packages with %{import_path} prefix.
-
-
 %prep
-%setup -q -n %{repo}-%{commit}
-
-%build
+%forgeautosetup
 
 %install
-# source codes for building projects
-install -d %{buildroot}%{gopath}/src/%{import_path}/
-install -m644 repr.go %{buildroot}%{gopath}/src/%{import_path}/
-install -m644 repr_test.go %{buildroot}%{gopath}/src/%{import_path}/
+%goinstall
 
+%if %{with check}
 %check
-export GOPATH=%{buildroot}%{gopath}:%{gopath}
-
-%if ! 0%{?gotest:1}
-%global gotest go test
+%gochecks
 %endif
 
-%gotest %{import_path}
-
-%files devel
+%files devel -f devel.file-list
 %doc README.md
 %license COPYING
-%dir %{gopath}/src/%{provider}.%{provider_tld}/%{project}
-%{gopath}/src/%{import_path}/repr.go
-
-%files unit-test-devel
-%{gopath}/src/%{import_path}/repr_test.go
 
 %changelog
+* Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 0-0.2.20181104gitd37bc2a
+- Update to d37bc2a
+
 * Fri Aug 11 2017 mosquito <sensor.wen@gmail.com> - 0-0.1.gitd44565c
 - Initial package build
