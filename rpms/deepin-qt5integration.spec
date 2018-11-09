@@ -1,10 +1,10 @@
 %global repo qt5integration
 %global plug qt5dxcb-plugin
 %global plug_url https://github.com/linuxdeepin/qt5dxcb-plugin
-%global plug_ver 1.1.11
+%global plug_ver 1.1.13
 
 Name:           deepin-qt5integration
-Version:        0.3.4
+Version:        0.3.6
 Release:        1%{?dist}
 Summary:        Qt platform theme integration plugins for DDE
 # The entire source code is GPLv3+ except styles/ which is BSD,
@@ -67,7 +67,7 @@ sed -i 's|error.*|INCLUDEPATH += %{_qt5_includedir}/QtXcb|' platformplugin/linux
 %make_build
 
 pushd %{plug}-%{plug_ver}
-%qmake_qt5 PREFIX=%{_prefix}
+%qmake_qt5 PREFIX=%{_prefix} QMAKE_LFLAGS+="-fuse-ld=gold"
 %make_build
 
 %install
@@ -86,6 +86,11 @@ pushd %{plug}-%{plug_ver}
 %{_qt5_plugindir}/imageformats/libdsvg.so
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 0.3.6-1
+- Update to 0.3.6
+- Use of the gold linker by QMAKE_LFLAGS+="-fuse-ld=gold"
+  https://bugreports.qt.io/browse/QTBUG-65071
+
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 0.3.4-1
 - Update to 0.3.4
 
