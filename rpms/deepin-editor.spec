@@ -1,5 +1,5 @@
 Name:           deepin-editor
-Version:        0.0.5
+Version:        1.1.1
 Release:        1%{?dist}
 Summary:        Simple editor for Linux Deepin
 License:        GPLv3
@@ -32,7 +32,7 @@ Requires:       deepin-qt5integration
 %setup -q
 
 %build
-%qmake_qt5 PREFIX=%{_prefix}
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=Release .
 %make_build
 
 %install
@@ -45,14 +45,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_bindir}/%{name}-daemon
-%dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/words.db
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/dbus-1/system.d/com.deepin.editor.conf
-%{_datadir}/dbus-1/system-services/com.deepin.editor.daemon.service
-%{_datadir}/polkit-1/actions/com.deepin.editor.policy
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 1.1.1-1
+- Update to 1.1.1
+
 * Mon Jul 23 2018 mosquito <sensor.wen@gmail.com> - 0.0.5-1
 - Initial package build
