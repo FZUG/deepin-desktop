@@ -1,7 +1,7 @@
 %global repo dde-network-utils
 
 Name:           deepin-network-utils
-Version:        0.0.4
+Version:        0.0.7
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - network utils
 License:        GPLv3
@@ -47,6 +47,9 @@ sed -i 's|/lib$|/%{_lib}|' dde-network-utils.pro
 %{_libdir}/lib*.so
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 0.0.7-1
+- Update to 0.0.7
+
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 0.0.4-1
 - Update to 0.0.4
 
