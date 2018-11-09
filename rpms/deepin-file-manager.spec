@@ -1,7 +1,7 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.4.9.1
+Version:        4.7.1.1
 Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
@@ -12,6 +12,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  deepin-dock-devel
 BuildRequires:  file-devel
+BuildRequires:  jemalloc-devel
+BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
@@ -72,14 +74,13 @@ find -type f -perm 775 -exec chmod 644 {} \;
 sed -i 's|lrelease|lrelease-qt5|' %{repo}*/generate_translations.sh \
   usb-device-formatter/generate_translations.sh \
   dde-desktop/translate_generation.sh
-sed -i '/target.path/s|lib|%{_lib}|' dde-dock-plugins/disk-mount/disk-mount.pro \
-  dde-dock-plugins/trash/trash.pro
+sed -i '/target.path/s|lib|%{_lib}|' dde-dock-plugins/disk-mount/disk-mount.pro
 sed -i '/deepin-daemon/s|lib|libexec|' dde-zone/mainwindow.h
 sed -i 's|lib/gvfs|libexec|' %{repo}-lib/gvfs/networkmanager.cpp
 sed -i 's|%{_datadir}|%{_libdir}|' dde-sharefiles/appbase.pri
 
 %build
-%qmake_qt5 PREFIX=%{_prefix} QMAKE_CFLAGS_ISYSTEM= IS_PLATFORM_FEDORA=YES
+%qmake_qt5 PREFIX=%{_prefix} QMAKE_CFLAGS_ISYSTEM= CONFIG+="DISABLE_FFMPEG DISABLE_ANYTHING"
 %make_build
 
 %install
@@ -99,9 +100,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %license LICENSE
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/com.deepin.filemanager.daemon.conf
 %config(noreplace) %{_sysconfdir}/xdg/autostart/%{repo}-xdg-autostart.desktop
-%config(noreplace) %{_sysconfdir}/xdg/autostart/%{repo}-dialog-autostart.desktop
-%{_sysconfdir}/xdg/deepin/%{repo}/dde-desktop.ini
-%{_sysconfdir}/xdg/deepin/%{repo}/%{repo}.ini
 %{_bindir}/%{repo}
 %{_bindir}/%{repo}-daemon
 %{_bindir}/%{repo}-pkexec
@@ -113,7 +111,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_libdir}/dde-dock/plugins/*.so
 %{_libdir}/%{repo}/
 %{_datadir}/%{repo}/
-%{_datadir}/dman/%{repo}/
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/applications/%{repo}.desktop
 %{_datadir}/dbus-1/interfaces/com.deepin.filemanager.filedialog.xml
@@ -123,6 +120,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/system-services/com.deepin.filemanager.daemon.service
 %dir %{_datadir}/usb-device-formatter
 %{_datadir}/usb-device-formatter/translations/
+%{_unitdir}/dde-filemanager-daemon.service
 %{_polkit_qt_policydir}/com.deepin.filemanager.daemon.policy
 %{_polkit_qt_policydir}/com.deepin.pkexec.dde-file-manager.policy
 %{_polkit_qt_policydir}/com.deepin.pkexec.usb-device-formatter.policy
@@ -144,6 +142,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
+* Mon Nov 12 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.1-1
+- Update to 4.7.1.1
+
 * Wed Aug 15 2018 mosquito <sensor.wen@gmail.com> - 4.4.9.1-1
 - Update to 4.4.9.1
 
