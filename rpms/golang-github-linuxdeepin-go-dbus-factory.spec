@@ -3,12 +3,12 @@
 %bcond_with check
 
 %global goipath github.com/linuxdeepin/go-dbus-factory
-%global commit  e843337f18df28808b053301f512e6d72ee11ec8
+%global commit  0bb7f2053da193e4f200841f67e66be695512b3a
 
 %gometa
 
 Name:           %{goname}
-Version:        0.0.7
+Version:        0.0.7.1
 Release:        1%{?dist}
 Summary:        GO DBus factory for Deepin Desktop Environment
 License:        GPLv3
@@ -44,6 +44,9 @@ building other packages which use import path with
 %doc README.md
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 0.0.7.1-1.20181109git0bb7f20
+- Update to 0bb7f20
+
 * Fri Aug 10 2018 mosquito <sensor.wen@gmail.com> - 0.0.7-1.20180827gite843337
 - Update to e843337
 
