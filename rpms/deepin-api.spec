@@ -7,7 +7,7 @@
 %endif
 
 Name:           deepin-api
-Version:        3.1.26
+Version:        3.5.0
 Release:        1%{?dist}
 Summary:        Go-lang bingding for dde-daemon
 License:        GPLv3+
@@ -36,11 +36,12 @@ BuildRequires:  deepin-gettext-tools
 BuildRequires:  deepin-gir-generator
 BuildRequires:  golang-deepin-dbus-factory-devel
 BuildRequires:  golang(pkg.deepin.io/lib)
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory)
+BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/org.bluez)
 BuildRequires:  golang(github.com/BurntSushi/xgb)
 BuildRequires:  golang(github.com/BurntSushi/xgbutil)
 BuildRequires:  golang(github.com/disintegration/imaging)
 BuildRequires:  golang(github.com/cryptix/wav)
+BuildRequires:  golang(github.com/fogleman/gg)
 BuildRequires:  golang(gopkg.in/alecthomas/kingpin.v2)
 %{?systemd_requires}
 Requires:       deepin-desktop-base
@@ -145,14 +146,22 @@ export GOPATH="$(pwd)/build:%{gopath}"
 %{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/icons/hicolor/*/actions/*
 %{_datadir}/dde-api/data/pkg_depends
+%{_datadir}/dde-api/data/grub-themes/
 %{_polkit_qt_policydir}/com.deepin.api.locale-helper.policy
+%{_polkit_qt_policydir}/com.deepin.api.device.unblock-bluetooth-devices.policy
+%{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.api.device.pkla
 
 %files -n golang-%{name}-devel
 %{gopath}/src/%{import_path}/
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.5.0-1
+- Update to 3.5.0
+
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.1.26-1
 - Update to 3.1.26
+- build error with gobject-introspection 1.58 by gir-generator
+  https://github.com/linuxdeepin/developer-center/issues/604
 
 * Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.22-1
 - Update to 3.1.22
