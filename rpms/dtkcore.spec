@@ -1,5 +1,5 @@
 Name:           dtkcore
-Version:        2.0.9
+Version:        2.0.9.5
 Release:        1%{?dist}
 Summary:        Deepin tool kit core modules
 License:        GPLv3
@@ -27,7 +27,7 @@ sed -i 's|/lib|/libexec|' tools/settings/settings.pro
 sed -i 's|lrelease|lrelease-qt5|' tools/script/dtk-translate.py src/dtk_translation.prf
 
 %build
-%qmake_qt5 PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_libdir}
+%qmake_qt5 PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_libdir} BIN_INSTALL_DIR=%{_libexecdir}/dtk2 TOOL_INSTALL_DIR=%{_libexecdir}/dtk2
 %make_build
 
 %install
@@ -44,6 +44,7 @@ sed -i 's|lrelease|lrelease-qt5|' tools/script/dtk-translate.py src/dtk_translat
 %{_libexecdir}/dtk2/dtk-settings
 %{_libexecdir}/dtk2/dtk-license.py*
 %{_libexecdir}/dtk2/dtk-translate.py*
+%{_libexecdir}/dtk2/deepin-os-release
 
 %files devel
 %doc doc/Specification.md
@@ -52,10 +53,14 @@ sed -i 's|lrelease|lrelease-qt5|' tools/script/dtk-translate.py src/dtk_translat
 %{_qt5_archdatadir}/mkspecs/modules/*.pri
 %{_libdir}/cmake/Dtk/DtkConfig.cmake
 %{_libdir}/cmake/DtkCore/DtkCoreConfig.cmake
+%{_libdir}/cmake/DtkCMake/DtkCMakeConfig.cmake
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/lib*.so
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.5-1
+- Update to 2.0.9.5
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 2.0.9-1
 - Update to 2.0.9
 
