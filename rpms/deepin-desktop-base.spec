@@ -1,5 +1,5 @@
 Name:           deepin-desktop-base
-Version:        2018.7.23
+Version:        2018.10.29
 Release:        1%{?dist}
 Summary:        Base component for Deepin
 License:        GPLv3
@@ -48,6 +48,9 @@ ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
 %{_datadir}/plymouth/deepin-logo.png
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2018.10.29-1
+- Update to 2018.10.29
+
 * Mon Jul 23 2018 mosquito <sensor.wen@gmail.com> - 2018.7.23-1
 - Update to 2018.7.23
 
