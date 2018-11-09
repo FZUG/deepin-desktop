@@ -1,5 +1,5 @@
 Name:           startdde
-Version:        3.1.33
+Version:        3.3.0
 Release:        1%{?dist}
 Summary:        Starter of deepin desktop environment
 License:        GPLv3
@@ -12,7 +12,7 @@ BuildRequires:  deepin-gir-generator
 BuildRequires:  golang-deepin-dbus-factory-devel >= 3.1.16
 BuildRequires:  golang(pkg.deepin.io/dde/api/dxinput) >= 3.1.26
 BuildRequires:  golang(pkg.deepin.io/lib) >= 1.2.11
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory)
+BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/org.bluez)
 BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
 BuildRequires:  golang(github.com/cryptix/wav)
 BuildRequires:  golang(github.com/BurntSushi/xgb)
@@ -73,6 +73,9 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %{_datadir}/%{name}/memchecker.json
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.3.0-1
+- Update to 3.3.0
+
 * Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.33-1
 - Update to 3.1.33
 
