@@ -1,7 +1,7 @@
 %global repo dde-session-ui
 
 Name:           deepin-session-ui
-Version:        4.4.5
+Version:        4.6.2
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPLv3
@@ -54,6 +54,7 @@ sed -i 's|lib|libexec|' \
     misc/applications/deepin-toggle-desktop.desktop* \
     dde-osd/dde-osd_autostart.desktop \
     dde-osd/com.deepin.dde.osd.service \
+    dde-osd/notification/files/com.deepin.dde.*.service* \
     dde-osd/dde-osd.pro \
     dde-welcome/com.deepin.dde.welcome.service \
     dde-welcome/dde-welcome.pro \
@@ -61,6 +62,7 @@ sed -i 's|lib|libexec|' \
     dde-warning-dialog/dde-warning-dialog.pro \
     dde-offline-upgrader/dde-offline-upgrader.pro \
     dde-suspend-dialog/dde-suspend-dialog.pro \
+    dnetwork-secret-dialog/dnetwork-secret-dialog.pro \
     dde-lowpower/dde-lowpower.pro
 
 %build
@@ -72,20 +74,17 @@ sed -i 's|lib|libexec|' \
 
 # lightdm.conf
 #https://wiki.archlinux.org/index.php/Deepin_Desktop_Environment#Via_a_Display_Manager
-install -d %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d
-cat > %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/deepin.conf <<EOF
-[Seat:*]
-greeter-session=lightdm-deepin-greeter
-EOF
 
 %files
 %doc README.md
 %license LICENSE
-%config(noreplace) %{_sysconfdir}/lightdm/lightdm.conf.d/deepin.conf
+%config(noreplace) %{_sysconfdir}/deepin/greeters.d/00-xrandr
+%config(noreplace) %{_sysconfdir}/deepin/greeters.d/lightdm-deepin-greeter
 %{_bindir}/dde-*
 %{_bindir}/dmemory-warning-dialog
+%{_bindir}/deepin-greeter
 %{_bindir}/lightdm-deepin-greeter
-%{_libexecdir}/deepin-daemon/dde-*
+%{_libexecdir}/deepin-daemon/*
 %{_datadir}/%{repo}/
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
@@ -93,6 +92,9 @@ EOF
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 4.6.2-1
+- Update to 4.6.2
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 4.4.5-1
 - Update to 4.4.5
 
