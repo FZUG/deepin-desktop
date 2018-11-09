@@ -2,7 +2,7 @@
 %global ds_url https://github.com/linuxdeepin/default-settings
 
 Name:           deepin-daemon
-Version:        3.2.20
+Version:        3.7.0
 Release:        1%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
@@ -48,7 +48,7 @@ BuildRequires:  golang-deepin-dbus-factory-devel >= 3.1.16
 BuildRequires:  golang(pkg.deepin.io/lib) >= 1.2.11
 BuildRequires:  golang(pkg.deepin.io/lib/fsnotify)
 BuildRequires:  golang(pkg.deepin.io/dde/api/dxinput) >= 3.1.26
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory)
+BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/org.bluez)
 BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
 BuildRequires:  golang(github.com/BurntSushi/xgb)
 BuildRequires:  golang(github.com/BurntSushi/xgbutil)
@@ -59,18 +59,19 @@ BuildRequires:  golang(github.com/cryptix/wav)
 BuildRequires:  golang(gopkg.in/alecthomas/kingpin.v2)
 BuildRequires:  golang(gopkg.in/yaml.v2)
 
+Requires:       bamf-daemon
+Requires:       bluez-libs
 Requires:       deepin-desktop-base
 Requires:       deepin-desktop-schemas
 Requires:       deepin-notifications
+Requires:       deepin-polkit-agent
 %ifnarch s390 s390x %{arm}
 Requires:       deepin-grub2-themes
 Requires:       acpid
 %endif
-Requires:       bluez-libs
 Requires:       gvfs
 Requires:       iw
 Requires:       libudisks2
-Requires:       deepin-polkit-agent
 Requires:       qt5-qtaccountsservice
 Requires:       rfkill
 Requires:       upower
@@ -82,6 +83,7 @@ Recommends:     NetworkManager-strongswan-gnome
 Recommends:     NetworkManager-openvpn-gnome
 Recommends:     NetworkManager-openconnect-gnome
 Recommends:     iso-codes
+Recommends:     imwheel
 Recommends:     mobile-broadband-provider-info
 Recommends:     google-noto-mono-fonts
 Recommends:     google-noto-sans-fonts
@@ -110,10 +112,36 @@ sed -i 's|/usr/lib|%{_libexecdir}|' \
     service_trigger/manager.go \
     bin/dde-system-daemon/main.go \
     bin/search/main.go \
-    accounts/image_blur.go
+    accounts/image_blur.go \
+    network/secret_agent.go \
+    grub2/modify_manger.go
 
 # Fix grub.cfg path
 sed -i 's|boot/grub|boot/grub2|' grub2/{theme,log,entry,grub_params}.go
+
+# Fix activate services failed (Permission denied)
+# dbus service
+pushd misc/system-services/
+sed -i '$aSystemdService=deepin-accounts-daemon.service' com.deepin.system.Power.service \
+    com.deepin.daemon.{Accounts,Apps,Daemon}.service \
+    com.deepin.daemon.{Gesture,SwapSchedHelper,Timedated}.service
+sed -i '$aSystemdService=dbus-com.deepin.dde.lockservice.service' com.deepin.dde.LockService.service
+popd
+# systemd service
+cat > misc/systemd/services/dbus-com.deepin.dde.lockservice.service <<EOF
+[Unit]
+Description=Deepin Lock Service
+Wants=user.slice dbus.socket
+After=user.slice dbus.socket
+
+[Service]
+Type=dbus
+BusName=com.deepin.dde.LockService
+ExecStart=%{_libexecdir}/%{name}/dde-lockservice
+
+[Install]
+WantedBy=graphical.target
+EOF
 
 %build
 export GOPATH="$(pwd)/build:%{gopath}"
@@ -175,6 +203,7 @@ fi
 %{_sysusersdir}/%{name}.conf
 %{_prefix}/lib/systemd/logind.conf.d/10-%{name}.conf
 %{_unitdir}/deepin-accounts-daemon.service
+%{_unitdir}/dbus-com.deepin.dde.lockservice.service
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/dbus-1/system-services/*.service
 %{_datadir}/dbus-1/system.d/*.conf
@@ -189,6 +218,9 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Accounts.pkla
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.7.0-1
+- Update to 3.7.0
+
 * Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.2.20-1
 - Update to 3.2.20
 
