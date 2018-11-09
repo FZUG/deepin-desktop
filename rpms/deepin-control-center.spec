@@ -1,7 +1,7 @@
 %global repo dde-control-center
 
 Name:           deepin-control-center
-Version:        4.6.4
+Version:        4.7.4
 Release:        1%{?dist}
 Summary:        New control center for Linux Deepin
 License:        GPLv3
@@ -15,6 +15,7 @@ BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(geoip)
+BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -23,6 +24,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  qt5-linguist
 Requires:       deepin-account-faces
 Requires:       deepin-api
@@ -71,13 +73,15 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{repo}.desktop ||:
 %doc README.md
 %license LICENSE
 %{_bindir}/%{repo}
-%{_libdir}/%{repo}/
 %{_libexecdir}/%{repo}/
 %{_datadir}/applications/%{repo}.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{repo}/
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 4.7.4-1
+- Update to 4.7.4
+
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 4.6.4-1
 - Update to 4.6.4
 
