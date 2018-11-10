@@ -1,5 +1,5 @@
 Name:           deepin-mutter
-Version:        3.20.34
+Version:        3.20.35
 Release:        1%{?dist}
 Summary:        Base window manager for deepin, fork of gnome mutter
 License:        GPLv3
@@ -114,6 +114,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.20.35-1
+- Update to 3.20.35
+
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 3.20.32-1
 - Update to 3.20.32
 
