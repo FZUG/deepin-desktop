@@ -11,7 +11,7 @@ Name:           %{goname}
 Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Go Graphics - 2D rendering in Go with a simple API
-License:        GPLv3
+License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
@@ -42,6 +42,7 @@ building other packages which use import path with
 
 %files devel -f devel.file-list
 %doc README.md
+%license LICENSE.md
 
 %changelog
 * Mon Nov  5 2018 mosquito <sensor.wen@gmail.com> - 1.1.0-1.20181106gite843337
