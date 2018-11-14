@@ -1,5 +1,5 @@
 diff --git a/src/filesystem/dpathbuf.h b/src/filesystem/dpathbuf.h
-index 3aa7609..85df90d 100644
+index aa5c997..45bee52 100644
 --- a/src/filesystem/dpathbuf.h
 +++ b/src/filesystem/dpathbuf.h
 @@ -26,7 +26,10 @@ DCORE_BEGIN_NAMESPACE
@@ -12,8 +12,8 @@ index 3aa7609..85df90d 100644
 +        m_path = QDir(path).absolutePath();
 +    }
  
-     DPathBuf operator/(const QString &p) const
-     {
+     /*!
+      * \brief join path with operator /
 diff --git a/src/filesystem/filesystem.pri b/src/filesystem/filesystem.pri
 index c8d81a0..e561867 100644
 --- a/src/filesystem/filesystem.pri
