@@ -1,5 +1,5 @@
 Name:           deepin-movie
-Version:        3.2.11
+Version:        3.2.14
 Release:        1%{?dist}
 Summary:        Deepin movie based on mpv
 Summary(zh_CN): 深度影音
@@ -32,6 +32,9 @@ BuildRequires:  pkgconfig(xcb-aux)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcb-shape)
+BuildRequires:  libappstream-glib
+BuildRequires:  gcc
+BuildRequires:  desktop-file-utils
 
 %description
 Deepin movie for deepin desktop environment.
@@ -56,25 +59,36 @@ sed -i '/dtk2/s|lib|libexec|' src/CMakeLists.txt
 
 %install
 %make_install
+install -Dm644 %SOURCE1 %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name} --with-qt
 
-%files -f %{name}.lang
+%files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_libdir}/libdmr.so.*
+%{_libdir}/libdmr.so.0.1
+%{_libdir}/libdmr.so.0.1.0
 %{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/%{name}
+%{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/%{name}*.qm
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %files devel
+%{_includedir}/libdmr
 %{_includedir}/libdmr/*.h
 %{_libdir}/pkgconfig/libdmr.pc
 %{_libdir}/libdmr.so
 
 %changelog
+* Thu Nov 15 2018 Zamir SUN <zsun@fedoraproject.org> - 3.2.14-1
+- Update to 3.2.14
+- Add BR gcc
+
 * Sat Oct 27 2018 Zamir SUN <zsun@fedoraproject.org> - 3.2.11-1
 - Update to 3.2.11
 
