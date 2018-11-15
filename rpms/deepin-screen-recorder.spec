@@ -1,10 +1,11 @@
 Name:           deepin-screen-recorder
-Version:        2.7.5
+Version:        2.7.6
 Release:        1%{?dist}
 Summary:        Deepin Screen Recorder
-License:        GPLv3
+License:        GPLv3+
 URL:            https://github.com/linuxdeepin/deepin-screen-recorder
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        deepin-screen-recorder.appdata.xml
 
 BuildRequires:  qt5-linguist
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0
@@ -22,9 +23,13 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  desktop-file-utils
-Requires:       hicolor-icon-theme
+BuildRequires:  libappstream-glib
+BuildRequires:   gcc
 Requires:       byzanz
 Requires:       ffmpeg
+Requires:       hicolor-icon-theme
+Requires:       dbus
+Requires:       deepin-manual-directory
 
 %description
 %{summary}.
@@ -41,7 +46,9 @@ sed -i 's|=lupdate|=lupdate-qt5|;s|=lrelease|=lrelease-qt5|' %{name}.pro
 %make_install INSTALL_ROOT=%{buildroot}
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
+desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop 
+install -pDm644 %{S:1} %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
 %doc README.md
@@ -49,11 +56,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/dman/%{name}/
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.svg
 %{_datadir}/dbus-1/services/com.deepin.ScreenRecorder.service
 
 %changelog
+* Thu Nov 15 2018 Zamir SUN <sztsian@gmail.com> - 2.7.6-1
+- Update to 2.7.6
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 2.7.5-1
 - Update to 2.7.5
 
