@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>deepin-voice-recorder.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPLv3</project_license>
+  <name>Deepin Voice Recorder</name>
+  <summary>Deepin Voice Recorder</summary>
+  <summary xml:lang="zh">深度录音</summary>
+  <description>
+    <p>
+      This is default voice recorder application for Deepin Desktop Environment.
+    </p>
+  </description>
+  <url type="homepage">https://github.com/linuxdeepin/deepin-voice-recorder</url>
+</component>
