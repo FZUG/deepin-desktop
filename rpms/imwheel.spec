@@ -7,7 +7,8 @@ Release:        0.1.%{extver}%{?dist}
 Summary:        Mouse Event to Key Event Mapper Daemon
 License:        GPLv2+
 Url:            http://imwheel.sourceforge.net
-Source:         http://prdownloads.sourceforge.net/%{name}/%{name}-%{pkgrel}%{extver}.tar.gz
+Source0:        http://prdownloads.sourceforge.net/%{name}/%{name}-%{pkgrel}%{extver}.tar.gz
+Source1:        http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 # PATCH-FIX-UPSTREAM to prevent compiler warnings
 # "cast from pointer to integer of different size"
 Patch1:         imwheel-intptr_t.patch
@@ -21,6 +22,7 @@ Patch4:         imwheel-config_file_path.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -30,17 +32,19 @@ BuildRequires:  pkgconfig(xtst)
 
 %description
 A daemon for X11, which watches for mouse wheel actions and outputs them as
-keypresses. It can be configured separately for different windows. It also
+key presses. It can be configured separately for different windows. It also
 allows input from it's own (included) gpm, or from jamd, or from XFree86 ZAxis
 mouse wheel conversion.
 
 %prep
 %autosetup -p0 -n %{name}-%{pkgrel}%{extver}
+iconv -f iso88591 -t utf8 ChangeLog > ChangeLog
+sed -i 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|' configure.in
+mv %{S:1} COPYING
 
 %build
 autoreconf -fiv
-%configure \
-  --with-x 
+%configure --with-x
 %make_build
 
 %install
