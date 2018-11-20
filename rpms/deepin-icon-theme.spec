@@ -6,7 +6,7 @@ License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-icon-theme
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-devel
+BuildRequires:  python2-devel
 Requires:       hicolor-icon-theme
 
 %description
@@ -54,11 +54,15 @@ fi
 * Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 15.12.58-1
 - Update to 15.12.58
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 15.12.54-1
-- Update to 15.12.54
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 15.12.52-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 15.12.53-1
-- Update to 15.12.53
+* Thu Mar 15 2018 Iryna Shcherbina <ishcherb@redhat.com> - 15.12.52-3
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 15.12.52-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Sat Dec  2 2017 mosquito <sensor.wen@gmail.com> - 15.12.52-1
 - Update to 15.12.52

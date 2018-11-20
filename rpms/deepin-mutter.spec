@@ -9,11 +9,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
 BuildRequires:  gnome-common
-%if 0%{?fedora} > 26
 BuildRequires:  cogl-devel >= 1.22.2-7
-%else
-BuildRequires:  deepin-cogl-devel
-%endif
 BuildRequires:  pkgconfig(clutter-1.0)
 BuildRequires:  pkgconfig(clutter-wayland-1.0)
 BuildRequires:  pkgconfig(gl)
@@ -117,17 +113,20 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.20.35-1
 - Update to 3.20.35
 
+* Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.20.34-1
+- Update to 3.20.34
+
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 3.20.32-1
 - Update to 3.20.32
 
 * Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.20.31-1
 - Update to 3.20.31
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 3.20.29-1
-- Update to 3.20.29
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.26-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.20.28-1
-- Update to 3.20.28
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.26-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Mon Nov 27 2017 mosquito <sensor.wen@gmail.com> - 3.20.26-1
 - Update to 3.20.26

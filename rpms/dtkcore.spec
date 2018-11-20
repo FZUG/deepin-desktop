@@ -15,6 +15,7 @@ Deepin tool kit core modules.
 %package devel
 Summary:        Development package for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       qt5-qtbase-devel
 
 %description devel
 Header files and libraries for %{name}.
@@ -64,11 +65,21 @@ sed -i 's|lrelease|lrelease-qt5|' tools/script/dtk-translate.py src/dtk_translat
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.8-1
 - Update to 2.0.9.8
 
-* Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 2.0.9-1
+* Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 2.0.9-4
+- Fix symbol
+
+* Tue Jul 31 2018 Florian Weimer <fweimer@redhat.com> - 2.0.9-3
+- Rebuild with fixed binutils
+
+* Mon Jul 30 2018 Zamir SUN <zsun@fedoraproject.org> - 2.0.9-2
+- Fix lrelease version
+- Merge fix from mosquito https://github.com/FZUG/repo/commit/23905bd6e097f89f61ac93819f65365024096c24
+
+* Wed Jul 25 2018 Zamir SUN <zsun@fedoraproject.org> - 2.0.9-1
 - Update to 2.0.9
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 2.0.7.1-1
-- Update to 2.0.7.1
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 2.0.6-1
 - Update to 2.0.6

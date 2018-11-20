@@ -60,8 +60,17 @@ install -m755 src/update_pot.py %{buildroot}%{_bindir}/deepin-update-pot
 %{_bindir}/deepin-generate-mo
 
 %changelog
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 1.0.8-1
+* Mon Aug 06 2018 Zamir SUN <zsun@fedoraproject.org> - 1.0.8-1
 - Update to 1.0.8
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 1.0.7-3
+- Rebuilt for Python 3.7
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Fri Oct 27 2017 mosquito <sensor.wen@gmail.com> - 1.0.7-1
 - Update to 1.0.7

@@ -2,7 +2,7 @@
 
 Name:           deepin-gir-generator
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Generate static golang bindings for GObject
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/go-gir-generator
@@ -17,6 +17,10 @@ ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
 BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gudev-1.0)
+Provides:       golang(gir/gobject-2.0)
+Provides:       golang(gir/gio-2.0)
+Provides:       golang(gir/glib-2.0)
+Provides:       golang(gir/gudev-1.0)
 
 %description
 Generate static golang bindings for GObject
@@ -46,14 +50,26 @@ export GOPATH="%{gopath}"
 %{gopath}/src/gir/
 
 %changelog
+* Mon Nov 19 2018 mosquito <sensor.wen@gmail.com> - 1.1.0-2
+- Provides gobject-2.0 gio-2.0 glib-2.0 gudev-1.0
+
 * Thu Nov  1 2018 mosquito <sensor.wen@gmail.com> - 1.1.0-1
 - Update to 1.1.0
 
 * Fri Aug 17 2018 mosquito <sensor.wen@gmail.com> - 1.0.4-1
 - Update to 1.0.4
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 1.0.3-1
+* Mon Aug 06 2018 Zamir SUN <zsun@fedoraproject.org> - 1.0.3-1
 - Update to 1.0.3
+
+* Tue Jul 31 2018 Florian Weimer <fweimer@redhat.com> - 1.0.2-4
+- Rebuild with fixed binutils
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Sat Oct 14 2017 mosquito <sensor.wen@gmail.com> - 1.0.2-1
 - Update to 1.0.2

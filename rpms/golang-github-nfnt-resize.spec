@@ -9,7 +9,7 @@
 
 Name:           %{goname}
 Version:        0
-Release:        0.2%{?dist}
+Release:        0.4%{?dist}
 Summary:        Pure golang image resize
 License:        ISC
 URL:            %{gourl}
@@ -45,8 +45,14 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
-* Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 0-0.2.20181104git83c6a99
+* Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 0-0.4.20181104git83c6a99
 - Update to 83c6a99
+
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.3.git891127d
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.2.git891127d
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Mon Aug  7 2017 mosquito <sensor.wen@gmail.com> - 0-0.1.git891127d
 - Initial package build

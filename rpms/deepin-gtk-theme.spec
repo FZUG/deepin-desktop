@@ -34,8 +34,8 @@ BuildArch:      noarch
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 17.10.7-1
 - Update to 17.10.7
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 17.10.6-1
-- Update to 17.10.6
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 17.10.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 17.10.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild

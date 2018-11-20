@@ -2,7 +2,7 @@
 
 Name:           deepin-dbus-generator
 Version:        0.6.6
-Release:        3%{?dist}
+Release:        5%{?dist}
 Summary:        Convert dbus interfaces to go-lang or qml wrapper code
 License:        GPLv3+
 URL:            https://github.com/linuxdeepin/go-dbus-generator
@@ -41,6 +41,12 @@ install -Dm755 dbus-generator %{buildroot}%{_bindir}/dbus-generator
 %{_bindir}/dbus-generator
 
 %changelog
+* Wed Aug  1 2018 Florian Weimer <fweimer@redhat.com> - 0.6.6-5
+- Rebuild with fixed binutils
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Tue Mar 13 2018 mosquito <sensor.wen@gmail.com> - 0.6.6-3
 - Fix build failure
 

@@ -67,8 +67,11 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 1.4.5-1
 - Update to 1.4.5
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 1.4.3-1
-- Update to 1.4.3
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.7-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Jun 14 2018 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1.3.7-4
+- Rebuild for procps-ng-3.3.15
 
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.7-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild

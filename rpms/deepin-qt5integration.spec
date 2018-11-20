@@ -91,6 +91,9 @@ pushd %{plug}-%{plug_ver}
 - Use of the gold linker by QMAKE_LFLAGS+="-fuse-ld=gold"
   https://bugreports.qt.io/browse/QTBUG-65071
 
+* Fri Sep 21 2018 Jan Grulich <jgrulich@redhat.com> - 0.3.4-2
+- rebuild (qt5)
+
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 0.3.4-1
 - Update to 0.3.4
 
@@ -100,8 +103,14 @@ pushd %{plug}-%{plug_ver}
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 0.3.1-1
 - Update to 0.3.1
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 0.2.10-1
-- Update to 0.2.10
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.8.3-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Jun 21 2018 Rex Dieter <rdieter@fedoraproject.org> - 0.2.8.3-6
+- rebuild (qt5)
+
+* Sun May 27 2018 Rex Dieter <rdieter@fedoraproject.org> - 0.2.8.3-5
+- rebuild (qt5)
 
 * Sun Feb 18 2018 Rex Dieter <rdieter@fedoraproject.org> - 0.2.8.3-4
 - rebuild (qt5)

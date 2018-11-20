@@ -23,13 +23,14 @@ A repository stores auto-generated Qt5 dbus code.
 %package devel
 Summary:        Development package for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       cmake-filesystem
 
 %description devel
 Header files and libraries for %{name}.
 
 %prep
 %setup -q -n %{repo}-%{version}
-sed -i 's|python|python3|' libdframeworkdbus/libdframeworkdbus.pro
+sed -i 's|python|python3|' libdframeworkdbus/*.{pro,py}
 
 %build
 %qmake_qt5 LIB_INSTALL_DIR=%{_libdir}
@@ -60,11 +61,18 @@ sed -i 's|python|python3|' libdframeworkdbus/libdframeworkdbus.pro
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 1.0.4-1
 - Update to 1.0.4
 
-* Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 1.0.3-1
+* Wed Jul 25 2018 Zamir SUN <zsun@fedoraproject.org> - 1.0.3-1
 - Update to 1.0.3
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 1.0.1-1
-- Update to 1.0.1
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Mar 15 2018 Iryna Shcherbina <ishcherb@redhat.com> - 0.4.2-3
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Wed Nov 15 2017 mosquito <sensor.wen@gmail.com> - 0.4.2-1
 - Update to 0.4.2

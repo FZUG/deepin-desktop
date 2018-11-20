@@ -90,8 +90,8 @@ sed -i -E '37d;/dpkg-architecture|EXIT/d' CMakeLists.txt
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 4.6.7-1
 - Update to 4.6.7
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 4.6.2-1
-- Update to 4.6.2
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.5.12-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 4.5.12-1
 - Update to 4.5.12

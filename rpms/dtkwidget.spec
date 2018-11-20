@@ -32,6 +32,10 @@ BuildRequires:  pkgconfig(xrender)
 Provides:       deepin-tool-kit%{_isa} = %{version}-%{release}
 Obsoletes:      deepin-tool-kit%{_isa} < %{version}-%{release}
 
+# libQt5Gui.so.5(Qt_5.10.1_PRIVATE_API)(64bit) needed by dtkwidget-2.0.6.1-1.fc29.x86_64
+BuildRequires:  qt5-qtbase-private-devel
+%{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
+
 %description
 DtkWidget is Deepin graphical user interface for deepin desktop development.
 
@@ -76,6 +80,9 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 * Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.9-1
 - Update to 2.0.9.9
 
+* Fri Sep 21 2018 Jan Grulich <jgrulich@redhat.com> - 2.0.9.3-2
+- rebuild (qt5)
+
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.3-1
 - Update to 2.0.9.3
 
@@ -85,8 +92,14 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.1-1
 - Update to 2.0.9.1
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 2.0.7.2-1
-- Update to 2.0.7.2
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.6.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Jun 21 2018 Rex Dieter <rdieter@fedoraproject.org> - 2.0.6.1-3
+- rebuild (qt5)
+
+* Sun May 27 2018 Rex Dieter <rdieter@fedoraproject.org> - 2.0.6.1-2
+- BR: qt5-qtbase-private-devel
 
 * Tue Feb 20 2018 mosquito <sensor.wen@gmail.com> - 2.0.6.1-1
 - Update to 2.0.6.1

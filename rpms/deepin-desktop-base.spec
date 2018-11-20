@@ -16,6 +16,13 @@ This package provides some components for Deepin desktop environment.
 - login screen background image
 - language information
 
+%package -n deepin-manual-directory
+Summary:        Package that owns the Deepin manual directory
+
+%description -n deepin-manual-directory
+This package owns the Deepin manual directory. This is a workaround
+before deepin-manual actually comes into Fedora to unblock packaging.
+
 %prep
 %setup -q
 
@@ -36,6 +43,10 @@ sed -i 's|/usr/lib|%{_datadir}|' Makefile
 # Make a symlink for deepin-version
 ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
 
+mkdir %{buildroot}/%{_datadir}/dman
+echo "This package owns the Deepin manual directory. This is a workaround
+before deepin-manual actually comes into Fedora to unblock packaging." > %{buildroot}%{_datadir}/dman/README.Fedora
+
 %files
 %license LICENSE
 %config(noreplace) %{_sysconfdir}/appstore.json
@@ -47,12 +58,24 @@ ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
 %{_datadir}/i18n/language_info.json
 %{_datadir}/plymouth/deepin-logo.png
 
+%files -n deepin-manual-directory
+%{_datadir}/dman
+
 %changelog
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2018.10.29-1
 - Update to 2018.10.29
 
+* Sun Oct 28 2018 Zamir SUN <sztsian@gmail.com> - 2018.7.23-2
+- Add subpackage deepin-manual-directory to temporary own dman dir.
+
 * Mon Jul 23 2018 mosquito <sensor.wen@gmail.com> - 2018.7.23-1
 - Update to 2018.7.23
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2017.11.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2017.11.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Mon Nov 27 2017 mosquito <sensor.wen@gmail.com> - 2017.11.1-1
 - Update to 2017.11.1

@@ -57,8 +57,8 @@ building other packages which use import path with
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.1.16-1
 - Update to 3.1.16
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.14-1
-- Update to 3.1.14
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.13-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 3.1.13-1
 - Update to 3.1.13

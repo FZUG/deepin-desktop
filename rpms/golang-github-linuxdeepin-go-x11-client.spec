@@ -7,7 +7,7 @@
 
 %gometa
 
-Name:           %{goname}
+Name:           golang-github-linuxdeepin-go-x11-client
 Version:        0
 Release:        0.8%{?dist}
 Summary:        A X11 client Go bindings for Deepin Desktop Environment
@@ -48,12 +48,12 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
-* Mon Nov 12 2018 mosquito <sensor.wen@gmail.com> - 0-0.8.git8411934
+* Mon Nov 12 2018 mosquito <sensor.wen@gmail.com> - 0-0.8.20181112git8411934
 - Update to 8411934
 - New X connect failed: WindowError
   https://github.com/linuxdeepin/developer-center/issues/590
 
-* Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 0-0.7.git0354113
+* Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 0-0.7.20181104git0354113
 - Update to 0354113
 
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 0-0.6.git71929bb

@@ -7,7 +7,7 @@ URL:            https://github.com/linuxdeepin/deepin-desktop-schemas
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  glib2
 Requires:       dconf
 Requires:       deepin-gtk-theme
@@ -24,6 +24,7 @@ Requires:       deepin-artwork-themes
 # fix default background url
 sed -i '/picture-uri/s|default_background.jpg|default.png|' \
     overrides/common/com.deepin.wrap.gnome.desktop.override
+sed -i 's|python|python3|' Makefile tools/overrides.py
 
 %build
 %make_build ARCH=x86
@@ -43,14 +44,21 @@ make test
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.4.0-1
 - Update to 3.4.0
 
+* Mon Aug 06 2018 Zamir SUN <zsun@fedoraproject.org> - 3.2.18-2
+- In Rawhide (f29) python command do not exist now.
+
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 3.2.18-1
 - Update to 3.2.18
 
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 3.2.15-1
 - Update to 3.2.15
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.2.9-1
-- Update to 3.2.9
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Mar 15 2018 Iryna Shcherbina <ishcherb@redhat.com> - 3.2.6-2
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 3.2.6-1
 - Update to 3.2.6

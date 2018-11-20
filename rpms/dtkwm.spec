@@ -62,8 +62,8 @@ Header files and libraries for %{name}.
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 2.0.9-1
 - Update to 2.0.9
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 2.0.7-1
-- Update to 2.0.7
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 2.0.6-1
 - Update to 2.0.6
