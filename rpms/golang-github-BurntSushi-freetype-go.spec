@@ -2,7 +2,7 @@
 # disable for bootstrapping
 %bcond_with check
 
-%global goipath     github.com/BurntSushi/freetype-go
+%global goipath     github.com/BurntSushi/freetype-go/freetype
 %global forgeurl    https://github.com/golang/freetype
 %global commit      e2365dfdc4a05e4b8299a783240d4a7d5a65d4e4
 %global goipath2    github.com/golang/freetype
@@ -12,7 +12,7 @@
 
 Name:           golang-github-BurntSushi-freetype-go
 Version:        0
-Release:        0.5%{?dist}
+Release:        0.6%{?dist}
 Summary:        The Freetype font rasterizer in the Go programming language
 # Detected licences
 # - *No copyright* UNKNOWN at 'LICENSE'
@@ -24,8 +24,8 @@ Source0:        %{gosource}
 %{summary}.
 
 %package devel
-Summary:       %{summary}
-BuildArch:     noarch
+Summary:        %{summary}
+BuildArch:      noarch
 
 %description devel
 %{summary}.
@@ -68,6 +68,9 @@ ln -s %{gopath}/src/%{goipath2} %{buildroot}%{gopath}/src/%{goipath}
 %doc README CONTRIBUTORS AUTHORS
 
 %changelog
+* Mon Nov 19 2018 mosquito <sensor.wen@gmail.com> - 0-0.6.20181119gite2365df
+- Fix go import path
+
 * Wed Nov 14 2018 mosquito <sensor.wen@gmail.com> - 0-0.5.20181114gite2365df
 - Change upstream to github.com/golang/freetype
 
