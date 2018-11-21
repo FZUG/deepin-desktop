@@ -3,7 +3,7 @@
 
 Name:           deepin-daemon
 Version:        3.7.0
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-daemon
@@ -13,8 +13,6 @@ Source2:        deepin-daemon.sysusers
 Patch0:         https://raw.github.com/jouyouyun/tap-gesture-patches/master/patches/dde-daemon_3.2.3.patch
 
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 aarch64 %{arm}}
-# https://github.com/golang/go/issues/21947
-ExcludeArch:    ppc64le aarch64
 BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  deepin-gir-generator
@@ -65,15 +63,15 @@ Requires:       deepin-desktop-base
 Requires:       deepin-desktop-schemas
 Requires:       deepin-notifications
 Requires:       deepin-polkit-agent
-%ifnarch s390 s390x %{arm}
+%ifnarch s390 s390x %{arm} %{power64}
 Requires:       deepin-grub2-themes
 Requires:       acpid
+Requires:       rfkill
 %endif
 Requires:       gvfs
 Requires:       iw
 Requires:       libudisks2
 Requires:       qt5-qtaccountsservice
-Requires:       rfkill
 Requires:       upower
 Requires:       xdotool
 Recommends:     NetworkManager-vpnc-gnome
@@ -218,17 +216,20 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Accounts.pkla
 
 %changelog
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 3.7.0-3
+- acpid is unavailable in ppc64le
+
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 3.7.0-2
+- Build test for ppc64le and aarch64
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.7.0-1
 - Update to 3.7.0
 
-* Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.2.20-1
+* Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.2.20-1
 - Update to 3.2.20
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 3.2.12-1
-- Update to 3.2.12
-
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.2.11-1
-- Update to 3.2.11
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.9-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Mon Mar 19 2018 mosquito <sensor.wen@gmail.com> - 3.2.9-2
 - Nothing providers grub2 in s390x and armv7hl.

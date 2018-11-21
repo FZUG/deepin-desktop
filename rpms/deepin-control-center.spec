@@ -94,8 +94,14 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{repo}.desktop ||:
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 4.6.1-1
 - Update to 4.6.1
 
-* Mon Mar 26 2018 mosquito <sensor.wen@gmail.com> - 4.4.3-1
-- Update to 4.4.3
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.3.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Fri Mar 23 2018 mosquito <sensor.wen@gmail.com> - 4.3.7-3
+- Exclude ppc64le, ppc64 and aarch64
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.3.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Sat Dec  2 2017 mosquito <sensor.wen@gmail.com> - 4.3.7-1
 - Update to 4.3.7

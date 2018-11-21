@@ -145,11 +145,26 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 * Mon Nov 12 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.1-1
 - Update to 4.7.1.1
 
+* Fri Sep 21 2018 Jan Grulich <jgrulich@redhat.com> - 4.4.9.1-2
+- rebuild (qt5)
+
 * Wed Aug 15 2018 mosquito <sensor.wen@gmail.com> - 4.4.9.1-1
 - Update to 4.4.9.1
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 4.4.8.3-1
-- Update to 4.4.8.3
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.4.7-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Jun 21 2018 Rex Dieter <rdieter@fedoraproject.org> - 4.4.7-10
+- rebuild (qt5)
+
+* Sun May 27 2018 Rex Dieter <rdieter@fedoraproject.org> - 4.4.7-9
+- rebuild (qt5)
+
+* Fri Mar 23 2018 Marek Kasik <mkasik@redhat.com> - 4.4.7-8
+- Rebuild for poppler-0.63.0
+
+* Mon Mar 19 2018 mosquito <sensor.wen@gmail.com> - 4.4.7-7
+- Exclude ppc64le, ppc64, aarch64
 
 * Sat Mar 10 2018 mosquito <sensor.wen@gmail.com> - 4.4.7-6
 - Remove obsoletes statement (BZ#1537223)
