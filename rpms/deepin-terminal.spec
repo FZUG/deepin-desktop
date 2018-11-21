@@ -1,7 +1,7 @@
 %global _terminals gnome-terminal mate-terminal xfce4-terminal lxterminal qterminal qterminal-qt5 terminology yakuake fourterm roxterm lilyterm termit xterm mrxvt
 
 Name:           deepin-terminal
-Version:        3.0.10
+Version:        3.0.10.2
 Release:        1%{?dist}
 Summary:        Default terminal emulation application for Deepin
 License:        GPLv3
@@ -102,6 +102,9 @@ fi
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 3.0.10.2-1
+- Update to 3.0.10.2
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.0.10-1
 - Update to 3.0.10
 
