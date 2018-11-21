@@ -7,7 +7,7 @@
 %endif
 
 Name:           deepin-api
-Version:        3.5.0
+Version:        3.9.0
 Release:        1%{?dist}
 Summary:        Go-lang bingding for dde-daemon
 License:        GPLv3+
@@ -155,6 +155,9 @@ export GOPATH="$(pwd)/build:%{gopath}"
 %{gopath}/src/%{import_path}/
 
 %changelog
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 3.9.0-1
+- Update to 3.9.0
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.5.0-1
 - Update to 3.5.0
 
@@ -163,8 +166,11 @@ export GOPATH="$(pwd)/build:%{gopath}"
 - build error with gobject-introspection 1.58 by gir-generator
   https://github.com/linuxdeepin/developer-center/issues/604
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.22-1
-- Update to 3.1.22
+* Tue Jul 31 2018 Florian Weimer <fweimer@redhat.com> - 3.1.20-3
+- Rebuild with fixed binutils
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.20-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 3.1.20-1
 - Update to 3.1.20
