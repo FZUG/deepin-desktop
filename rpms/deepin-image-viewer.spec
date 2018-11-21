@@ -1,5 +1,5 @@
 Name:           deepin-image-viewer
-Version:        1.2.23
+Version:        1.3.1
 Release:        1%{?dist}
 Summary:        Deepin Image Viewer
 License:        GPLv3
@@ -61,11 +61,17 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 1.3.1-1
+- Update to 1.3.1
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 1.2.23-1
 - Update to 1.2.23
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 1.2.18-1
-- Update to 1.2.18
+* Thu Jul 19 2018 Adam Williamson <awilliam@redhat.com> - 1.2.16.8-3
+- Rebuild for new libraw
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.16.8-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Sat Feb 10 2018 mosquito <sensor.wen@gmail.com> - 1.2.16.8-1
 - Update to 1.2.16.8
