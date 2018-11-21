@@ -1,5 +1,5 @@
 Name:           deepin-screenshot
-Version:        4.0.16
+Version:        4.1.2
 Release:        1%{?dist}
 Summary:        Deepin Screenshot Tool
 Summary(zh_CN): 深度截图工具
@@ -8,6 +8,7 @@ Url:            https://github.com/linuxdeepin/deepin-screenshot
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-appdata.xml
 
+BuildRequires:  cmake
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dtkwm)
 BuildRequires:  pkgconfig(xtst)
@@ -40,7 +41,7 @@ Provide a quite easy-to-use screenshot tool. Features:
 %setup -q
 
 %build
-%qmake_qt5 PREFIX=%{_prefix}
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix}
 %make_build
 
 %install
@@ -66,19 +67,19 @@ fi
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_datadir}/dman/%{name}/
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/dbus-1/services/com.deepin.Screenshot.service
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/icons/deepin/apps/scalable/%{name}.svg
 
 %changelog
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 4.1.2-1
+- Update to 4.1.2
+
 * Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 4.0.16-1
 - Update to 4.0.16
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 4.0.11-1
-- Update to 4.0.11
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.10.4-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.10.4-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
