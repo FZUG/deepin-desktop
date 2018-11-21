@@ -6,6 +6,8 @@ License:        GPLv3
 URL:            https://github.com/justforlxz/deepin-topbar
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
+BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(dframeworkdbus)
@@ -26,6 +28,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  qt5-linguist
+Requires:       hicolor-icon-theme
 %{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
 
 %description
@@ -48,6 +51,8 @@ sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
+
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %doc README.md
