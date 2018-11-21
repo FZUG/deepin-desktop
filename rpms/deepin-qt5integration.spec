@@ -1,11 +1,11 @@
 %global repo qt5integration
 %global plug qt5dxcb-plugin
 %global plug_url https://github.com/linuxdeepin/qt5dxcb-plugin
-%global plug_ver 1.1.13
+%global plug_ver 1.1.14
 
 Name:           deepin-qt5integration
 Version:        0.3.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Qt platform theme integration plugins for DDE
 # The entire source code is GPLv3+ except styles/ which is BSD,
 # dstyleplugin/ which is GPLv3, dstyleplugin/dstyleanimation* which is LGPL
@@ -86,6 +86,9 @@ pushd %{plug}-%{plug_ver}
 %{_qt5_plugindir}/imageformats/libdsvg.so
 
 %changelog
+* Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 0.3.6-2
+- Update qt5dxcb to 1.1.14
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 0.3.6-1
 - Update to 0.3.6
 - Use of the gold linker by QMAKE_LFLAGS+="-fuse-ld=gold"
