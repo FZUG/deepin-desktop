@@ -54,8 +54,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{repo}.desktop
 * Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 1.2.3-1
 - Update to 1.2.3
 
-* Sat Mar 24 2018 mosquito <sensor.wen@gmail.com> - 1.2.2-1
-- Update to 1.2.2
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
 * Wed Nov 15 2017 mosquito <sensor.wen@gmail.com> - 1.1.1-1
 - Update to 1.1.1

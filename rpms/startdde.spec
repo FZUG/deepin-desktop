@@ -76,11 +76,14 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.3.0-1
 - Update to 3.3.0
 
-* Fri Jul 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.33-1
+* Mon Aug 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.33-1
 - Update to 3.1.33
 
-* Tue Mar 20 2018 mosquito <sensor.wen@gmail.com> - 3.1.26-1
-- Update to 3.1.26
+* Tue Jul 31 2018 Florian Weimer <fweimer@redhat.com> - 3.1.24-3
+- Rebuild with fixed binutils
+
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.24-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
 * Fri Feb 16 2018 mosquito <sensor.wen@gmail.com> - 3.1.24-1
 - Update to 3.1.24
