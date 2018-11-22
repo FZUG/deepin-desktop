@@ -2,7 +2,7 @@
 
 Name:           deepin-session-ui
 Version:        4.6.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-session-ui
@@ -31,6 +31,7 @@ Requires:       deepin-daemon
 Requires:       startdde
 Requires:       lightdm
 Provides:       lightdm-deepin-greeter%{?_isa} = %{version}-%{release}
+Provides:       deepin-notifications = %{version}-%{release}
 Provides:       deepin-notifications%{?_isa} = %{version}-%{release}
 Obsoletes:      deepin-notifications%{?_isa} < %{version}-%{release}
 
@@ -92,6 +93,9 @@ sed -i 's|lib|libexec|' \
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
 
 %changelog
+* Thu Nov 22 2018 mosquito <sensor.wen@gmail.com> - 4.6.2-2
+- Provide deepin-notifications
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 4.6.2-1
 - Update to 4.6.2
 
