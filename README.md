@@ -7,7 +7,9 @@ These files are based on [cz-guardian/fedora-deepin](https://github.com/cz-guard
     sudo dnf install http://download1.rpmfusion.org/free/fedora/releases/$(rpm -E %fedora)/Everything/$(uname -i)/os/Packages/r/rpmfusion-free-release-$(rpm -E %fedora)-1.noarch.rpm
     sudo dnf copr enable mosquito/deepin
     sudo dnf update
-    sudo dnf install deepin-file-manager deepin-dock deepin-session-ui deepin-launcher deepin-screenshot deepin-terminal
+    sudo dnf install deepin-desktop (deepin core)
+    sudo dnf install deepin-calendar deepin-calculator deepin-draw deepin-editor deepin-image-viewer deepin-picker deepin-screenshot deepin-system-monitor deepin-terminal (deepin applications)
+    sudo dnf install deepin-movie deepin-music deepin-screen-recorder deepin-voice-recorder (need rpmfusion repository)
     sudo systemctl disable gdm.service && sudo systemctl enable lightdm.service (optional, gdm also available)
     sudo sed -i "/SELINUX=/s|enforcing|disabled|" /etc/selinux/config
 
@@ -71,6 +73,7 @@ This repository contains the following .specs for integrating the deepin desktop
 
 ## Resources
 * [Deepin Github](https://github.com/linuxdeepin/), [Official site](https://www.deepin.org/en/), [Deepin OS Design](https://my.oschina.net/ManateeLazyCat/blog/831104)
+* [fedora package monitor](https://apps.fedoraproject.org/koschei/groups/mosquito/deepin-sig)
 * [fedora-deepin repository list](https://copr.fedorainfracloud.org/coprs/mosquito/deepin/packages/)
 * [fedora-deepin (jstepanek)](https://github.com/cz-guardian/fedora-deepin/): thanks @cz-guardian
 * [arch-deepin](https://github.com/fasheng/arch-deepin/): [Deepin Desktop Environment on Arch](https://bbs.archlinux.org/viewtopic.php?id=181861)
