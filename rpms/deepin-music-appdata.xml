@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 mosquito -->
+<component type="desktop">
+  <id>deepin-music.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Deepin Music</name>
+  <name xml:lang="zh_CN">深度音乐</name>
+  <summary>Deepin Music Player is a local music player with beautiful design and simple functions.</summary>
+  <summary xml:lang="zh_CN">深度音乐是一款设计美观，功能简洁的本地音乐播放器。</summary>
+  <description>
+    <p>
+	Deepin Music Player is a local music player with beautiful design and simple functions. It supports viewing lyrics when playing, playing lossless music and customize playlist, etc.
+    </p>
+    <p xml:lang="zh_CN">
+      深度音乐是一款设计美观，功能简洁的本地音乐播放器。支持播放时查看歌词、播放无损音乐、自定义创建歌单等功能。
+    </p>
+  </description>
+  <url type="homepage">https://github.com/linuxdeepin/deepin-music/</url>
+  <url type="bugtracker">https://bugzilla.deepin.io/describecomponents.cgi?product=%E6%B7%B1%E5%BA%A6%E9%9F%B3%E4%B9%90</url>
+  <releases>
+    <release version="3.1.9" date="2018-11-08"></release>
+  </releases>
+  <project_license>GPL-3.0</project_license>
+  <developer_name>Linux Deepin</developer_name>
+  <screenshots>
+    <screenshot type="default">https://www.deepin.org/wp-content/uploads/2017/01/deepin-music3.png</screenshot>
+  </screenshots>
+</component>

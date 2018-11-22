@@ -1,5 +1,5 @@
 Name:           deepin-music
-Version:        3.1.8.4
+Version:        3.1.9
 Release:        1%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
@@ -27,6 +27,8 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 Requires:       hicolor-icon-theme
+Requires:       deepin-manual-directory
+Requires:       dbus
 
 %description
 Deepin Music Player with brilliant and tweakful UI Deepin-UI based,
@@ -51,6 +53,9 @@ sed -i '/vendor/d' src/src.pro
 sed -i '/%1/s|lib|%{_lib}|' src/music-player/core/pluginmanager.cpp
 sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \
     src/plugin/netease-meta-search/netease-meta-search.pro
+sed -i 's|$$PWD/../vendor/mpris-qt/src|%{_qt5_includedir}/MprisQt/|g' src/music-player/build.pri
+sed -i 's|$$PWD/../vendor/dbusextended-qt/src|%{_qt5_includedir}/DBusExtended|g' src/music-player/build.pri
+rm src/vendor -rf
 
 %build
 %qmake_qt5 PREFIX=%{_prefix}
@@ -58,17 +63,17 @@ sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
-
-%check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -pDm644 %{S:1} %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/lib*.so.*
-%dir %{_libdir}/%{name}/
-%dir %{_libdir}/%{name}/plugins/
+%{_libdir}/%{name}/
+%{_libdir}/%{name}/plugins/
 %{_libdir}/%{name}/plugins/lib*.so.*
 %{_datadir}/%{name}/
 %{_datadir}/dman/%{name}/
@@ -80,6 +85,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_libdir}/%{name}/plugins/lib*.so
 
 %changelog
+* Thu Nov 22 2018 Zamir SUN <sztsian@gmail.com> - 3.1.9-1
+- Update to 3.1.9
+
 * Sat Aug 25 2018 mosquito <sensor.wen@gmail.com> - 3.1.8.4-1
 - Update to 3.1.8.4
 
