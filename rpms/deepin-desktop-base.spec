@@ -1,12 +1,13 @@
 Name:           deepin-desktop-base
 Version:        2018.10.29
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Base component for Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-desktop-base
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Recommends:     deepin-wallpapers
+Recommends:     plymouth-theme-deepin
 
 %description
 This package provides some components for Deepin desktop environment.
@@ -62,6 +63,9 @@ before deepin-manual actually comes into Fedora to unblock packaging." > %{build
 %{_datadir}/dman
 
 %changelog
+* Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2018.10.29-2
+- Add plymouth-theme-deepin dependence
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2018.10.29-1
 - Update to 2018.10.29
 

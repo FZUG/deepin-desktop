@@ -71,6 +71,7 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-deepin-menu
 * |-deepin-network-utils
 * |-deepin-shortcut-viewer
+* |-plymouth-theme-deepin
 * |-gsettings-qt
 * |-libdbusextended-qt5
 * |-libmpris-qt5
@@ -91,6 +92,7 @@ This repository contains the following .specs for integrating the deepin desktop
 * ***Applications***
 * |-deepin-calendar
 * |-deepin-calculator
+* |-deepin-clone
 * |-deepin-draw
 * |-deepin-editor
 * |-deepin-image-viewer
