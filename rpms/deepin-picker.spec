@@ -1,5 +1,5 @@
 Name:           deepin-picker
-Version:        1.6.3
+Version:        1.6.4
 Release:        1%{?dist}
 Summary:        Color picker tool for deepin
 License:        GPLv3
@@ -51,6 +51,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/services/com.deepin.Picker.service
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 1.6.4-1
+- Update to 1.6.4
+
 * Thu Aug  2 2018 mosquito <sensor.wen@gmail.com> - 1.6.3-1
 - Update to 1.6.3
 
