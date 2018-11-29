@@ -1,5 +1,5 @@
 Name:           deepin-system-monitor
-Version:        1.4.7
+Version:        1.4.8
 Release:        1%{?dist}
 Summary:        A more user-friendly system monitor
 License:        GPLv3
@@ -58,6 +58,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.
 %{_datadir}/%{name}/
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 1.4.8-1
+- Update to 1.4.8
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 1.4.7-1
 - Update to 1.4.7
 
