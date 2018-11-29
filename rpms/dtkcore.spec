@@ -1,5 +1,5 @@
 Name:           dtkcore
-Version:        2.0.9.8
+Version:        2.0.9.9
 Release:        1%{?dist}
 Summary:        Deepin tool kit core modules
 License:        GPLv3
@@ -62,6 +62,9 @@ sed -i 's|lrelease|lrelease-qt5|' tools/script/dtk-translate.py src/dtk_translat
 %{_libdir}/lib*.so
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.9-1
+- Update to 2.0.9.9
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.8-1
 - Update to 2.0.9.8
 
