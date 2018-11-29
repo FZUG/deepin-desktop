@@ -1,8 +1,8 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.7.1.1
-Release:        2%{?dist}
+Version:        4.7.1.4
+Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-file-manager
@@ -111,7 +111,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_bindir}/usb-device-formatter
 %{_bindir}/usb-device-formatter-pkexec
 %{_libdir}/lib%{repo}.so.*
-%{_libdir}/dde-dock/plugins/*.so
+%{_libdir}/dde-dock/plugins/
 %{_libdir}/%{repo}/
 %{_datadir}/%{repo}/
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
@@ -145,6 +145,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.4-1
+- Update to 4.7.1.4
+
 * Thu Nov 22 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.1-2
 - Add Req deepin-session-ui, deepin-dock, deepin-launcher
 
