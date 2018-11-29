@@ -1,5 +1,5 @@
 Name:           deepin-movie
-Version:        3.2.14
+Version:        3.2.16
 Release:        1%{?dist}
 Summary:        Deepin movie based on mpv
 Summary(zh_CN): 深度影音
@@ -8,6 +8,8 @@ URL:            https://github.com/linuxdeepin/deepin-movie-reborn
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-appdata.xml
 
+BuildRequires:  gcc
+BuildRequires:  desktop-file-utils
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -33,8 +35,6 @@ BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  libappstream-glib
-BuildRequires:  gcc
-BuildRequires:  desktop-file-utils
 
 %description
 Deepin movie for deepin desktop environment.
@@ -65,16 +65,14 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name} --with-qt
 
-%files
+%files -f %{name}.lang
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/libdmr.so.0.1
 %{_libdir}/libdmr.so.0.1.0
+%{_datadir}/%{name}/
 %{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/%{name}
-%{_datadir}/%{name}/translations
-%{_datadir}/%{name}/translations/%{name}*.qm
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
@@ -85,6 +83,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_libdir}/libdmr.so
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 3.2.16-1
+- Update to 3.2.16
+
 * Thu Nov 15 2018 Zamir SUN <zsun@fedoraproject.org> - 3.2.14-1
 - Update to 3.2.14
 - Add BR gcc
