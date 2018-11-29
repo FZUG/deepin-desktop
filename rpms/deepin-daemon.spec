@@ -2,15 +2,15 @@
 %global ds_url https://github.com/linuxdeepin/default-settings
 
 Name:           deepin-daemon
-Version:        3.7.0
-Release:        3%{?dist}
+Version:        3.9.0
+Release:        1%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-daemon
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 Source1:        %{ds_url}/archive/2016.9.8/default-settings-2016.9.8.tar.gz
 Source2:        deepin-daemon.sysusers
-Patch0:         https://raw.github.com/jouyouyun/tap-gesture-patches/master/patches/dde-daemon_3.2.3.patch
+Patch0:         https://raw.github.com/jouyouyun/tap-gesture-patches/master/patches/dde-daemon_3.8.0.patch
 
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 aarch64 %{arm}}
 BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
@@ -91,7 +91,7 @@ Daemon handling the DDE session settings
 
 %prep
 %setup -q -a1 -n %{repo}-%{version}
-%patch0 -p1 -b dde-daemon-3.2.3
+%patch0 -p1 -b dde-daemon-3.8.0
 
 # Fix library exec path
 sed -i '/deepin/s|lib|libexec|' Makefile
@@ -216,6 +216,9 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Accounts.pkla
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 3.9.0-1
+- Update to 3.9.0
+
 * Wed Nov 21 2018 mosquito <sensor.wen@gmail.com> - 3.7.0-3
 - acpid is unavailable in ppc64le
 
