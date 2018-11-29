@@ -1,5 +1,5 @@
 Name:           deepin-screen-recorder
-Version:        2.7.6
+Version:        2.7.7
 Release:        1%{?dist}
 Summary:        Deepin Screen Recorder
 License:        GPLv3+
@@ -24,7 +24,7 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
-BuildRequires:   gcc
+BuildRequires:  gcc
 Requires:       byzanz
 Requires:       ffmpeg
 Requires:       hicolor-icon-theme
@@ -62,6 +62,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.ap
 %{_datadir}/dbus-1/services/com.deepin.ScreenRecorder.service
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 2.7.7-1
+- Update to 2.7.7
+
 * Thu Nov 15 2018 Zamir SUN <sztsian@gmail.com> - 2.7.6-1
 - Update to 2.7.6
 
