@@ -1,6 +1,6 @@
 Name:           dtkwidget
 Version:        2.0.9.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin tool kit widget modules
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dtkwidget
@@ -29,8 +29,6 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrender)
-Provides:       deepin-tool-kit%{_isa} = %{version}-%{release}
-Obsoletes:      deepin-tool-kit%{_isa} < %{version}-%{release}
 
 # libQt5Gui.so.5(Qt_5.10.1_PRIVATE_API)(64bit) needed by dtkwidget-2.0.6.1-1.fc29.x86_64
 BuildRequires:  qt5-qtbase-private-devel
@@ -77,6 +75,9 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.9-2
+- Remove obsoletes statement (BZ#1537224)
+
 * Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.9-1
 - Update to 2.0.9.9
 
