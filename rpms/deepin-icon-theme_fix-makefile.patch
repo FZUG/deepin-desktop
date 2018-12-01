@@ -1,0 +1,33 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,7 +18,7 @@
+ 	find deepin -type f | xargs md5sum | sort | uniq --check-chars=32 -d
+ 	find deepin-dark -type f | xargs md5sum | sort | uniq --check-chars=32 -d
+ 
+-check-perm: hicolor-links
++check-perm:
+ 	@echo "Fix icon files permission"
+ 	find deepin -type f -exec chmod 644 {} \;
+ 	find deepin-dark -type f -exec chmod 644 {} \;
+@@ -35,12 +35,15 @@
+ clean:
+ 	rm -rf build
+ 
++install: install-icons install-cursors hicolor-links
+ 
+ install-icons:
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/deepin
+ 	cp -r deepin/* $(DESTDIR)$(PREFIX)/share/icons/deepin
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/deepin-dark
+ 	cp -r deepin-dark/* $(DESTDIR)$(PREFIX)/share/icons/deepin-dark
++	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/Sea
++	cp -r Sea/* $(DESTDIR)$(PREFIX)/share/icons/Sea
+ 
+ install-cursors:
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/deepin
+@@ -48,4 +51,4 @@
+ 	install -m644 deepin/cursor.theme $(DESTDIR)$(PREFIX)/share/icons/deepin/cursor.theme
+ 
+ hicolor-links:
+-	./tools/hicolor.links deepin hicolor.list ./
++	./tools/hicolor.links deepin hicolor.list $(DESTDIR)

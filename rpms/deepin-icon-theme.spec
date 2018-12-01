@@ -1,21 +1,25 @@
 Name:           deepin-icon-theme
-Version:        15.12.64
+Version:        15.12.65
 Release:        1%{?dist}
 Summary:        Icons for the Deepin Desktop Environment
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-icon-theme
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         %{name}_fix-makefile.patch
 BuildArch:      noarch
-BuildRequires:  python2-devel
+BuildRequires:  python2
+BuildRequires:  gtk-update-icon-cache
+BuildRequires:  xorg-x11-apps
 Requires:       hicolor-icon-theme
 
 %description
 %{summary}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+make
 
 %install
 %make_install PREFIX=%{_prefix}
@@ -45,6 +49,9 @@ fi
 %{_datadir}/icons/Sea/
 
 %changelog
+* Fri Nov 30 2018 mosquito <sensor.wen@gmail.com> - 15.12.65-1
+- Update to 15.12.65
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 15.12.64-1
 - Update to 15.12.64
 
