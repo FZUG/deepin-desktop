@@ -6,6 +6,7 @@ License:        GPLv3
 Url:            https://github.com/linuxdeepin/deepin-clone
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
 BuildRequires:  qt5-linguist
