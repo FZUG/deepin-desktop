@@ -8,7 +8,7 @@ These files are based on [cz-guardian/fedora-deepin](https://github.com/cz-guard
     sudo dnf copr enable mosquito/deepin
     sudo dnf update
     sudo dnf install deepin-desktop # (deepin core)
-    sudo dnf install deepin-calendar deepin-calculator eepin-editor deepin-image-viewer deepin-picker deepin-screenshot deepin-system-monitor # (deepin applications)
+    sudo dnf install deepin-calendar deepin-calculator deepin-editor deepin-image-viewer deepin-picker deepin-screenshot deepin-system-monitor # (deepin applications)
     sudo dnf install deepin-movie deepin-music deepin-screen-recorder deepin-voice-recorder # (need rpmfusion repository)
     sudo systemctl disable gdm.service && sudo systemctl enable lightdm.service # (optional, gdm also available)
     sudo sed -i "/SELINUX=/s|enforcing|disabled|" /etc/selinux/config
