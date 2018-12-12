@@ -1,6 +1,8 @@
 # Deepin packages for Fedora
 
-These files are based on [cz-guardian/fedora-deepin](https://github.com/cz-guardian/fedora-deepin/) and [Arch packages](https://www.archlinux.org/packages/?q=deepin). You can visit the [Deepin Copr](https://copr.fedorainfracloud.org/coprs/mosquito/deepin/) to install them. Thanks for all of the community developers and packagers.
+**As of Dec 2018, all the packages are in Fedora repo. Currently they are in Rawhide (Fedora 30) only. So if you are using Fedora 30, you can install the packages directly. Information on this README is possibly not up to date as the Deepin Desktop is under active development.**
+
+These files are based on [cz-guardian/fedora-deepin](https://github.com/cz-guardian/fedora-deepin/) and [Arch packages](https://www.archlinux.org/packages/?q=deepin). You can visit the [Deepin Copr by mosquito](https://copr.fedorainfracloud.org/coprs/mosquito/deepin/) to install them. Thanks for all of the community developers and packagers.
 
 
 ## Installation instructions
