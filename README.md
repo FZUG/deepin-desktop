@@ -4,11 +4,11 @@ These files are based on [cz-guardian/fedora-deepin](https://github.com/cz-guard
 
 
 ## Installation instructions
-    sudo dnf install http://download1.rpmfusion.org/free/fedora/releases/$(rpm -E %fedora)/Everything/$(uname -i)/os/Packages/r/rpmfusion-free-release-$(rpm -E %fedora)-1.noarch.rpm
-    sudo dnf copr enable mosquito/deepin
+    sudo dnf copr enable mosquito/deepin # Only needed if you are using Fedora 29 and older
     sudo dnf update
     sudo dnf install deepin-desktop # (deepin core)
     sudo dnf install deepin-calendar deepin-calculator deepin-editor deepin-image-viewer deepin-picker deepin-screenshot deepin-system-monitor # (deepin applications)
+    sudo dnf install http://download1.rpmfusion.org/free/fedora/releases/$(rpm -E %fedora)/Everything/$(uname -i)/os/Packages/r/rpmfusion-free-release-$(rpm -E %fedora)-1.noarch.rpm # Optional, only needed for the multi-media packages.
     sudo dnf install deepin-movie deepin-music deepin-screen-recorder deepin-voice-recorder # (need rpmfusion repository)
     sudo systemctl disable gdm.service && sudo systemctl enable lightdm.service # (optional, gdm also available)
     sudo sed -i "/SELINUX=/s|enforcing|disabled|" /etc/selinux/config
