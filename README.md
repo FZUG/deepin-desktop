@@ -9,6 +9,7 @@ These files are based on [cz-guardian/fedora-deepin](https://github.com/cz-guard
     sudo dnf copr enable mosquito/deepin # Only needed if you are using Fedora 29 and older
     sudo dnf update
     sudo dnf install deepin-desktop # (deepin core)
+    sudo dnf install xorg-x11-server-Xorg # (if you don't have other desktop installed before)
     sudo dnf install deepin-calendar deepin-calculator deepin-editor deepin-image-viewer deepin-picker deepin-screenshot deepin-system-monitor # (deepin applications)
     sudo dnf install http://download1.rpmfusion.org/free/fedora/releases/$(rpm -E %fedora)/Everything/$(uname -i)/os/Packages/r/rpmfusion-free-release-$(rpm -E %fedora)-1.noarch.rpm # Optional, only needed for the multi-media packages.
     sudo dnf install deepin-movie deepin-music deepin-screen-recorder deepin-voice-recorder # (need rpmfusion repository)
