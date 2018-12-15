@@ -1,11 +1,12 @@
 Name:           dtkwidget
-Version:        2.0.9.9
-Release:        2%{?dist}
+Version:        2.0.9.11
+Release:        1%{?dist}
 Summary:        Deepin tool kit widget modules
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dtkwidget
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  qt5-linguist
 BuildRequires:  qt5-qtbase-static
 BuildRequires:  pkgconfig(Qt5Core)
@@ -75,6 +76,12 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Thu Dec 13 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.11-1
+- Update to 2.0.9.11
+
+* Thu Dec 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 2.0.9.9-3
+- rebuild (qt5)
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.9-2
 - Remove obsoletes statement (BZ#1537224)
 
