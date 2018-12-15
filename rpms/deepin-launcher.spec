@@ -1,7 +1,7 @@
 %global repo dde-launcher
 
 Name:           deepin-launcher
-Version:        4.5.2
+Version:        4.5.5.2
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Launcher module
 License:        GPLv3
@@ -56,6 +56,9 @@ sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 %{_includedir}/%{repo}/
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 4.5.5.2-1
+- Update to 4.5.5.2
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 4.5.2-1
 - Update to 4.5.2
 
