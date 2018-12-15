@@ -1,7 +1,7 @@
 %global md5() {$(echo -n %1 | md5sum | awk '{print$1}')}
 
 Name:           deepin-wallpapers
-Version:        1.7.5
+Version:        1.7.6
 Release:        1%{?dist}
 Summary:        Deepin Wallpapers provides wallpapers of dde
 License:        GPLv3
@@ -41,6 +41,9 @@ ln -sv %{md5 %{_datadir}/wallpapers/deepin/Hummingbird_by_Shu_Le.jpg}.jpg \
 %{_var}/cache/image-blur/
 
 %changelog
+* Sat Dec 15 2018 mosquito <sensor.wen@gmail.com> - 1.7.6-1
+- Update to 1.7.6
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 1.7.5-1
 - Update to 1.7.5
 
