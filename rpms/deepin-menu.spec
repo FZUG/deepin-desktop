@@ -1,5 +1,5 @@
 Name:           deepin-menu
-Version:        3.4.0
+Version:        3.4.1
 Release:        1%{?dist}
 Summary:        Deepin menu service
 License:        GPLv3+
@@ -37,6 +37,9 @@ sed -i 's|/usr/bin|%{_libexecdir}|' data/com.deepin.menu.service \
 %{_datadir}/dbus-1/services/com.deepin.menu.service
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.4.1-1
+- Update to 3.4.1
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.4.0-1
 - Update to 3.4.0
 
