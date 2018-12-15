@@ -4,12 +4,12 @@
 
 %global goipath  pkg.deepin.io/lib
 %global forgeurl https://github.com/linuxdeepin/go-lib
-%global commit   d86462c90fc86a7720fc92e70f1c902a0310c2c6
+%global commit   4d9427f49e7ce0d4c50beece26f9f86d473401e1
 
 %gometa
 
 Name:           golang-deepin-go-lib
-Version:        1.4.0
+Version:        1.6.0
 Release:        1%{?dist}
 Summary:        Go bindings for Deepin Desktop Environment development
 License:        GPLv3
@@ -62,6 +62,9 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 1.6.0-1.20181212git4d9427f
+- Update to 1.6.0
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 1.4.0-1.20181129gitd86462c
 - Update to 1.4.0
 
