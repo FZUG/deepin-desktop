@@ -1,0 +1,69 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,8 +2,8 @@ PREFIX = /usr
+ GOBUILD_DIR = gobuild
+ GOPKG_PREFIX = pkg.deepin.io/dde/api
+ GOSITE_DIR = ${PREFIX}/share/gocode
+-libdir = /lib
+-SYSTEMD_LIB_DIR = ${libdir}
++LIBDIR = /lib
++SYSTEMD_LIB_DIR = ${LIBDIR}
+ SYSTEMD_SERVICE_DIR = ${SYSTEMD_LIB_DIR}/systemd/system/
+ GOBUILD = go build
+ ARCH = $(shell uname -m)
+@@ -45,7 +45,7 @@ BINARIES =  \
+     image-blur \
+     image-blur-helper
+ 
+-all: build-binary build-dev ts-to-policy
++all: ts-to-policy
+ 
+ prepare:
+ 	@if [ ! -d ${GOBUILD_DIR}/src/${GOPKG_PREFIX} ]; then \
+@@ -73,12 +73,12 @@ build-dep:
+ build-binary: prepare $(addprefix out/bin/, ${BINARIES})
+ 
+ install-binary:
+-	mkdir -pv ${DESTDIR}${PREFIX}${libdir}/deepin-api
+-	cp out/bin/* ${DESTDIR}${PREFIX}${libdir}/deepin-api/
++	mkdir -pv ${DESTDIR}${LIBDIR}/deepin-api
++	cp _bin/* ${DESTDIR}${LIBDIR}/deepin-api/
+ 
+ 	mkdir -pv ${DESTDIR}${PREFIX}/bin
+-	cp out/bin/dde-open ${DESTDIR}${PREFIX}/bin
+-	rm ${DESTDIR}${PREFIX}${libdir}/deepin-api/dde-open
++	cp _bin/dde-open ${DESTDIR}${PREFIX}/bin
++	rm ${DESTDIR}${LIBDIR}/deepin-api/dde-open
+ 
+ 	mkdir -pv ${DESTDIR}${PREFIX}/share/dbus-1/system.d
+ 	cp misc/conf/*.conf ${DESTDIR}${PREFIX}/share/dbus-1/system.d/
+@@ -104,9 +104,9 @@ install-binary:
+ 	mkdir -pv ${DESTDIR}${PREFIX}/share/icons/hicolor
+ 	cp -R misc/icons/* ${DESTDIR}${PREFIX}/share/icons/hicolor
+ 
+-	mkdir -pv ${DESTDIR}/boot/grub/themes/deepin-fallback
+-	cp -R misc/grub-theme-fallback/* ${DESTDIR}/boot/grub/themes/deepin-fallback
+-	cp misc/data/grub-themes/deepin/background.origin.png ${DESTDIR}/boot/grub/themes/deepin-fallback/background.png
++	mkdir -pv ${DESTDIR}/boot/grub2/themes/deepin-fallback
++	cp -R misc/grub-theme-fallback/* ${DESTDIR}/boot/grub2/themes/deepin-fallback
++	cp misc/data/grub-themes/deepin/background.origin.png ${DESTDIR}/boot/grub2/themes/deepin-fallback/background.png
+ 
+ build-dev: prepare
+ ifneq ($(ARCH),sw_64)
+@@ -119,9 +119,15 @@ install/lib/%:
+ 
+ install-dev: ${addprefix install/lib/, ${LIBRARIES}}
+ 
+-install: install-binary install-dev
++install: install-binary
+ 
+ clean:
+ 	rm -rf out/bin gobuild out
+ 
+ rebuild: clean build
++
++binaries:
++	@echo ${BINARIES}
++
++libraries:
++	@echo ${LIBRARIES}

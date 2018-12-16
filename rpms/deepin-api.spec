@@ -1,21 +1,27 @@
-%global repo dde-api
-%global import_path pkg.deepin.io/dde/api
+# Run tests in check section
+# disable for bootstrapping
+%bcond_with check
 
 # out of memory on armv7hl
 %ifarch %{arm}
 %global _smp_mflags -j1
 %endif
 
+%global goipath  pkg.deepin.io/dde/api
+%global forgeurl https://github.com/linuxdeepin/dde-api
+%global tag      %{version}
+
+%gometa
+
 Name:           deepin-api
-Version:        3.10.0
+Version:        3.12.0
 Release:        1%{?dist}
 Summary:        Go-lang bingding for dde-daemon
 License:        GPLv3+
-URL:            https://github.com/linuxdeepin/dde-api
-Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
+URL:            %{gourl}
+Source0:        %{gosource}
+Patch0:         %{name}_makefile.patch
 
-ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
-BuildRequires:  golang
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -36,95 +42,61 @@ BuildRequires:  deepin-gettext-tools
 BuildRequires:  deepin-gir-generator
 BuildRequires:  golang-deepin-dbus-factory-devel
 BuildRequires:  golang(pkg.deepin.io/lib)
+BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
 BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/org.bluez)
 BuildRequires:  golang(github.com/BurntSushi/xgb)
 BuildRequires:  golang(github.com/BurntSushi/xgbutil)
 BuildRequires:  golang(github.com/disintegration/imaging)
 BuildRequires:  golang(github.com/cryptix/wav)
 BuildRequires:  golang(github.com/fogleman/gg)
+BuildRequires:  golang(github.com/nfnt/resize)
 BuildRequires:  golang(gopkg.in/alecthomas/kingpin.v2)
 %{?systemd_requires}
 Requires:       deepin-desktop-base
 Requires:       rfkill
 
 %description
-Go-lang bingding for dde-daemon
+%{summary}.
 
 %package -n golang-%{name}-devel
 Summary:        %{summary}
-BuildRequires:  golang(github.com/BurntSushi/xgb)
-BuildRequires:  golang(github.com/BurntSushi/xgb/randr)
-BuildRequires:  golang(github.com/BurntSushi/xgb/xproto)
-BuildRequires:  golang(github.com/disintegration/imaging)
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/com.deepin.lastore)
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/com.deepin.sessionmanager)
-BuildRequires:  golang(github.com/linuxdeepin/go-x11-client)
-BuildRequires:  golang(github.com/linuxdeepin/go-x11-client/ext/randr)
-BuildRequires:  golang(github.com/nfnt/resize)
-Requires:       golang(github.com/BurntSushi/xgb)
-Requires:       golang(github.com/BurntSushi/xgb/randr)
-Requires:       golang(github.com/BurntSushi/xgb/xproto)
-Requires:       golang(github.com/disintegration/imaging)
-Requires:       golang(github.com/linuxdeepin/go-dbus-factory/com.deepin.lastore)
-Requires:       golang(github.com/linuxdeepin/go-dbus-factory/com.deepin.sessionmanager)
-Requires:       golang(github.com/linuxdeepin/go-x11-client)
-Requires:       golang(github.com/linuxdeepin/go-x11-client/ext/randr)
-Requires:       golang(github.com/nfnt/resize)
-Provides:       golang(%{import_path}/blurimage) = %{version}-%{release}
-Provides:       golang(%{import_path}/drandr) = %{version}-%{release}
-Provides:       golang(%{import_path}/dxinput) = %{version}-%{release}
-Provides:       golang(%{import_path}/dxinput/utils) = %{version}-%{release}
-Provides:       golang(%{import_path}/i18n_dependent) = %{version}-%{release}
-Provides:       golang(%{import_path}/lang_info) = %{version}-%{release}
-Provides:       golang(%{import_path}/language_support) = %{version}-%{release}
-Provides:       golang(%{import_path}/powersupply) = %{version}-%{release}
-Provides:       golang(%{import_path}/powersupply/battery) = %{version}-%{release}
-Provides:       golang(%{import_path}/session) = %{version}-%{release}
-Provides:       golang(%{import_path}/soundutils) = %{version}-%{release}
-Provides:       golang(%{import_path}/themes) = %{version}-%{release}
-Provides:       golang(%{import_path}/themes/scanner) = %{version}-%{release}
-Provides:       golang(%{import_path}/theme_thumb) = %{version}-%{release}
-Provides:       golang(%{import_path}/theme_thumb/common) = %{version}-%{release}
-Provides:       golang(%{import_path}/theme_thumb/cursor) = %{version}-%{release}
-Provides:       golang(%{import_path}/theme_thumb/gtk) = %{version}-%{release}
-Provides:       golang(%{import_path}/theme_thumb/icon) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/cursor) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/font) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/gtk) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/icon) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/images) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/loader) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/pdf) = %{version}-%{release}
-Provides:       golang(%{import_path}/thumbnails/text) = %{version}-%{release}
-Provides:       %{name}-devel = %{version}-%{release}
-Obsoletes:      %{name}-devel < %{version}-%{release}
+BuildArch:      noarch
 
 %description -n golang-%{name}-devel
 %{summary}.
 
 This package contains library source intended for
 building other packages which use import path with
-%{import_path} prefix.
+%{goipath} prefix.
 
 %prep
-%setup -q -n %{repo}-%{version}
+%forgeautosetup -p1
 
 sed -i 's|/usr/lib|%{_libexecdir}|' misc/*services/*.service \
     misc/systemd/system/deepin-shutdown-sound.service \
     lunar-calendar/main.go \
     thumbnails/gtk/gtk.go
 
-sed -i 's|PREFIX}${libdir|LIBDIR|; s|libdir|LIBDIR|' Makefile
+sed -i 's|PREFIX}${libdir|LIBDIR|; s|libdir|LIBDIR|; s|boot/grub/|boot/grub2/|' \
+    Makefile adjust-grub-theme/main.go
 
 %build
-export GOPATH="$(pwd)/build:%{gopath}"
-BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
-%make_build GOBUILD="go build -compiler gc -ldflags \"${LDFLAGS} -B $BUILD_ID\" -a -v -x"
+%gobuildroot
+for cmd in $(make binaries); do
+    %gobuild -o _bin/$cmd %{goipath}/$cmd
+done
+%make_build
 
 %install
-export GOPATH="$(pwd)/build:%{gopath}"
+rm -rf $(make binaries)
+gofiles=$(find $(make libraries) %{?gofindfilter} -print)
+%goinstall $gofiles
 %make_install SYSTEMD_SERVICE_DIR="%{_unitdir}" LIBDIR="%{_libexecdir}"
+
+%if %{with check}
+%check
+%gochecks
+%endif
 
 %post
 %systemd_post deepin-shutdown-sound.service
@@ -138,6 +110,7 @@ export GOPATH="$(pwd)/build:%{gopath}"
 %files
 %doc README.md
 %license LICENSE
+/boot/grub2/themes/deepin-fallback/
 %{_bindir}/dde-open
 %{_libexecdir}/%{name}/
 %{_unitdir}/*.service
@@ -151,10 +124,12 @@ export GOPATH="$(pwd)/build:%{gopath}"
 %{_polkit_qt_policydir}/com.deepin.api.device.unblock-bluetooth-devices.policy
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.api.device.pkla
 
-%files -n golang-%{name}-devel
-%{gopath}/src/%{import_path}/
+%files -n golang-%{name}-devel -f devel.file-list
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.12.0-1
+- Update to 3.12.0
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 3.10.0-1
 - Update to 3.10.0
 
