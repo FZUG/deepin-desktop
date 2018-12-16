@@ -1,13 +1,14 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.7.1.4
+Version:        4.7.1.9
 Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-file-manager
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  deepin-dock-devel
@@ -145,6 +146,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.9-1
+- Update to 4.7.1.9
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.4-1
 - Update to 4.7.1.4
 
