@@ -52,7 +52,10 @@ rm -rf po/es_419/
 sed -i '/es_419/d' deepin-terminal.desktop
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VENDOR_LIB=OFF -DVERSION=%{version}
+%cmake -DCMAKE_BUILD_TYPE=Release \
+       -DTEST_BUILD=OFF \
+       -DUSE_VENDOR_LIB=OFF \
+       -DVERSION=%{version}
 %make_build
 
 %install
