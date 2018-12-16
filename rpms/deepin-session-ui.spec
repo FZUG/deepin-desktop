@@ -1,13 +1,14 @@
 %global repo dde-session-ui
 
 Name:           deepin-session-ui
-Version:        4.6.2
-Release:        2%{?dist}
+Version:        4.7.0
+Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-session-ui
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dframeworkdbus)
@@ -50,7 +51,7 @@ This project include those sub-project:
 %prep
 %setup -q -n %{repo}-%{version}
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
-sed -i 's|default_background.jpg|default.png|' widgets/*.cpp boxframe/*.cpp
+sed -i 's|default_background.jpg|default.png|' widgets/fullscreenbackground.cpp boxframe/*.cpp
 sed -i 's|lib|libexec|' \
     misc/applications/deepin-toggle-desktop.desktop* \
     dde-osd/dde-osd_autostart.desktop \
@@ -93,6 +94,9 @@ sed -i 's|lib|libexec|' \
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 4.7.0-1
+- Update to 4.7.0
+
 * Thu Nov 22 2018 mosquito <sensor.wen@gmail.com> - 4.6.2-2
 - Provide deepin-notifications
 
