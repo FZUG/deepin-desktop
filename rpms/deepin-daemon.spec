@@ -2,14 +2,14 @@
 %global ds_url https://github.com/linuxdeepin/default-settings
 
 Name:           deepin-daemon
-Version:        3.9.0
+Version:        3.14.0
 Release:        1%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-daemon
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 Source1:        %{ds_url}/archive/2016.9.8/default-settings-2016.9.8.tar.gz
-Source2:        deepin-daemon.sysusers
+Source2:        %{name}.sysusers
 Patch0:         https://raw.github.com/jouyouyun/tap-gesture-patches/master/patches/dde-daemon_3.8.0.patch
 
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 aarch64 %{arm}}
@@ -115,7 +115,7 @@ sed -i 's|/usr/lib|%{_libexecdir}|' \
     grub2/modify_manger.go
 
 # Fix grub.cfg path
-sed -i 's|boot/grub|boot/grub2|' grub2/{theme,log,entry,grub_params}.go
+sed -i 's|boot/grub|boot/grub2|' grub2/{grub2,grub_params,theme}.go
 
 # Fix activate services failed (Permission denied)
 # dbus service
@@ -149,7 +149,7 @@ BUILDID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %install
 %make_install
 
-install -Dm644 %{S:2} %{buildroot}/usr/lib/sysusers.d/deepin-daemon.conf
+install -Dm644 %{S:2} %{buildroot}/usr/lib/sysusers.d/%{name}.conf
 
 # fix systemd/logind config
 install -d %{buildroot}/usr/lib/systemd/logind.conf.d/
@@ -175,7 +175,7 @@ popd
 
 %post
 if [ $1 -ge 1 ]; then
-  systemd-sysusers deepin-daemon.conf
+  systemd-sysusers %{name}.conf
   %{_sbindir}/alternatives --install %{_bindir}/x-terminal-emulator \
     x-terminal-emulator %{_libexecdir}/%{name}/default-terminal 30
 fi
@@ -195,6 +195,8 @@ fi
 %files -f %{repo}.lang
 %doc README.md
 %license LICENSE
+%{_sysconfdir}/default/grub.d/10_deepin.cfg
+%{_sysconfdir}/grub.d/35_deepin_gfxmode
 %{_sysconfdir}/pam.d/deepin-auth
 %{_sysconfdir}/pam.d/deepin-auth-keyboard
 %{_libexecdir}/%{name}/
@@ -214,8 +216,12 @@ fi
 %{_fontconfig_confdir}/*.conf
 %{_var}/cache/appearance/
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Accounts.pkla
+%{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Grub2.pkla
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.14.0-1
+- Update to 3.14.0
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 3.9.0-1
 - Update to 3.9.0
 
