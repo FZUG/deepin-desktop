@@ -1,5 +1,5 @@
 Name:           startdde
-Version:        3.4.0
+Version:        3.6.0
 Release:        1%{?dist}
 Summary:        Starter of deepin desktop environment
 License:        GPLv3
@@ -41,7 +41,7 @@ custom applications which compliant with xdg autostart specification.
 %prep
 %setup -q
 
-sed -i '/polkit-1/s|lib|libexec|' watchdog/dde_polkit_agent.go
+sed -i '/polkit/s|lib|libexec|' watchdog/dde_polkit_agent.go
 sed -i '/deepin-daemon/s|lib|libexec|' utils.go session.go misc/auto_launch/*.json
 
 %build
@@ -73,6 +73,9 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %{_datadir}/%{name}/memchecker.json
 
 %changelog
+* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.6.0-1
+- Update to 3.6.0
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 3.4.0-1
 - Update to 3.4.0
 
