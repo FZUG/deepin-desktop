@@ -1,5 +1,5 @@
 Name:           deepin-screenshot
-Version:        4.1.4
+Version:        4.1.5
 Release:        1%{?dist}
 Summary:        Deepin Screenshot Tool
 Summary(zh_CN): 深度截图工具
@@ -73,6 +73,9 @@ fi
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
+* Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.1.5-1
+- Update to 4.1.5
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 4.1.4-1
 - Update to 4.1.4
 
