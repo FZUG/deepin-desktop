@@ -1,7 +1,7 @@
 %global repo dde-launcher
 
 Name:           deepin-launcher
-Version:        4.5.5.2
+Version:        4.5.9
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Launcher module
 License:        GPLv3
@@ -19,6 +19,8 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  qt5-qtbase-private-devel
+%{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
 Requires:       deepin-menu
 Requires:       deepin-daemon
 Requires:       startdde
@@ -56,6 +58,12 @@ sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 %{_includedir}/%{repo}/
 
 %changelog
+* Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.5.9-1
+- Update to 4.5.9
+
+* Tue Dec 18 2018 Rex Dieter <rdieter@fedoraproject.org> - 4.5.5.2-2
+- BR: qt5-qtbase-private-devel
+
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 4.5.5.2-1
 - Update to 4.5.5.2
 
