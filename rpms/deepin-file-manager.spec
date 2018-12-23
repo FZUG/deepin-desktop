@@ -1,7 +1,7 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.7.1.9
+Version:        4.7.1.10
 Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
@@ -146,8 +146,17 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
-* Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.9-1
+* Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.10-1
+- Update to 4.7.1.10
+
+* Tue Dec 18 2018 Rex Dieter <rdieter@fedoraproject.org> - 4.7.1.9-2
+- rebuild (Qt5)
+
+* Thu Dec 13 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.9-1
 - Update to 4.7.1.9
+
+* Thu Dec 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 4.7.1.4-2
+- rebuild (qt5)
 
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.4-1
 - Update to 4.7.1.4
