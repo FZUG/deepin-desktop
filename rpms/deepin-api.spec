@@ -15,7 +15,7 @@
 
 Name:           deepin-api
 Version:        3.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Go-lang bingding for dde-daemon
 License:        GPLv3+
 URL:            %{gourl}
@@ -54,6 +54,7 @@ BuildRequires:  golang(gopkg.in/alecthomas/kingpin.v2)
 %{?systemd_requires}
 Requires:       deepin-desktop-base
 Requires:       rfkill
+Requires(pre):  shadow-utils
 
 %description
 %{summary}.
@@ -92,11 +93,21 @@ rm -rf $(make binaries)
 gofiles=$(find $(make libraries) %{?gofindfilter} -print)
 %goinstall $gofiles
 %make_install SYSTEMD_SERVICE_DIR="%{_unitdir}" LIBDIR="%{_libexecdir}"
+# HOME directory for user deepin-sound-player
+mkdir -p %{buildroot}%{_sharedstatedir}/deepin-sound-player
 
 %if %{with check}
 %check
 %gochecks
 %endif
+
+%pre
+getent group deepin-sound-player >/dev/null || groupadd -r deepin-sound-player
+getent passwd deepin-sound-player >/dev/null || \
+    useradd -r -g deepin-sound-player -d %{_sharedstatedir}/deepin-sound-player\
+    -s /sbin/nologin \
+    -c "User of com.deepin.api.SoundThemePlayer.service" deepin-sound-player
+exit 0
 
 %post
 %systemd_post deepin-shutdown-sound.service
@@ -123,10 +134,14 @@ gofiles=$(find $(make libraries) %{?gofindfilter} -print)
 %{_polkit_qt_policydir}/com.deepin.api.locale-helper.policy
 %{_polkit_qt_policydir}/com.deepin.api.device.unblock-bluetooth-devices.policy
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.api.device.pkla
+%attr(-, deepin-sound-player, deepin-sound-player) %{_sharedstatedir}/deepin-sound-player
 
 %files -n golang-%{name}-devel -f devel.file-list
 
 %changelog
+* Tue Jan 29 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.12.0-2
+- Create deepin-sound-player user
+
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.12.0-1
 - Update to 3.12.0
 
