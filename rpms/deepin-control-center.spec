@@ -1,7 +1,7 @@
 %global repo dde-control-center
 
 Name:           deepin-control-center
-Version:        4.8.6
+Version:        4.9.2.1
 Release:        1%{?dist}
 Summary:        New control center for Linux Deepin
 License:        GPLv3
@@ -46,7 +46,7 @@ New control center for Linux Deepin.
 %setup -q -n %{repo}-%{version}
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i '/%{repo}/s|lib|%{_lib}|'  plugins/*/*.pro frame/pluginscontroller.cpp
-sed -i '/%{repo}/s|lib|libexec|'  modules/update/updatemodule.cpp \
+sed -i '/%{repo}/s|lib|libexec|'  modules/update/updatework.cpp \
     dialogs/reboot-reminder-dialog/reboot-reminder-dialog.pro
 
 %build
@@ -62,7 +62,7 @@ sed -i '/%{repo}/s|lib|libexec|'  modules/update/updatemodule.cpp \
 %make_install INSTALL_ROOT=%{buildroot}
 
 %check
-desktop-file-validate %{buildroot}/%{_datadir}/applications/%{repo}.desktop ||:
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{repo}.desktop ||:
 
 %post -p /sbin/ldconfig
 
@@ -78,6 +78,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{repo}.desktop ||:
 %{_datadir}/%{repo}/
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 4.9.2.1-1
+- Update to 4.9.2.1
+
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.8.6-1
 - Update to 4.8.6
 
