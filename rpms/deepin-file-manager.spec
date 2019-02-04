@@ -1,7 +1,7 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.7.1.10
+Version:        4.7.5
 Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
@@ -146,6 +146,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 4.7.5-1
+- Update to 4.7.5
+
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.10-1
 - Update to 4.7.1.10
 
