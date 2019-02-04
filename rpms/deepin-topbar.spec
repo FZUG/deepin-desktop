@@ -1,5 +1,5 @@
 Name:           deepin-topbar
-Version:        0.6.0
+Version:        0.6.2
 Release:        1%{?dist}
 Summary:        Topbar for Deepin desktop environment
 License:        GPLv3
@@ -43,7 +43,7 @@ Requires:       hicolor-icon-theme
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib}
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} .
 %make_build
 
 %install
@@ -62,6 +62,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_polkit_qt_policydir}/*.service
 
 %changelog
+* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 0.6.2-1
+- Update to 0.6.2
+
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 0.6.0-1
 - Update to 0.6.0
 
