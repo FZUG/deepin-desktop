@@ -1,5 +1,5 @@
 Name:           deepin-image-viewer
-Version:        1.3.6
+Version:        1.3.8
 Release:        1%{?dist}
 Summary:        Deepin Image Viewer
 License:        GPLv3
@@ -7,6 +7,7 @@ URL:            https://github.com/linuxdeepin/deepin-image-viewer
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-appdata.xml
 
+BuildRequires:  gcc-c++
 BuildRequires:  freeimage-devel
 BuildRequires:  qt5-linguist
 BuildRequires:  pkgconfig(Qt5Core)
@@ -41,26 +42,29 @@ sed -i 's|lrelease|lrelease-qt5|g' viewer/generate_translations.sh
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
-install -Dm644 %SOURCE1 %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dm644 %SOURCE1 %{buildroot}%{_metainfodir}/%{name}.appdata.xml
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_qt5_plugindir}/imageformats/*.so
-%{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}/
 %{_datadir}/dman/%{name}/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_metainfodir}/%{name}.appdata.xml
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/deepin/apps/scalable/%{name}.svg
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 1.3.8-1
+- Update to 1.3.8
+
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 1.3.6-1
 - Update to 1.3.6
 
