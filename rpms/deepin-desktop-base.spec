@@ -1,6 +1,6 @@
 Name:           deepin-desktop-base
-Version:        2018.10.29
-Release:        2%{?dist}
+Version:        2019.01.28
+Release:        1%{?dist}
 Summary:        Base component for Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-desktop-base
@@ -42,7 +42,7 @@ sed -i 's|/usr/lib|%{_datadir}|' Makefile
 %make_install
 
 # Make a symlink for deepin-version
-ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
+ln -sfv ..%{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
 
 mkdir %{buildroot}/%{_datadir}/dman
 echo "This package owns the Deepin manual directory. This is a workaround
@@ -63,6 +63,9 @@ before deepin-manual actually comes into Fedora to unblock packaging." > %{build
 %{_datadir}/dman
 
 %changelog
+* Mon Jan 28 2019 mosquito <sensor.wen@gmail.com> - 2019.01.28-1
+- Update to 2019.01.28
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2018.10.29-2
 - Add plymouth-theme-deepin dependence
 
