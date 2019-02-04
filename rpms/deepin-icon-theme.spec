@@ -1,5 +1,5 @@
 Name:           deepin-icon-theme
-Version:        15.12.67
+Version:        15.12.68
 Release:        1%{?dist}
 Summary:        Icons for the Deepin Desktop Environment
 License:        GPLv3
@@ -49,6 +49,9 @@ fi
 %{_datadir}/icons/Sea/
 
 %changelog
+* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 15.12.68-1
+- Update to 15.12.68
+
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 15.12.67-1
 - Update to 15.12.67
 
