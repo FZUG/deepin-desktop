@@ -14,8 +14,8 @@
 %gometa
 
 Name:           deepin-api
-Version:        3.12.0
-Release:        2%{?dist}
+Version:        3.16.0
+Release:        1%{?dist}
 Summary:        Go-lang bingding for dde-daemon
 License:        GPLv3+
 URL:            %{gourl}
@@ -76,6 +76,7 @@ building other packages which use import path with
 sed -i 's|/usr/lib|%{_libexecdir}|' misc/*services/*.service \
     misc/systemd/system/deepin-shutdown-sound.service \
     lunar-calendar/main.go \
+    theme_thumb/gtk/gtk.go \
     thumbnails/gtk/gtk.go
 
 sed -i 's|PREFIX}${libdir|LIBDIR|; s|libdir|LIBDIR|; s|boot/grub/|boot/grub2/|' \
@@ -139,6 +140,9 @@ exit 0
 %files -n golang-%{name}-devel -f devel.file-list
 
 %changelog
+* Wed Jan 30 2019 mosquito <sensor.wen@gmail.com> - 3.16.0-1
+- Update to 3.16.0
+
 * Tue Jan 29 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.12.0-2
 - Create deepin-sound-player user
 

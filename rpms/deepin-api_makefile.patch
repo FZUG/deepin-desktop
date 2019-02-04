@@ -10,8 +10,8 @@
 +SYSTEMD_LIB_DIR = ${LIBDIR}
  SYSTEMD_SERVICE_DIR = ${SYSTEMD_LIB_DIR}/systemd/system/
  GOBUILD = go build
- ARCH = $(shell uname -m)
-@@ -45,7 +45,7 @@ BINARIES =  \
+ 
+@@ -36,7 +36,7 @@ BINARIES =  \
      image-blur \
      image-blur-helper
  
@@ -20,7 +20,7 @@
  
  prepare:
  	@if [ ! -d ${GOBUILD_DIR}/src/${GOPKG_PREFIX} ]; then \
-@@ -73,12 +73,12 @@ build-dep:
+@@ -64,12 +64,12 @@ build-dep:
  build-binary: prepare $(addprefix out/bin/, ${BINARIES})
  
  install-binary:
@@ -37,20 +37,20 @@
  
  	mkdir -pv ${DESTDIR}${PREFIX}/share/dbus-1/system.d
  	cp misc/conf/*.conf ${DESTDIR}${PREFIX}/share/dbus-1/system.d/
-@@ -104,9 +104,9 @@ install-binary:
+@@ -95,9 +95,9 @@ install-binary:
  	mkdir -pv ${DESTDIR}${PREFIX}/share/icons/hicolor
  	cp -R misc/icons/* ${DESTDIR}${PREFIX}/share/icons/hicolor
  
 -	mkdir -pv ${DESTDIR}/boot/grub/themes/deepin-fallback
 -	cp -R misc/grub-theme-fallback/* ${DESTDIR}/boot/grub/themes/deepin-fallback
--	cp misc/data/grub-themes/deepin/background.origin.png ${DESTDIR}/boot/grub/themes/deepin-fallback/background.png
+-	cp misc/data/grub-themes/deepin/background.origin.jpg ${DESTDIR}/boot/grub/themes/deepin-fallback/background.jpg
 +	mkdir -pv ${DESTDIR}/boot/grub2/themes/deepin-fallback
 +	cp -R misc/grub-theme-fallback/* ${DESTDIR}/boot/grub2/themes/deepin-fallback
-+	cp misc/data/grub-themes/deepin/background.origin.png ${DESTDIR}/boot/grub2/themes/deepin-fallback/background.png
++	cp misc/data/grub-themes/deepin/background.origin.jpg ${DESTDIR}/boot/grub2/themes/deepin-fallback/background.jpg
  
  build-dev: prepare
- ifneq ($(ARCH),sw_64)
-@@ -119,9 +119,15 @@ install/lib/%:
+ 	env GOPATH="${GOPATH}:${CURDIR}/${GOBUILD_DIR}" ${GOBUILD} $(addprefix ${GOPKG_PREFIX}/, ${LIBRARIES})
+@@ -108,9 +108,15 @@ install/lib/%:
  
  install-dev: ${addprefix install/lib/, ${LIBRARIES}}
  
