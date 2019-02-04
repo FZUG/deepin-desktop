@@ -1,13 +1,14 @@
 %global repo dde-polkit-agent
 
 Name:           deepin-polkit-agent
-Version:        0.2.1
-Release:        2%{?dist}
+Version:        0.2.4
+Release:        1%{?dist}
 Summary:        Deepin Polkit Agent
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-polkit-agent
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
 BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(polkit-qt5-1)
@@ -29,7 +30,6 @@ Header files and libraries for %{name}.
 %prep
 %setup -q -n %{repo}-%{version}
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
-sed -i 's|dcombobox.h|QComboBox|' AuthDialog.h
 sed -i 's|lib|libexec|' dde-polkit-agent.pro polkit-dde-authentication-agent-1.desktop \
     pluginmanager.cpp
 
@@ -52,6 +52,9 @@ sed -i 's|lib|libexec|' dde-polkit-agent.pro polkit-dde-authentication-agent-1.d
 %{_includedir}/dpa/agent-extension.h
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 0.2.4-1
+- Update to 0.2.4
+
 * Mon Nov 12 2018 mosquito <sensor.wen@gmail.com> - 0.2.1-2
 - Deprecate dcombobox.h header
 
