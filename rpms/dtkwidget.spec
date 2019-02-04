@@ -1,5 +1,5 @@
 Name:           dtkwidget
-Version:        2.0.9.11
+Version:        2.0.9.16
 Release:        1%{?dist}
 Summary:        Deepin tool kit widget modules
 License:        GPLv3
@@ -76,6 +76,9 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 2.0.9.16-1
+- Update to 2.0.9.16
+
 * Thu Dec 13 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.11-1
 - Update to 2.0.9.11
 
