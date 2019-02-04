@@ -1,5 +1,5 @@
 Name:           deepin-screenshot
-Version:        4.1.5
+Version:        4.1.7
 Release:        1%{?dist}
 Summary:        Deepin Screenshot Tool
 Summary(zh_CN): 深度截图工具
@@ -41,7 +41,7 @@ Provide a quite easy-to-use screenshot tool. Features:
 %setup -q
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix}
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
 %make_build
 
 %install
@@ -73,6 +73,9 @@ fi
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
+* Fri Feb 25 2019 mosquito <sensor.wen@gmail.com> - 4.1.7-1
+- Update to 4.1.7
+
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.1.5-1
 - Update to 4.1.5
 
