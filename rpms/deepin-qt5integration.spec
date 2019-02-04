@@ -1,10 +1,10 @@
 %global repo qt5integration
 %global plug qt5dxcb-plugin
 %global plug_url https://github.com/linuxdeepin/qt5dxcb-plugin
-%global plug_ver 1.1.20
+%global plug_ver 1.1.23
 
 Name:           deepin-qt5integration
-Version:        0.3.7.1
+Version:        0.3.7.2
 Release:        1%{?dist}
 Summary:        Qt platform theme integration plugins for DDE
 # The entire source code is GPLv3+ except styles/ which is BSD,
@@ -14,6 +14,7 @@ URL:            https://github.com/linuxdeepin/qt5integration
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 Source1:        %{plug_url}/archive/%{plug_ver}/%{plug}-%{plug_ver}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
@@ -86,6 +87,9 @@ pushd %{plug}-%{plug_ver}
 %{_qt5_plugindir}/imageformats/libdsvg.so
 
 %changelog
+* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 0.3.7.2-1
+- Update to 0.3.7.2
+
 * Thu Dec 13 2018 mosquito <sensor.wen@gmail.com> - 0.3.7.1-1
 - Update to 0.3.7.1
 
