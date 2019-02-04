@@ -1,5 +1,5 @@
 Name:           deepin-music
-Version:        3.1.11
+Version:        3.1.14
 Release:        1%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
@@ -8,6 +8,7 @@ Url:            https://github.com/linuxdeepin/deepin-music
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-appdata.xml
 
+BuildRequires:  gcc-c++
 BuildRequires:  qt5-linguist
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
@@ -67,8 +68,8 @@ sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-install -pDm644 %{S:1} %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -pDm644 %{S:1} %{buildroot}/%{_metainfodir}/%{name}.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{name}.appdata.xml
 
 %files
 %doc README.md
@@ -80,13 +81,16 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.ap
 %{_datadir}/dman/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/appdata/deepin-music.appdata.xml
+%{_metainfodir}/%{name}.appdata.xml
 
 %files devel
 %{_libdir}/lib*.so
 %{_libdir}/%{name}/plugins/lib*.so
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.1.14-1
+- Update to 3.1.14
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 3.1.11-1
 - Update to 3.1.11
 

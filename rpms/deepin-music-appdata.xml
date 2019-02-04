@@ -18,6 +18,11 @@
   <url type="homepage">https://github.com/linuxdeepin/deepin-music/</url>
   <url type="bugtracker">https://bugzilla.deepin.io/describecomponents.cgi?product=%E6%B7%B1%E5%BA%A6%E9%9F%B3%E4%B9%90</url>
   <releases>
+    <release version="3.1.14" date="2019-01-25"></release>
+    <release version="3.1.13" date="2018-12-27"></release>
+    <release version="3.1.12" date="2018-12-21"></release>
+    <release version="3.1.11" date="2018-11-27"></release>
+    <release version="3.1.10" date="2018-11-26"></release>
     <release version="3.1.9" date="2018-11-08"></release>
   </releases>
   <project_license>GPL-3.0</project_license>
