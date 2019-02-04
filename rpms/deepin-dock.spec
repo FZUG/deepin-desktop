@@ -1,7 +1,7 @@
 %global repo dde-dock
 
 Name:           deepin-dock
-Version:        4.8.4.1
+Version:        4.8.9
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Dock module
 License:        GPLv3
@@ -9,6 +9,7 @@ URL:            https://github.com/linuxdeepin/dde-dock
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(dde-network-utils)
 BuildRequires:  pkgconfig(dtkwidget) >= 2.0.6
@@ -47,11 +48,13 @@ Header files and libraries for %{name}.
 %setup -q -n %{repo}-%{version}
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i '/TARGETS/s|lib|%{_lib}|' plugins/*/CMakeLists.txt
-sed -i 's|/lib|/%{_lib}|' frame/controller/dockpluginloader.cpp
-sed -i -E '37d;/dpkg-architecture|EXIT/d' CMakeLists.txt
+sed -i 's|/lib|/%{_lib}|' frame/controller/dockpluginloader.cpp \
+    plugins/tray/system-trays/systemtrayloader.cpp
+sed -i 's|/lib|/libexec|' frame/item/showdesktopitem.cpp
+sed -i -E '35d;/dpkg-architecture|EXIT/d' CMakeLists.txt
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DARCHITECTURE=%{_arch} -DDOCK_TRAY_USE_NATIVE_POPUP=YES .
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DARCHITECTURE=%{_arch} .
 %make_build
 
 %install
@@ -75,6 +78,9 @@ sed -i -E '37d;/dpkg-architecture|EXIT/d' CMakeLists.txt
 %{_libdir}/cmake/DdeDock/DdeDockConfig.cmake
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 4.8.9-1
+- Update to 4.8.9
+
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.8.4.1-1
 - Update to 4.8.4.1
 
