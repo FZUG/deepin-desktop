@@ -2,7 +2,7 @@
 %global ds_url https://github.com/linuxdeepin/default-settings
 
 Name:           deepin-daemon
-Version:        3.14.0
+Version:        3.22.0
 Release:        1%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
@@ -219,6 +219,9 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Grub2.pkla
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.22.0-1
+- Update to 3.22.0
+
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.14.0-1
 - Update to 3.14.0
 
