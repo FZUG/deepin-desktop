@@ -1,5 +1,5 @@
 Name:           startdde
-Version:        3.6.0
+Version:        3.11.0
 Release:        1%{?dist}
 Summary:        Starter of deepin desktop environment
 License:        GPLv3
@@ -64,6 +64,7 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %files
 %doc README.md
 %license LICENSE
+%{_sysconfdir}/X11/Xsession.d/00deepin-dde-env
 %{_bindir}/%{name}
 %{_sbindir}/deepin-session
 %{_sbindir}/deepin-fix-xauthority-perm
@@ -73,6 +74,9 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %{_datadir}/%{name}/memchecker.json
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.11.0-1
+- Update to 3.11.0
+
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.6.0-1
 - Update to 3.6.0
 
