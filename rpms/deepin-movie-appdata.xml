@@ -18,6 +18,14 @@
   <url type="homepage">https://github.com/linuxdeepin/deepin-movie-reborn/</url>
   <url type="bugtracker">https://github.com/linuxdeepin/deepin-movie-reborn/issues/</url>
   <releases>
+    <release version="3.2.19" date="2019-01-25"></release>
+    <release version="3.2.18" date="2019-01-03"></release>
+    <release version="3.2.17" date="2018-12-13"></release>
+    <release version="3.2.16" date="2018-11-27"></release>
+    <release version="3.2.15" date="2018-11-26"></release>
+    <release version="3.2.14" date="2018-11-01"></release>
+    <release version="3.2.13" date="2018-10-30"></release>
+    <release version="3.2.12" date="2018-10-30"></release>
     <release version="3.2.11" date="2018-10-25"></release>
   </releases>
   <project_license>GPL-3.0</project_license>
