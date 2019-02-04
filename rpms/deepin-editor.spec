@@ -1,5 +1,5 @@
 Name:           deepin-editor
-Version:        1.1.1
+Version:        1.2.6.2
 Release:        1%{?dist}
 Summary:        Simple editor for Linux Deepin
 License:        GPLv3
@@ -44,11 +44,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %files
 %doc README.md
 %license LICENSE
+%{_bindir}/dedit
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 1.2.6.2-1
+- Update to 1.2.6.2
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 1.1.1-1
 - Update to 1.1.1
 
