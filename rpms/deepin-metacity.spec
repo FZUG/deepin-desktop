@@ -1,5 +1,5 @@
 Name:           deepin-metacity
-Version:        3.22.22
+Version:        3.22.24
 Release:        1%{?dist}
 Summary:        2D window manager for Deepin
 License:        GPLv2+
@@ -88,6 +88,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop \
 %{_libdir}/lib%{name}*.so
 
 %changelog
+* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.22.24-1
+- Update to 3.22.24
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.22.22-1
 - Update to 3.22.22
 
