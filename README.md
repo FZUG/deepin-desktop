@@ -44,7 +44,7 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-golang-github-msteinert-pam
 * |-golang-github-nfnt-resize
 * |-golang-github-sergi-go-diff
-* |-golang-github-linuxdeepin-go-dbus-factory
+* |-golang-github-linuxdeepin-dbus-factory
 * |-golang-github-linuxdeepin-go-x11-client
 * |-golang-deepin-gir-generator
 * |-golang-deepin-go-lib
