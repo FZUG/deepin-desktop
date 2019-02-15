@@ -127,7 +127,6 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-python2-deepin-util
 * |-python2-deepin-storm
 * |-python2-javascriptcore
-* |-python2-ass
 * |-python3-dae
 * |-python2-pysrt
 * |-python2-xpybutil
