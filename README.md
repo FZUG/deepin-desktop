@@ -120,7 +120,6 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-deepin-tool-kit
 * |-deepin-wm-switcher
 * |-dtksettings
-* |-perl-xml-libxml-prettyprint
 * |-deepin-gsettings
 * |-deepin-game
 * |-deepin-social-sharing
