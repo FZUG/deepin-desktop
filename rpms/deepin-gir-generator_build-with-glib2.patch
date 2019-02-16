@@ -1,0 +1,25 @@
+From 45d1e2d91b6ee19866ed319f29e0fe561105e80b Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Sat, 16 Feb 2019 03:56:07 +0800
+Subject: [PATCH] fix: build issues with new glib2/gobject-introspection
+
+This should fix build errors on Fedora. Tested with glib2 2.59.2 and
+gobject-introspection 1.59.4.
+
+Change-Id: Ia1a21978e7494762ca9418ad57b32bcc4311e221
+---
+
+diff --git a/lib.in/gio-2.0/config.json b/lib.in/gio-2.0/config.json
+index de0be17..ef2cb51 100644
+--- a/lib.in/gio-2.0/config.json
++++ b/lib.in/gio-2.0/config.json
+@@ -53,7 +53,8 @@
+ 			"FileAttributeInfoList",
+ 			"FileAttributeMatcher",
+ 			"ActionEntry",
+-			"MountIface"
++			"MountIface",
++			"OutputVector"
+ 			//"SettingsSchema"
+ 		],
+ 		"interfaces": [

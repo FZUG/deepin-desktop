@@ -8,6 +8,8 @@ License:        GPLv3
 URL:            https://github.com/linuxdeepin/go-gir-generator
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
 Patch0:         SettingsBackendLike.patch
+# https://cr.deepin.io/#/c/go-gir-generator/+/41653/
+Patch1:         %{name}_build-with-glib2.patch
 
 # e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
@@ -31,6 +33,7 @@ if [ $GIO_VER -ge 1521 ]; then
 # Our gobject-introspection is too new
 # https://cr.deepin.io/#/c/16880/
 %patch0 -p1
+%patch1 -p1
 fi
 
 %build
