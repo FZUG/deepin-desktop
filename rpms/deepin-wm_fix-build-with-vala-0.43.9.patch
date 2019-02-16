@@ -1,0 +1,186 @@
+From c223c16814738f12732018ba7801060b6c5f14f1 Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Fri, 15 Feb 2019 23:59:47 +0800
+Subject: [PATCH] fix: build with vala 0.43.90
+
+Verified to work with old vala too.
+
+Fixes https://github.com/linuxdeepin/deepin-wm/issues/46
+
+Change-Id: Iadfdef81a7e2543bc6c201bf7bbe337267c880f0
+---
+
+diff --git a/src/Deepin/DeepinIMText.vala b/src/Deepin/DeepinIMText.vala
+index 81bdd17..595fec5 100644
+--- a/src/Deepin/DeepinIMText.vala
++++ b/src/Deepin/DeepinIMText.vala
+@@ -207,7 +207,7 @@
+         {
+             if (target != null) return;
+ 
+-            unowned List<WindowActor> actors = Compositor.get_window_actors (screen);
++            unowned List<unowned WindowActor> actors = Compositor.get_window_actors (screen);
+ 
+             foreach (var actor in actors) {
+                 var window = actor.get_meta_window ();
+diff --git a/src/Deepin/DeepinWindowFlowContainer.vala b/src/Deepin/DeepinWindowFlowContainer.vala
+index 69d2240..55079d3 100644
+--- a/src/Deepin/DeepinWindowFlowContainer.vala
++++ b/src/Deepin/DeepinWindowFlowContainer.vala
+@@ -35,7 +35,7 @@
+ 		/**
+ 		 * Own all window positions to find next or preview window.
+ 		 */
+-		List<InternalUtils.TilableWindow?> window_positions;
++		List<unowned InternalUtils.TilableWindow?> window_positions;
+ 
+ 		public DeepinWindowFlowContainer (Workspace workspace)
+ 		{
+@@ -169,7 +169,7 @@
+ 		 */
+ 		bool update_window_positions ()
+ 		{
+-			var windows = new List <InternalUtils.TilableWindow?> ();
++			var windows = new List <unowned InternalUtils.TilableWindow?> ();
+ 			foreach (var child in get_children ()) {
+ 				unowned DeepinWindowClone window_clone = (DeepinWindowClone)child;
+ 				windows.prepend ({ window_clone.window.get_frame_rect (), window_clone });
+diff --git a/src/Deepin/DeepinWindowSwitcher.vala b/src/Deepin/DeepinWindowSwitcher.vala
+index 257a1b6..81103a8 100644
+--- a/src/Deepin/DeepinWindowSwitcher.vala
++++ b/src/Deepin/DeepinWindowSwitcher.vala
+@@ -691,7 +691,7 @@
+ 			var workspace = screen.get_active_workspace ();
+ 
+ 			// need to go through all the windows because of hidden dialogs
+-			unowned List<WindowActor>? window_actors = Compositor.get_window_actors (screen);
++			unowned List<unowned WindowActor>? window_actors = Compositor.get_window_actors (screen);
+ 			foreach (var actor in window_actors) {
+ 				unowned Window window = actor.get_meta_window ();
+ 
+diff --git a/src/Deepin/DeepinWindowThumbContainer.vala b/src/Deepin/DeepinWindowThumbContainer.vala
+index 36c82c8..95eeb09 100644
+--- a/src/Deepin/DeepinWindowThumbContainer.vala
++++ b/src/Deepin/DeepinWindowThumbContainer.vala
+@@ -93,7 +93,7 @@
+             if (get_children ().length() < 1)
+                 return;
+ 
+-			var windows = new List <InternalUtils.TilableWindow?> ();
++			var windows = new List <unowned InternalUtils.TilableWindow?> ();
+ 			foreach (var child in get_children ()) {
+ 				unowned DeepinWindowClone window_clone = (DeepinWindowClone)child;
+ 				windows.prepend ({ window_clone.window.get_frame_rect (), window_clone });
+diff --git a/src/InternalUtils.vala b/src/InternalUtils.vala
+index f83b9fd..4180d30 100644
+--- a/src/InternalUtils.vala
++++ b/src/InternalUtils.vala
+@@ -199,7 +199,7 @@
+ 		 */
+ 		public static void insert_workspace_with_window (int index, Window new_window)
+ 		{
+-			unowned List<WindowActor> actors = Compositor.get_window_actors (new_window.get_screen ());
++			unowned List<unowned WindowActor> actors = Compositor.get_window_actors (new_window.get_screen ());
+ 
+ 			var workspace_manager = WorkspaceManager.get_default ();
+ 			workspace_manager.freeze_remove ();
+@@ -269,8 +269,8 @@
+ 			void *id;
+ 		}
+ 
+-		public static List<TilableWindow?> calculate_grid_placement (Meta.Rectangle area,
+-			List<TilableWindow?> windows, bool closest = true)
++		public static List<unowned TilableWindow?> calculate_grid_placement (Meta.Rectangle area,
++			List<unowned TilableWindow?> windows, bool closest = true)
+ 		{
+ 			uint window_count = windows.length ();
+ 			int columns = (int)Math.ceil (Math.sqrt (window_count));
+@@ -298,7 +298,7 @@
+ 
+ 				var tmplist = windows.copy ();
+ 				while (tmplist.length () > 0) {
+-					unowned List<TilableWindow?> link = tmplist.nth (0);
++					unowned List<unowned TilableWindow?> link = tmplist.nth (0);
+ 					var window = link.data;
+ 					var rect = window.rect;
+ 
+@@ -339,12 +339,12 @@
+ 			} else {
+ 				// Assign each window as the origin order.
+ 				for (int i = 0; i < windows.length (); i++) {
+-					unowned List<TilableWindow?> link = windows.nth (i);
++					unowned List<unowned TilableWindow?> link = windows.nth (i);
+ 					taken_slots[i] = link.data;
+ 				}
+ 			}
+ 
+-			var result = new List<TilableWindow?> ();
++			var result = new List<unowned TilableWindow?> ();
+ 
+ 			// see how many windows we have on the last row
+ 			int left_over = (int)window_count - columns * (rows - 1);
+diff --git a/src/Widgets/MultitaskingView.vala b/src/Widgets/MultitaskingView.vala
+index 4f4cd4a..bc30fb6 100644
+--- a/src/Widgets/MultitaskingView.vala
++++ b/src/Widgets/MultitaskingView.vala
+@@ -500,7 +500,7 @@
+ 			dock_clones.get_transformed_position (out clone_offset_x, out clone_offset_y);
+ 
+ 			if (opening) {
+-				unowned List<WindowActor> actors = Compositor.get_window_actors (screen);
++				unowned List<unowned WindowActor> actors = Compositor.get_window_actors (screen);
+ 
+ 				foreach (var actor in actors) {
+ 					const int MAX_OFFSET = 100;
+diff --git a/src/Widgets/WindowCloneContainer.vala b/src/Widgets/WindowCloneContainer.vala
+index c6e9ee6..eae4a12 100644
+--- a/src/Widgets/WindowCloneContainer.vala
++++ b/src/Widgets/WindowCloneContainer.vala
+@@ -180,7 +180,7 @@
+ 			if (!opened)
+ 				return;
+ 
+-			var windows = new List<InternalUtils.TilableWindow?> ();
++			var windows = new List<unowned InternalUtils.TilableWindow?> ();
+ 			foreach (var child in get_children ()) {
+ 				unowned WindowClone window = (WindowClone) child;
+ 				windows.prepend ({ window.window.get_frame_rect (), window });
+diff --git a/src/WindowManager.vala b/src/WindowManager.vala
+index cafe009..abbbe1e 100644
+--- a/src/WindowManager.vala
++++ b/src/WindowManager.vala
+@@ -2689,7 +2689,7 @@
+ 
+ 			var to_has_fullscreened = false;
+ 			var from_has_fullscreened = false;
+-			var docks = new List<WindowActor> ();
++			var docks = new List<unowned WindowActor> ();
+ 
+ 			// collect all windows and put them in the appropriate containers
+ 			foreach (var actor in Compositor.get_window_actors (screen)) {
+diff --git a/vapi/libdeepin-mutter.vapi b/vapi/libdeepin-mutter.vapi
+index ef4666b..57dc979 100644
+--- a/vapi/libdeepin-mutter.vapi
++++ b/vapi/libdeepin-mutter.vapi
+@@ -394,7 +394,7 @@
+ 		public unowned Meta.Group lookup_group (X.Window group_leader);
+ 		public bool remove_keybinding (string name);
+ 		public void set_input_focus_window (Meta.Window window, bool focus_frame, uint32 timestamp);
+-		public GLib.SList<weak Meta.Window> sort_windows_by_stacking (GLib.SList<Meta.Window> windows);
++		public GLib.SList<weak Meta.Window> sort_windows_by_stacking (GLib.SList<unowned Meta.Window> windows);
+ 		public bool supports_extended_barriers ();
+ 		public void unfreeze_keyboard (uint32 timestamp);
+ 		public bool ungrab_accelerator (uint action_id);
+diff --git a/vapi/libmutter.vapi b/vapi/libmutter.vapi
+index 5b830b7..0ac8828 100644
+--- a/vapi/libmutter.vapi
++++ b/vapi/libmutter.vapi
+@@ -393,7 +393,7 @@
+ 		public unowned Meta.Group lookup_group (X.Window group_leader);
+ 		public bool remove_keybinding (string name);
+ 		public void set_input_focus_window (Meta.Window window, bool focus_frame, uint32 timestamp);
+-		public GLib.SList<weak Meta.Window> sort_windows_by_stacking (GLib.SList<Meta.Window> windows);
++		public GLib.SList<weak Meta.Window> sort_windows_by_stacking (GLib.SList<unowned Meta.Window> windows);
+ 		public bool supports_extended_barriers ();
+ 		public void unfreeze_keyboard (uint32 timestamp);
+ 		public bool ungrab_accelerator (uint action_id);
