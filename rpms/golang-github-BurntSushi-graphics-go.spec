@@ -6,7 +6,7 @@
 
 Name:           golang-github-BurntSushi-graphics-go
 Version:        0
-Release:        0.5%{?dist}
+Release:        0.6%{?dist}
 Summary:        Graphics library for the Go programming language
 # Detected licences
 # - BSD 3-clause "New" or "Revised" License at 'LICENSE'
@@ -15,15 +15,15 @@ URL:            %{gourl}
 Source0:        %{gosource}
 
 %description
-%{summary}.
+%{summary}
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
-%{summary}.
+%{summary}
 
 This package contains library source intended for
 building other packages which use import path with
@@ -52,6 +52,9 @@ files=$(find . -name "testdata" -type d)
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.6.gitb43f31a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Nov 12 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0-0.5.20181113gitb43f31a
 - Update to new Go packaging
 

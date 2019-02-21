@@ -6,7 +6,7 @@
 
 Name:           %{goname}
 Version:        0
-Release:        0.4%{?dist}
+Release:        0.5%{?dist}
 Summary:        Python's repr() for Go
 # Detected licences
 # - Expat License at 'COPYING'
@@ -14,18 +14,18 @@ License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
-BuildRequires:  golang(github.com/stretchr/testify/assert)
+BuildRequires: golang(github.com/stretchr/testify/assert)
 
 %description
-%{summary}.
+%{summary}
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
-%{summary}.
+%{summary}
 
 This package contains library source intended for
 building other packages which use import path with
@@ -50,6 +50,9 @@ building other packages which use import path with
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.gitd37bc2a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov 11 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0-0.4.20181111gitd37bc2a
 - Bump to commit d37bc2a10ba1a7951e19dd5dc10f7d59b142d8d7
 - Update to new Go packaging

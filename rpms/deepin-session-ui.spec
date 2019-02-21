@@ -97,8 +97,11 @@ sed -i 's|lib|libexec|' \
 * Tue Feb 19 2019 mosquito <sensor.wen@gmail.com> - 4.8.9-1
 - Update to 4.8.9
 
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 4.8.7-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 4.8.7-1
 - Update to 4.8.7
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.7.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 4.7.0-1
 - Update to 4.7.0

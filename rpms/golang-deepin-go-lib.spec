@@ -62,8 +62,11 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
-* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 1.8.0-1.20190112git594e036
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 1.8.0-1.20190112git594e036
 - Update to 1.8.0
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.0-2.git4d9427f
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 1.6.0-1.20181212git4d9427f
 - Update to 1.6.0

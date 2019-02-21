@@ -9,7 +9,7 @@
 
 Name:           golang-github-linuxdeepin-go-x11-client
 Version:        0
-Release:        0.8%{?dist}
+Release:        0.9%{?dist}
 Summary:        A X11 client Go bindings for Deepin Desktop Environment
 License:        GPLv3
 URL:            %{gourl}
@@ -48,6 +48,9 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.9.git8411934
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Nov 12 2018 mosquito <sensor.wen@gmail.com> - 0-0.8.20181112git8411934
 - Update to 8411934
 - New X connect failed: WindowError

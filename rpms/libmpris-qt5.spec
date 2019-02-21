@@ -3,7 +3,7 @@
 Name:           libmpris-qt5
 Summary:        Qt and QML MPRIS interface and adaptor
 Version:        0.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://github.com/nemomobile/qtmpris
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
@@ -57,5 +57,8 @@ Header files and libraries for %{name}.
 %{_libdir}/lib*.so
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Tue Aug 28 2018 mosquito <sensor.wen@gmail.com> - 0.1.0-1
 - Initial package build

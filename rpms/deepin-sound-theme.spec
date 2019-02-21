@@ -1,6 +1,6 @@
 Name:           deepin-sound-theme
 Version:        15.10.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin sound theme
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-sound-theme
@@ -27,6 +27,9 @@ Sound files for the Deeping Desktop Environment.
 %{_datadir}/sounds/deepin/stereo/*.wav
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 15.10.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Jul 27 2018 mosquito <sensor.wen@gmail.com> - 15.10.3-1
 - Update to 15.10.3
 

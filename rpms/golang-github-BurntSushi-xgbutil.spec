@@ -6,7 +6,7 @@
 
 Name:           golang-github-BurntSushi-xgbutil
 Version:        0
-Release:        0.4%{?dist}
+Release:        0.5%{?dist}
 Summary:        A utility library to make use of the X Go Binding easier
 # Detected licences
 # - do What The Fuck you want to Public License (v2) at 'COPYING'
@@ -14,21 +14,21 @@ License:        WTFPL
 URL:            %{gourl}
 Source0:        %{gosource}
 
-BuildRequires:  golang(github.com/BurntSushi/freetype-go/freetype)
-BuildRequires:  golang(github.com/BurntSushi/freetype-go/freetype/truetype)
-BuildRequires:  golang(github.com/BurntSushi/graphics-go/graphics)
-BuildRequires:  golang(github.com/BurntSushi/xgb)
-BuildRequires:  golang(github.com/BurntSushi/xgb/shape)
-BuildRequires:  golang(github.com/BurntSushi/xgb/xinerama)
-BuildRequires:  golang(github.com/BurntSushi/xgb/xproto)
+BuildRequires: golang(github.com/BurntSushi/freetype-go/freetype)
+BuildRequires: golang(github.com/BurntSushi/freetype-go/freetype/truetype)
+BuildRequires: golang(github.com/BurntSushi/graphics-go/graphics)
+BuildRequires: golang(github.com/BurntSushi/xgb)
+BuildRequires: golang(github.com/BurntSushi/xgb/shape)
+BuildRequires: golang(github.com/BurntSushi/xgb/xinerama)
+BuildRequires: golang(github.com/BurntSushi/xgb/xproto)
 
 %description
 %{summary}.
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
 %{summary}.
@@ -55,6 +55,9 @@ building other packages which use import path with
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.gitf7c97ce
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Nov 12 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0-0.4.20181113gitf7c97ce
 - Update to new Go packaging
 

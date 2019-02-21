@@ -9,7 +9,7 @@
 
 Name:           %{goname}
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GO DBus factory for Deepin Desktop Environment
 License:        GPLv3
 URL:            %{gourl}
@@ -44,6 +44,9 @@ building other packages which use import path with
 %doc README.md
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-2.git375d4e7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sat Dec 15 2018 mosquito <sensor.wen@gmail.com> - 0.2.0-1.20181215git375d4e7
 - Update to 375d4e7
 

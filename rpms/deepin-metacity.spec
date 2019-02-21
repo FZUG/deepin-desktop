@@ -61,9 +61,7 @@ find %{buildroot} -name '*.la' -delete
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop \
   %{buildroot}%{_datadir}/gnome/wm-properties/%{name}-wm.desktop
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files -f %{name}.lang
 %doc README
@@ -88,8 +86,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop \
 %{_libdir}/lib%{name}*.so
 
 %changelog
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.22.24-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.22.24-1
 - Update to 3.22.24
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.22.22-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 3.22.22-1
 - Update to 3.22.22

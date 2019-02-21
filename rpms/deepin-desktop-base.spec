@@ -63,8 +63,11 @@ before deepin-manual actually comes into Fedora to unblock packaging." > %{build
 %{_datadir}/dman
 
 %changelog
-* Mon Jan 28 2019 mosquito <sensor.wen@gmail.com> - 2019.01.28-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 2019.01.28-1
 - Update to 2019.01.28
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2018.10.29-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 2018.10.29-2
 - Add plymouth-theme-deepin dependence

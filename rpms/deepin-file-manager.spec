@@ -95,9 +95,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{repo}.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/dde-computer.desktop ||:
 desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %doc README.md
@@ -149,8 +147,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 * Tue Feb 19 2019 mosquito <sensor.wen@gmail.com> - 4.7.6-1
 - Update to 4.7.6
 
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 4.7.5-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 4.7.5-1
 - Update to 4.7.5
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.7.1.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 4.7.1.10-1
 - Update to 4.7.1.10

@@ -6,7 +6,7 @@
 
 Name:           %{goname}
 Version:        0
-Release:        0.4%{?dist}
+Release:        0.5%{?dist}
 Summary:        Helpful unit multipliers and functions for Go
 # Detected licences
 # - Expat License at 'COPYING'
@@ -17,15 +17,15 @@ Source0:        %{gosource}
 BuildRequires:  golang(github.com/stretchr/testify/assert)
 
 %description
-%{summary}.
+%{summary}
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
-%{summary}.
+%{summary}
 
 This package contains library source intended for
 building other packages which use import path with
@@ -50,6 +50,9 @@ building other packages which use import path with
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.git2efee85
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov 11 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0-0.4.20181111git2efee85
 - Update to new Go packaging
 

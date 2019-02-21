@@ -9,7 +9,7 @@
 
 Name:           %{goname}
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Go Graphics - 2D rendering in Go with a simple API
 License:        MIT
 URL:            %{gourl}
@@ -45,5 +45,8 @@ building other packages which use import path with
 %license LICENSE.md
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-2.git0e0ff3a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Nov  5 2018 mosquito <sensor.wen@gmail.com> - 1.1.0-1.20181106gite843337
 - Initial package build

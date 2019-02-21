@@ -56,9 +56,7 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %doc README.md
@@ -71,13 +69,23 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 %files devel
 %{_includedir}/libdtk-*/
 %{_qt5_archdatadir}/mkspecs/modules/*.pri
-%{_libdir}/cmake/DtkWidget/DtkWidgetConfig.cmake*
+%{_libdir}/cmake/DtkWidget/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/lib%{name}.so
 
 %changelog
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 2.0.9.16-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 2.0.9.16-1
 - Update to 2.0.9.16
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.9.11-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Tue Jan 01 2019 Rex Dieter <rdieter@fedoraproject.org> - 2.0.9.11-3
+- use %%ldconfig_scriptlets
+- own %%_libdir/cmake/DtkWidget
+
+* Tue Dec 18 2018 Rex Dieter <rdieter@fedoraproject.org> - 2.0.9.11-2
+- rebuild (Qt5)
 
 * Thu Dec 13 2018 mosquito <sensor.wen@gmail.com> - 2.0.9.11-1
 - Update to 2.0.9.11

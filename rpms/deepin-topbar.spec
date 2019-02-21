@@ -62,8 +62,14 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_polkit_qt_policydir}/*.service
 
 %changelog
-* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 0.6.2-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 0.6.2-1
 - Update to 0.6.2
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Wed Jan 23 2019 Björn Esser <besser82@fedoraproject.org> - 0.6.0-2
+- Append curdir to CMake invokation. (#1668512)
 
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 0.6.0-1
 - Update to 0.6.0

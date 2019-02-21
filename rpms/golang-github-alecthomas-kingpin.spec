@@ -6,7 +6,7 @@ Version:                2.2.6
 %gometa
 
 Name:           golang-github-alecthomas-kingpin
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Go command line and flag parser
 # Detected licences
 # - Expat License at 'COPYING'
@@ -14,17 +14,17 @@ License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
-BuildRequires:  golang(github.com/alecthomas/template)
-BuildRequires:  golang(github.com/alecthomas/units)
-BuildRequires:  golang(github.com/stretchr/testify/assert)
+BuildRequires: golang(github.com/alecthomas/template)
+BuildRequires: golang(github.com/alecthomas/units)
+BuildRequires: golang(github.com/stretchr/testify/assert)
 
 %description
 %{summary}.
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
 %{summary}.
@@ -51,6 +51,9 @@ building other packages which use import path with
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov 11 2018 Robert-André Mauchin <zebob.m@gmail.com> - 2.2.6-1
 - Release 2.2.6
 - Update to new Go packaging

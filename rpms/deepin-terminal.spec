@@ -55,7 +55,8 @@ sed -i '/es_419/d' deepin-terminal.desktop
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DTEST_BUILD=OFF \
        -DUSE_VENDOR_LIB=OFF \
-       -DVERSION=%{version} .
+       -DVERSION=%{version} \
+       .
 %make_build
 
 %install
@@ -105,8 +106,14 @@ fi
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.2.1-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.2.1-1
 - Update to 3.2.1
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.12-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Wed Jan 23 2019 Björn Esser <besser82@fedoraproject.org> - 3.0.12-2
+- Append curdir to CMake invokation. (#1668512)
 
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 3.0.12-1
 - Update to 3.0.12

@@ -41,8 +41,11 @@ make test
 %{_datadir}/glib-2.0/schemas/*
 
 %changelog
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 3.11.0-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.11.0-1
 - Update to 3.11.0
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.9.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Sun Dec 23 2018 mosquito <sensor.wen@gmail.com> - 3.9.0-1
 - Update to 3.9.0

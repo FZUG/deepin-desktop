@@ -9,7 +9,7 @@
 
 Name:           %{goname}
 Version:        0
-Release:        0.3%{?dist}
+Release:        0.4%{?dist}
 Summary:        A mini testing helper for Go
 License:        MIT
 URL:            %{gourl}
@@ -21,6 +21,7 @@ Source0:        %{gosource}
 %package devel
 Summary:        %{summary}
 BuildArch:      noarch
+Provides:       golang(%{import_path}) = %{version}-%{release}
 
 %description devel
 %{summary}.
@@ -45,6 +46,9 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.4.git68e9c06
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Nov  9 2018 mosquito <sensor.wen@gmail.com> - 0-0.3.20181109git68e9c06
 - Rewrite rpm spec
 

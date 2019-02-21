@@ -23,7 +23,6 @@ A repository stores auto-generated Qt5 dbus code.
 %package devel
 Summary:        Development package for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       cmake-filesystem
 
 %description devel
 Header files and libraries for %{name}.
@@ -39,9 +38,7 @@ sed -i 's|python|python3|' libdframeworkdbus/*.{pro,py}
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %doc README
@@ -50,13 +47,21 @@ sed -i 's|python|python3|' libdframeworkdbus/*.{pro,py}
 
 %files devel
 %{_includedir}/lib%{soname}-2.0/
-%{_libdir}/cmake/DFrameworkdbus/DFrameworkdbusConfig.cmake
+%{_libdir}/cmake/DFrameworkdbus/
 %{_libdir}/pkgconfig/%{soname}.pc
 %{_libdir}/lib%{soname}.so
 
 %changelog
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 1.0.8-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 1.0.8-1
 - Update to 1.0.8
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Wed Jan 02 2019 Rex Dieter <rdieter@fedoraproject.org> - 1.0.6-2
+- use %%ldconfig_scriptlets
+- drop explicit Requires: cmake-filesystem (handled automatically now)
+- -devel: own %%{_libdir}/cmake/DFrameworkdbus
 
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 1.0.6-1
 - Update to 1.0.6

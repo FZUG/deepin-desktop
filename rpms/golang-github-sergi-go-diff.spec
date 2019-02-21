@@ -9,7 +9,7 @@
 
 Name:           golang-github-sergi-go-diff
 Version:        0
-Release:        0.5%{?dist}
+Release:        0.6%{?dist}
 Summary:        Diff, match and patch text in Go
 License:        MIT
 URL:            %{gourl}
@@ -46,6 +46,9 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.6.gitda64554
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 0-0.5.20181104gitda64554
 - Update to da64554
 

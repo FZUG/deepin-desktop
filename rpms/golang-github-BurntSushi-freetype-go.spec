@@ -12,7 +12,7 @@
 
 Name:           golang-github-BurntSushi-freetype-go
 Version:        0
-Release:        0.6%{?dist}
+Release:        0.7%{?dist}
 Summary:        The Freetype font rasterizer in the Go programming language
 # Detected licences
 # - *No copyright* UNKNOWN at 'LICENSE'
@@ -21,14 +21,14 @@ URL:            %{gourl}
 Source0:        %{gosource}
 
 %description
-%{summary}.
+%{summary}
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
-%{summary}.
+%{summary}
 
 This package contains library source intended for
 building other packages which use import path with
@@ -68,6 +68,9 @@ ln -s %{gopath}/src/%{goipath2} %{buildroot}%{gopath}/src/%{goipath}
 %doc README CONTRIBUTORS AUTHORS
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.7.gite2365df
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Nov 19 2018 mosquito <sensor.wen@gmail.com> - 0-0.6.20181119gite2365df
 - Fix go import path
 

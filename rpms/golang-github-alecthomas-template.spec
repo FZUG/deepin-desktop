@@ -6,7 +6,7 @@
 
 Name:           %{goname}
 Version:        0
-Release:        0.4%{?dist}
+Release:        0.5%{?dist}
 Summary:        Go's text/template package with newline elision
 # Detected licences
 # - BSD 3-clause "New" or "Revised" License at 'LICENSE'
@@ -15,15 +15,15 @@ URL:            %{gourl}
 Source0:        %{gosource}
 
 %description
-%{summary}.
+%{summary}
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
-%{summary}.
+%{summary}
 
 This package contains library source intended for
 building other packages which use import path with
@@ -48,6 +48,9 @@ building other packages which use import path with
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.gita0175ee
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov 11 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0-0.4.20181111gita0175ee
 - Update to new Go packaging
 

@@ -50,8 +50,11 @@ export GOPATH="%{gopath}"
 %{gopath}/src/gir/
 
 %changelog
-* Sat Jan 12 2019 mosquito <sensor.wen@gmail.com> - 1.2.0-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 1.2.0-1
 - Update to 1.2.0
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Mon Nov 19 2018 mosquito <sensor.wen@gmail.com> - 1.1.0-2
 - Provides gobject-2.0 gio-2.0 glib-2.0 gudev-1.0

@@ -1,6 +1,6 @@
 Name:           deepin-calculator
 Version:        1.0.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An easy to use calculator for ordinary users
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-calculator
@@ -20,7 +20,7 @@ Requires:       hicolor-icon-theme
 
 %prep
 %setup -q
-sed -i 's|lrelease|lrelease-qt5|' translations/translate_generation.sh
+sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i 's|59 Temple Place, Suite 330|51 Franklin Street, Fifth Floor|;
         s|Boston, MA 02111-1307 USA.|Boston, MA 02110-1335, USA.|' math/*.{c,h}
 
@@ -43,6 +43,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Thu Nov 29 2018 mosquito <sensor.wen@gmail.com> - 1.0.10-1
 - Update to 1.0.10
 

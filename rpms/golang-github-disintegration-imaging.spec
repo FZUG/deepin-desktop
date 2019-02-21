@@ -9,7 +9,7 @@
 
 Name:           %{goname}
 Version:        1.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple Go image processing package
 License:        MIT
 URL:            %{gourl}
@@ -46,6 +46,9 @@ sed -i 's|\r||g' README.md
 %license LICENSE
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-2.git0bd5694
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov  4 2018 mosquito <sensor.wen@gmail.com> - 1.5.0-1
 - Update to 1.5.0
 

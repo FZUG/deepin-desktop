@@ -62,8 +62,11 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
-* Fri Jan 25 2019 mosquito <sensor.wen@gmail.com> - 1.3.8-1
+* Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 1.3.8-1
 - Update to 1.3.8
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Wed Dec 12 2018 mosquito <sensor.wen@gmail.com> - 1.3.6-1
 - Update to 1.3.6

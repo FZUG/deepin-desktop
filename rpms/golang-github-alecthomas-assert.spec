@@ -14,24 +14,24 @@ This is a fork of stretchr's assertion library that does two things:
 
 Name:           %{goname}
 Version:        0
-Release:        0.4%{?dist}
+Release:        0.5%{?dist}
 Summary:        Go assertion library
 License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
-BuildRequires:  golang(github.com/alecthomas/colour)
-BuildRequires:  golang(github.com/alecthomas/repr)
-BuildRequires:  golang(github.com/sergi/go-diff/diffmatchpatch)
-BuildRequires:  golang(github.com/stretchr/testify/require)
+BuildRequires: golang(github.com/alecthomas/colour)
+BuildRequires: golang(github.com/alecthomas/repr)
+BuildRequires: golang(github.com/sergi/go-diff/diffmatchpatch)
+BuildRequires: golang(github.com/stretchr/testify/require)
 
 %description
 %{common_description}
 
 
 %package devel
-Summary:        %{summary}
-BuildArch:      noarch
+Summary:       %{summary}
+BuildArch:     noarch
 
 %description devel
 %{common_description}
@@ -58,6 +58,9 @@ building other packages which use import path with
 
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.git405dbfe
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Nov 11 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0-0.4.20181111git405dbfe
 - Bump to commit 405dbfeb8e38effee6e723317226e93fff912d06
 - Update to new Go packaging
