@@ -1,0 +1,50 @@
+  <group>
+    <id>deepin-desktop-apps</id>
+    <_name>Deepin Desktop Applications</_name>
+    <_description>Deepin Desktop Applications</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq>deepin-calendar</packagereq>
+      <packagereq>deepin-calculator</packagereq>
+      <packagereq>deepin-editor</packagereq>
+      <packagereq>deepin-image-viewer</packagereq>
+      <packagereq>deepin-picker</packagereq>
+      <packagereq>deepin-screenshot</packagereq>
+      <packagereq>deepin-system-monitor</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>deepin-desktop-environment</id>
+    <_name>Deepin Desktop Environment</_name>
+    <_description>Deepin Desktop is a desktop environment aims at being elegant and easy to use.</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq>deepin-desktop</packagereq>
+      <packagereq>deepin-file-manager</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>deepin-desktop-media</id>
+    <_name>Media packages for Deepin Desktop</_name>
+    <_description>Media packages for Deepin Desktop</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <!-- packagereq>??</packagereq-->
+    </packagelist>
+  </group>
+  <group>
+    <id>deepin-desktop-office</id>
+    <_name>Deepin Desktop Office</_name>
+    <_description>Office suite for Deepin Desktop</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq>libreoffice-calc</packagereq>
+      <packagereq>libreoffice-impress</packagereq>
+      <packagereq>libreoffice-writer</packagereq>
+    </packagelist>
+  </group>
+
