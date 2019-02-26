@@ -3,13 +3,13 @@
 %bcond_with check
 
 %global goipath github.com/linuxdeepin/go-x11-client
-%global commit  841193439a13bbe881f0e50b5c5b513fbd603d7e
+%global commit  460ffe2db38ef469da6be0b345b41752886b062c
 
 %gometa
 
 Name:           golang-github-linuxdeepin-go-x11-client
 Version:        0
-Release:        0.9%{?dist}
+Release:        0.10%{?dist}
 Summary:        A X11 client Go bindings for Deepin Desktop Environment
 License:        GPLv3
 URL:            %{gourl}
@@ -48,6 +48,9 @@ building other packages which use import path with
 %license LICENSE
 
 %changelog
+* Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 0-0.10.20190226git460ffe2
+- Update to 460ffe2
+
 * Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.9.git8411934
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
