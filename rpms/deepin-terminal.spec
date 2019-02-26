@@ -1,8 +1,8 @@
 %global _terminals gnome-terminal mate-terminal xfce4-terminal lxterminal qterminal qterminal-qt5 terminology yakuake fourterm roxterm lilyterm termit xterm mrxvt
 
 Name:           deepin-terminal
-Version:        3.2.1
-Release:        1%{?dist}
+Version:        3.2.1.1
+Release:        2%{?dist}
 Summary:        Default terminal emulation application for Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-terminal
@@ -82,7 +82,7 @@ if [ $1 -ge 1 ]; then
     PRI=$((PRI-1))
     test -x %{_bindir}/$i && \
     %{_sbindir}/alternatives --install %{_bindir}/x-terminal-emulator \
-      x-terminal-emulator %{_bindir}/$i $PRI
+      x-terminal-emulator %{_bindir}/$i $PRI &>/dev/null ||:
   done
 fi
 
@@ -106,6 +106,13 @@ fi
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.2.1.1-2
+- Recover triggers and fix triggerin to not generate error
+
+* Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.2.1.1-1
+- Update to 3.2.1.1
+- Remove triggers
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.2.1-1
 - Update to 3.2.1
 
