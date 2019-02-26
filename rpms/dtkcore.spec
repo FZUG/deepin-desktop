@@ -1,5 +1,5 @@
 Name:           dtkcore
-Version:        2.0.9.15
+Version:        2.0.9.17
 Release:        1%{?dist}
 Summary:        Deepin tool kit core modules
 License:        GPLv3
@@ -65,6 +65,9 @@ export PATH=%{_qt5_bindir}:$PATH
 %{_libdir}/libdtkcore.so
 
 %changelog
+* Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 2.0.9.17-1
+- Update to 2.0.9.17
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 2.0.9.15-1
 - Update to 2.0.9.15
 
