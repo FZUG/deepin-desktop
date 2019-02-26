@@ -1,5 +1,5 @@
 Name:           dtkwidget
-Version:        2.0.9.16
+Version:        2.0.9.17
 Release:        1%{?dist}
 Summary:        Deepin tool kit widget modules
 License:        GPLv3
@@ -50,6 +50,8 @@ Header files and libraries for %{name}.
 sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 
 %build
+# help find (and prefer) qt5 utilities, e.g. qmake, lrelease
+export PATH=%{_qt5_bindir}:$PATH
 %qmake_qt5 PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_libdir} DBUS_VERSION_0_4_2=YES
 %make_build
 
@@ -74,6 +76,9 @@ sed -i 's|/lib|/libexec|' tools/svgc/svgc.pro
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 2.0.9.17-1
+- Update to 2.0.9.17
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 2.0.9.16-1
 - Update to 2.0.9.16
 
