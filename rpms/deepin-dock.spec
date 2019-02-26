@@ -1,7 +1,7 @@
 %global repo dde-dock
 
 Name:           deepin-dock
-Version:        4.8.9
+Version:        4.9.0
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Dock module
 License:        GPLv3
@@ -46,7 +46,6 @@ Header files and libraries for %{name}.
 
 %prep
 %setup -q -n %{repo}-%{version}
-sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i '/TARGETS/s|lib|%{_lib}|' plugins/*/CMakeLists.txt
 sed -i 's|/lib|/%{_lib}|' frame/controller/dockpluginloader.cpp \
     plugins/tray/system-trays/systemtrayloader.cpp
@@ -54,6 +53,7 @@ sed -i 's|/lib|/libexec|' frame/item/showdesktopitem.cpp
 sed -i -E '35d;/dpkg-architecture|EXIT/d' CMakeLists.txt
 
 %build
+export PATH=%{_qt5_bindir}:$PATH
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DARCHITECTURE=%{_arch} .
 %make_build
 
@@ -76,6 +76,9 @@ sed -i -E '35d;/dpkg-architecture|EXIT/d' CMakeLists.txt
 %{_libdir}/cmake/DdeDock/DdeDockConfig.cmake
 
 %changelog
+* Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 4.9.0-1
+- Update to 4.9.0
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 4.8.9-1
 - Update to 4.8.9
 
