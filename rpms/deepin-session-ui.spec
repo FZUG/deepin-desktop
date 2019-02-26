@@ -1,7 +1,7 @@
 %global repo dde-session-ui
 
 Name:           deepin-session-ui
-Version:        4.8.9
+Version:        4.8.11
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPLv3
@@ -50,7 +50,6 @@ This project include those sub-project:
 
 %prep
 %setup -q -n %{repo}-%{version}
-sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i 's|default_background.jpg|default.png|' widgets/fullscreenbackground.cpp boxframe/*.cpp
 sed -i 's|lib|libexec|' \
     misc/applications/deepin-toggle-desktop.desktop* \
@@ -68,6 +67,7 @@ sed -i 's|lib|libexec|' \
     dde-lowpower/dde-lowpower.pro
 
 %build
+export PATH=%{_qt5_bindir}:$PATH
 %qmake_qt5 PREFIX=%{_prefix}
 %make_build
 
@@ -94,6 +94,9 @@ sed -i 's|lib|libexec|' \
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
 
 %changelog
+* Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 4.8.11-1
+- Update to 4.8.11
+
 * Tue Feb 19 2019 mosquito <sensor.wen@gmail.com> - 4.8.9-1
 - Update to 4.8.9
 
