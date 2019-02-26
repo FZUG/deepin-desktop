@@ -1,14 +1,15 @@
 %global repo dde-daemon
 %global ds_url https://github.com/linuxdeepin/default-settings
+%global ds_version 2019.1.30
 
 Name:           deepin-daemon
-Version:        3.22.0
+Version:        3.23.0
 Release:        1%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-daemon
 Source0:        %{url}/archive/%{version}/%{repo}-%{version}.tar.gz
-Source1:        %{ds_url}/archive/2016.9.8/default-settings-2016.9.8.tar.gz
+Source1:        %{ds_url}/archive/%{ds_version}/default-settings-%{ds_version}.tar.gz
 Source2:        %{name}.sysusers
 Patch0:         https://raw.github.com/jouyouyun/tap-gesture-patches/master/patches/dde-daemon_3.8.0.patch
 
@@ -160,7 +161,7 @@ HandleSuspendKey=ignore
 EOF
 
 # install default settings
-pushd default-settings-2016.9.8
+pushd default-settings-%{ds_version}
 install -Dm644 usr.share.d/deepin-default-settings/fontconfig.json \
     %{buildroot}%{_datadir}/deepin-default-settings/fontconfig.json
 
@@ -219,6 +220,10 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Grub2.pkla
 
 %changelog
+* Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.23.0-1
+- Update to 3.23.0
+- default-settings update to 2019.1.30
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.22.0-1
 - Update to 3.22.0
 
