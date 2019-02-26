@@ -14,7 +14,7 @@
 %gometa
 
 Name:           deepin-api
-Version:        3.16.0
+Version:        3.17.0
 Release:        1%{?dist}
 Summary:        Go-lang bingding for dde-daemon
 License:        GPLv3+
@@ -140,6 +140,9 @@ exit 0
 %files -n golang-%{name}-devel -f devel.file-list
 
 %changelog
+* Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 3.17.0-1
+- Update to 3.17.0
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.16.0-1
 - Update to 3.16.0
 
