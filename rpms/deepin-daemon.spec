@@ -1,3 +1,5 @@
+# https://github.com/linuxdeepin/dde-daemon/issues/63
+%global _smp_mflags -j1
 %global repo dde-daemon
 %global ds_url https://github.com/linuxdeepin/default-settings
 %global ds_version 2019.1.30
@@ -223,6 +225,7 @@ fi
 * Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.23.0-1
 - Update to 3.23.0
 - default-settings update to 2019.1.30
+- Disable parallel building by now
 
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.22.0-1
 - Update to 3.22.0
