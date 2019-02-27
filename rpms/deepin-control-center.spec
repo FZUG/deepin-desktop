@@ -1,7 +1,7 @@
 %global repo dde-control-center
 
 Name:           deepin-control-center
-Version:        4.9.2.1
+Version:        4.9.4
 Release:        1%{?dist}
 Summary:        New control center for Linux Deepin
 License:        GPLv3
@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  qt5-linguist
 Requires:       deepin-account-faces
@@ -45,21 +46,20 @@ New control center for Linux Deepin.
 %prep
 %setup -q -n %{repo}-%{version}
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
-sed -i '/%{repo}/s|lib|%{_lib}|'  plugins/*/*.pro frame/pluginscontroller.cpp
-sed -i '/%{repo}/s|lib|libexec|'  modules/update/updatework.cpp \
-    dialogs/reboot-reminder-dialog/reboot-reminder-dialog.pro
+sed -i '/%{repo}/s|\.\./lib|%{_libdir}|' src/frame/pluginscontroller.cpp
 
 %build
-%qmake_qt5 PREFIX=%{_prefix} \
-    QMAKE_CFLAGS_ISYSTEM= \
-    WITH_MODULE_GRUB=NO \
-    WITH_MODULE_REMOTE_ASSIST=NO \
-    WITH_MODULE_SYSINFO_UPDATE=NO \
-    DISABLE_SYS_UPDATE=YES
+%cmake . -DDCC_DISABLE_GRUB=YES \
+         -DDISABLE_SYS_UPDATE=YES
 %make_build
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
+# place holder plugins dir
+mkdir -p %{buildroot}%{_libdir}/%{repo}/plugins
+# https://github.com/linuxdeepin/dde-control-center/issues/115
+# And we disabled SYS_UPDATE, so reboot-reminder-dialog is useless.
+rm %{buildroot}%{_bindir}/reboot-reminder-dialog
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{repo}.desktop ||:
@@ -70,12 +70,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{repo}.desktop ||:
 %doc README.md
 %license LICENSE
 %{_bindir}/%{repo}
-%{_libexecdir}/%{repo}/
 %{_datadir}/applications/%{repo}.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{repo}/
+%{_libdir}/%{repo}/
 
 %changelog
+* Wed Feb 27 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.9.4-1
+- Update to 4.9.4
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 4.9.2.1-1
 - Update to 4.9.2.1
 
