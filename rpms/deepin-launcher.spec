@@ -1,7 +1,7 @@
 %global repo dde-launcher
 
 Name:           deepin-launcher
-Version:        4.6.4
+Version:        4.6.6
 Release:        1%{?dist}
 Summary:        Deepin desktop-environment - Launcher module
 License:        GPLv3
@@ -58,6 +58,9 @@ sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 %{_includedir}/%{repo}/
 
 %changelog
+* Wed Feb 27 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.6.6-1
+- Update to 4.6.6
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 4.6.4-1
 - Update to 4.6.4
 
