@@ -1,5 +1,5 @@
 Name:           startdde
-Version:        3.11.0
+Version:        3.12.1
 Release:        1%{?dist}
 Summary:        Starter of deepin desktop environment
 License:        GPLv3
@@ -74,6 +74,9 @@ BUILD_ID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
 %{_datadir}/%{name}/memchecker.json
 
 %changelog
+* Wed Feb 27 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.12.1-1
+- Update to 3.12.1
+
 * Tue Feb 19 2019 mosquito <sensor.wen@gmail.com> - 3.11.0-1
 - Update to 3.11.0
 
