@@ -46,13 +46,12 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-golang-github-sergi-go-diff
 * |-golang-github-linuxdeepin-dbus-factory
 * |-golang-github-linuxdeepin-go-x11-client
-* |-golang-deepin-gir-generator
+* |-deepin-gir-generator
 * |-golang-deepin-go-lib
 * |-deepin-dbus-generator
 * |-golang-deepin-dbus-factory
-* |-golang-deepin-api
+* |-deepin-api
 * ***Window Manager***
-* |-deepin-cogl
 * |-deepin-metacity
 * |-deepin-mutter
 * |-deepin-wm
@@ -84,7 +83,6 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-dtkcore
 * |-dtkwidget
 * |-dtkwm
-* |-deepin-api
 * |-startdde
 * |-deepin-session-ui
 * |-deepin-daemon
@@ -131,6 +129,7 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-python2-pysrt
 * |-python2-xpybutil
 * |-treefrog-framework
+* |-deepin-cogl
 
 
 ## Resources
