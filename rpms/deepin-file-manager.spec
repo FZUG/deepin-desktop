@@ -1,7 +1,7 @@
 %global repo dde-file-manager
 
 Name:           deepin-file-manager
-Version:        4.7.6
+Version:        4.7.7
 Release:        1%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
@@ -75,15 +75,13 @@ Deepin desktop environment - desktop module.
 
 # fix file permissions
 find -type f -perm 775 -exec chmod 644 {} \;
-sed -i 's|lrelease|lrelease-qt5|' %{repo}*/generate_translations.sh \
-  usb-device-formatter/generate_translations.sh \
-  dde-desktop/translate_generation.sh
 sed -i '/target.path/s|lib|%{_lib}|' dde-dock-plugins/disk-mount/disk-mount.pro
 sed -i '/deepin-daemon/s|lib|libexec|' dde-zone/mainwindow.h
 sed -i 's|lib/gvfs|libexec|' %{repo}-lib/gvfs/networkmanager.cpp
 sed -i 's|%{_datadir}|%{_libdir}|' dde-sharefiles/appbase.pri
 
 %build
+export PATH=%{_qt5_bindir}:$PATH
 %qmake_qt5 PREFIX=%{_prefix} QMAKE_CFLAGS_ISYSTEM= CONFIG+="DISABLE_FFMPEG DISABLE_ANYTHING"
 %make_build
 
@@ -144,6 +142,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
+* Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 4.7.7-1
+- Update to 4.7.7
+
 * Tue Feb 19 2019 mosquito <sensor.wen@gmail.com> - 4.7.6-1
 - Update to 4.7.6
 
