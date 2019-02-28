@@ -1,6 +1,6 @@
 Name:           deepin-metacity
 Version:        3.22.24
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        2D window manager for Deepin
 License:        GPLv2+
 URL:            https://github.com/linuxdeepin/deepin-metacity
@@ -42,6 +42,7 @@ Header files and libraries for %{name}.
 %setup -q
 sed -i '/Window/s|Win|X-Win|' src/metacity-wm.desktop.in
 sed -i 's|default_background.jpg|default.png|' src/ui/*.c
+sed -i 's|/usr/lib|%{_libexecdir}|' src/core/deepin-dbus-service.c
 
 %build
 ./autogen.sh
@@ -86,6 +87,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop \
 %{_libdir}/lib%{name}*.so
 
 %changelog
+* Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.22.24-2
+- Fix path to dde-warning-dialog
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 3.22.24-1
 - Update to 3.22.24
 
