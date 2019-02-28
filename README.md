@@ -90,6 +90,7 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-deepin-control-center
 * |-deepin-file-manager
 * |-deepin-launcher
+* |-deepin-screensaver
 * ***Applications***
 * |-deepin-calendar
 * |-deepin-calculator
