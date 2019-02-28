@@ -1,6 +1,6 @@
 Name:           deepin-screenshot
 Version:        4.1.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin Screenshot Tool
 Summary(zh_CN): 深度截图工具
 License:        GPLv3
@@ -39,6 +39,9 @@ Provide a quite easy-to-use screenshot tool. Features:
 
 %prep
 %setup -q
+# Disable using deepin-turbo, which is not yet available in Fedora
+sed -i 's/deepin-turbo-invoker.*deepin/deepin/' \
+       src/dbusservice/com.deepin.Screenshot.service deepin-screenshot.desktop
 
 %build
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
@@ -73,6 +76,9 @@ fi
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
+* Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.1.8-2
+- Disable using deepin-turbo, which is not yet available in Fedora
+
 * Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 4.1.8-1
 - Update to 4.1.8
 
