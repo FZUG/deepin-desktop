@@ -1,6 +1,6 @@
 Name:           deepin-editor
 Version:        1.2.6.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple editor for Linux Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-editor
@@ -32,6 +32,8 @@ Requires:       deepin-qt5integration
 %setup -q
 
 %build
+# help find (and prefer) qt5 utilities, e.g. qmake, lrelease
+export PATH=%{_qt5_bindir}:$PATH
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=Release .
 %make_build
 
@@ -50,6 +52,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.2.6.3-2
+- Fix translations
+
 * Sat Feb  9 2019 mosquito <sensor.wen@gmail.com> - 1.2.6.3-1
 - Update to 1.2.6.3
 
