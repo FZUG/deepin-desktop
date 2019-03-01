@@ -1,0 +1,2 @@
+[com.deepin.dde.appearance]
+background-uris = ['file:///usr/share/backgrounds/default.png', 'file:///usr/share/wallpapers/deepin/desktop.jpg', 'file:///usr/share/wallpapers/deepin/Sunset_of_the_Lake_Nam_by_Wang_Jinyu.jpg', 'file:///usr/share/wallpapers/deepin/Reflection_of_the_Kanas_Lake_by_Wang_Jinyu.jpg', 'file:///usr/share/wallpapers/deepin/Autumn_in_Kanas_by_Wang_Jinyu.jpg']
