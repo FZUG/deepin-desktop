@@ -7,12 +7,12 @@ Summary:        Deepin Wallpapers provides wallpapers of dde
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-wallpapers
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+# Follow Fedora default wallpaper
+Source1:        10_com.deepin.dde.appearance.fedora.gschema.override
 BuildArch:      noarch
 BuildRequires:  deepin-api
-# convert default Fedora wallpaper to jpg format
-BuildRequires:  ImageMagick
-# for the current default wallpaper
-BuildRequires:  desktop-backgrounds-compat
+# for /usr/share/backgrounds/default.png
+Requires:       desktop-backgrounds-compat
 
 %description
 %{summary}.
@@ -22,8 +22,6 @@ BuildRequires:  desktop-backgrounds-compat
 sed -i 's|lib|libexec|' Makefile
 
 %build
-mv deepin/desktop.jpg deepin/deepin-desktop.jpg
-convert %{_datadir}/backgrounds/default.png deepin/desktop.jpg
 %make_build
 
 %install
@@ -39,12 +37,15 @@ ln -sv ../../wallpapers/deepin/Hummingbird_by_Shu_Le.jpg \
 ln -sv %{md5 %{_datadir}/wallpapers/deepin/Hummingbird_by_Shu_Le.jpg}.jpg \
   %{buildroot}%{_var}/cache/image-blur/%{md5 %{_datadir}/backgrounds/deepin/desktop.jpg}.jpg
 
+install -m 644 -D %{SOURCE1} ${RPM_BUILD_ROOT}%{_datadir}/glib-2.0/schemas/10_com.deepin.dde.appearance.fedora.gschema.override
+
 %files
 %doc README.md
 %license LICENSE
 %{_datadir}/backgrounds/deepin/
 %{_datadir}/wallpapers/deepin/
 %{_var}/cache/image-blur/
+%{_datadir}/glib-2.0/schemas/10_com.deepin.dde.appearance.fedora.gschema.override
 
 %changelog
 * Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.7.6-3
