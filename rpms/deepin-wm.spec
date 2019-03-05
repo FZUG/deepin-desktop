@@ -1,12 +1,10 @@
 Name:           deepin-wm
-Version:        1.9.35
+Version:        1.9.37
 Release:        1%{?dist}
 Summary:        Deepin Window Manager
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-wm
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-# https://cr.deepin.io/#/c/deepin-wm/+/41651/
-Patch0:         %{name}_fix-build-with-vala-0.43.9.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool
@@ -42,7 +40,6 @@ Header files and libraries for %{name}
 
 %prep
 %setup -q
-%patch0 -p1
 
 # fix background path
 sed -i 's|default_background.jpg|default.png|' \
@@ -86,6 +83,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/*.desktop ||:
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Tue Mar  5 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.9.37-1
+- Update to 1.9.37, fixes BZ#1684189
+
 * Sat Feb 16 2019 mosquito <sensor.wen@gmail.com> - 1.9.35-1
 - Update to 1.9.35
 
