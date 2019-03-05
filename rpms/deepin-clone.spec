@@ -1,5 +1,5 @@
 Name:           deepin-clone
-Version:        0.1.2
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Disk and partition backup/restore tool
 License:        GPLv3
@@ -24,10 +24,10 @@ Requires:       hicolor-icon-theme
 
 %prep
 %setup -q
-sed -i 's|lrelease|lrelease-qt5|' app/translate_generation.sh
 sed -i 's|/usr/sbin|/usr/bin|' app/{%{name}-app.pro,%{name}-ionice,%{name}-pkexec,com.deepin.pkexec.%{name}.policy.tmp}
 
 %build
+export PATH=%{_qt5_bindir}:$PATH
 %qmake_qt5 PREFIX=%{_prefix}
 %make_build
 
@@ -48,5 +48,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_polkit_qt_policydir}/com.deepin.pkexec.%{name}.policy
 
 %changelog
+* Tue Mar  5 2019 mosquito <sensor.wen@gmail.com> - 1.1.0-1
+- Initial build
+
 * Mon Nov 26 2018 mosquito <sensor.wen@gmail.com> - 0.1.2-1
 - Initial build
