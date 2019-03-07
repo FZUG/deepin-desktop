@@ -1,8 +1,10 @@
 %global repo dde-dock
+%global start_logo start-here
+%global __provides_exclude_from ^%{_libdir}/%{repo}/.*\\.so$
 
 Name:           deepin-dock
 Version:        4.9.0
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Deepin desktop-environment - Dock module
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-dock
@@ -29,10 +31,15 @@ BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  qt5-linguist
+BuildRequires:  deepin-icon-theme
+BuildRequires:  fedora-logos
 Requires:       deepin-daemon
 Requires:       deepin-launcher
 Requires:       deepin-menu
 Requires:       deepin-qt5integration
+Requires:       onboard
+Requires:       deepin-icon-theme
+Requires:       fedora-logos
 
 %description
 Deepin desktop-environment - Dock module.
@@ -51,6 +58,8 @@ sed -i 's|/lib|/%{_lib}|' frame/controller/dockpluginloader.cpp \
     plugins/tray/system-trays/systemtrayloader.cpp
 sed -i 's|/lib|/libexec|' frame/item/showdesktopitem.cpp
 sed -i -E '35d;/dpkg-architecture|EXIT/d' CMakeLists.txt
+# set icon to Fedora logo
+sed -i 's|deepin-launcher|%{start_logo}|' frame/item/launcheritem.cpp
 
 %build
 export PATH=%{_qt5_bindir}:$PATH
@@ -59,16 +68,26 @@ export PATH=%{_qt5_bindir}:$PATH
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
+for theme in deepin deepin-dark; do
+    for dir in %{_datadir}/icons/$theme/places/*; do
+        size=$(basename $dir)
+        if [ -f %{_datadir}/icons/hicolor/${size}x${size}/places/%{start_logo}.png ]; then
+            mkdir -p %{buildroot}$dir
+            ln -sf ../../../hicolor/256x256/places/%{start_logo}.png %{buildroot}$dir
+        fi
+    done
+done
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSE
-%{_sysconfdir}/%{repo}/indicator/keybord_layout.json
+%{_sysconfdir}/%{repo}/
 %{_bindir}/%{repo}
 %{_libdir}/%{repo}/
 %{_datadir}/%{repo}/
 %{_datadir}/dbus-1/services/*.service
+%{_datadir}/icons/*/places/*/*.png
 
 %files devel
 %{_includedir}/%{repo}/
@@ -76,6 +95,14 @@ export PATH=%{_qt5_bindir}:$PATH
 %{_libdir}/cmake/DdeDock/DdeDockConfig.cmake
 
 %changelog
+* Thu Mar  7 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.9.0-3
+- Filter private library provides
+
+* Thu Mar  7 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.9.0-2
+- Change launcher icon to Fedora logo, Requires deepin-icon-theme and fedora-logos
+- Requires onboard, required by a plugin
+- Own %%{_sysconfdir}/%%{repo}/
+
 * Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 4.9.0-1
 - Update to 4.9.0
 
