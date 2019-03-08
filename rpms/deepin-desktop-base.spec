@@ -1,6 +1,6 @@
 Name:           deepin-desktop-base
 Version:        2019.01.28
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Base component for Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-desktop-base
@@ -35,6 +35,9 @@ sed -i -E '/lsb-release|systemd|apt|back/d' Makefile
 # Fix data path
 sed -i 's|/usr/lib|%{_datadir}|' Makefile
 
+# Set deepin type to Fedora
+sed -i 's|Type=.*|Type=Fedora|; /Type\[/d' files/desktop-version.in
+
 %build
 %make_build
 
@@ -54,15 +57,21 @@ before deepin-manual actually comes into Fedora to unblock packaging." > %{build
 %{_sysconfdir}/deepin-version
 %dir %{_datadir}/deepin/
 %{_datadir}/deepin/desktop-version
+%dir %{_datadir}/distro-info/
 %{_datadir}/distro-info/deepin.csv
 %{_datadir}/i18n/i18n_dependent.json
 %{_datadir}/i18n/language_info.json
+%dir %{_datadir}/plymouth
 %{_datadir}/plymouth/deepin-logo.png
 
 %files -n deepin-manual-directory
 %{_datadir}/dman
 
 %changelog
+* Fri Mar  8 2019 Robin Lee <cheeselee@fedoraproject.org> - 2019.01.28-2
+- Set deepin type to Fedora
+- Own some unowned directories
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 2019.01.28-1
 - Update to 2019.01.28
 
