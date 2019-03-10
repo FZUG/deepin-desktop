@@ -1,6 +1,6 @@
 Name:           deepin-desktop-schemas
 Version:        3.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GSettings deepin desktop-wide schemas
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-desktop-schemas
@@ -13,7 +13,7 @@ Requires:       dconf
 Requires:       deepin-gtk-theme
 Requires:       deepin-icon-theme
 Requires:       deepin-sound-theme
-Requires:       deepin-artwork-themes
+Obsoletes:      deepin-artwork-themes <= 15.12.4
 
 %description
 %{summary}.
@@ -41,6 +41,9 @@ make test
 %{_datadir}/glib-2.0/schemas/*
 
 %changelog
+* Sun Mar 10 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.12.0-2
+- Obsoletes deepin-artwork-themes
+
 * Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 3.12.0-1
 - Update to 3.12.0
 
