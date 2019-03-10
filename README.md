@@ -60,7 +60,6 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-deepin-desktop-base
 * |-deepin-desktop-schemas
 * |-deepin-gettext-tools
-* |-deepin-artwork-themes
 * |-deepin-gtk-theme
 * |-deepin-grub2-themes
 * |-deepin-icon-theme
@@ -109,6 +108,7 @@ This repository contains the following .specs for integrating the deepin desktop
 * |-deepin-screen-recorder
 * |-deepin-voice-recorder
 * ***Obsoletes***
+* |-deepin-artwork-themes
 * |-deepin-anything
 * |-deepin-boot-maker
 * |-deepin-desktop
