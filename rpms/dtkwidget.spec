@@ -1,6 +1,6 @@
 Name:           dtkwidget
 Version:        2.0.9.17
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin tool kit widget modules
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dtkwidget
@@ -76,6 +76,9 @@ export PATH=%{_qt5_bindir}:$PATH
 %{_libdir}/lib%{name}.so
 
 %changelog
+* Sun Mar 10 2019 Robin Lee <cheeselee@fedoraproject.org> - 2.0.9.17-2
+- rebuild (Qt5)
+
 * Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 2.0.9.17-1
 - Update to 2.0.9.17
 

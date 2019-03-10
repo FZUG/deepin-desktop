@@ -2,7 +2,7 @@
 
 Name:           deepin-file-manager
 Version:        4.7.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin File Manager
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-file-manager
@@ -142,6 +142,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dde-trash.desktop ||:
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
 
 %changelog
+* Sun Mar 10 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.7.7-2
+- rebuild (Qt5)
+
 * Tue Feb 26 2019 mosquito <sensor.wen@gmail.com> - 4.7.7-1
 - Update to 4.7.7
 
