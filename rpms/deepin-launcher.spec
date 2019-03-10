@@ -2,7 +2,7 @@
 
 Name:           deepin-launcher
 Version:        4.6.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin desktop-environment - Launcher module
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-launcher
@@ -58,6 +58,9 @@ sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 %{_includedir}/%{repo}/
 
 %changelog
+* Sun Mar 10 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.6.6-2
+- rebuild (Qt5)
+
 * Wed Feb 27 2019 Robin Lee <cheeselee@fedoraproject.org> - 4.6.6-1
 - Update to 4.6.6
 
