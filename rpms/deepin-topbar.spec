@@ -1,6 +1,6 @@
 Name:           deepin-topbar
 Version:        0.6.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Topbar for Deepin desktop environment
 License:        GPLv3
 URL:            https://github.com/justforlxz/deepin-topbar
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  qt5-linguist
 Requires:       hicolor-icon-theme
-%{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
 
 %description
 %{summary}.
@@ -62,6 +61,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_polkit_qt_policydir}/*.service
 
 %changelog
+* Sun Mar 10 2019 Robin Lee <cheeselee@fedoraproject.org> - 0.6.2-2
+- Not requiring private Qt API
+
 * Thu Jan 31 2019 mosquito <sensor.wen@gmail.com> - 0.6.2-1
 - Update to 0.6.2
 
