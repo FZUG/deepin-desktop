@@ -1,12 +1,13 @@
 Name:           deepin-desktop-base
 Version:        2019.01.28
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Base component for Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-desktop-base
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Recommends:     deepin-wallpapers
+Recommends:     deepin-screensaver
 Recommends:     plymouth-theme-deepin
 
 %description
@@ -68,6 +69,9 @@ before deepin-manual actually comes into Fedora to unblock packaging." > %{build
 %{_datadir}/dman
 
 %changelog
+* Wed Mar 13 2019 Robin Lee <cheeselee@fedoraproject.org> - 2019.01.28-3
+- Recommends deepin-screensaver
+
 * Fri Mar  8 2019 Robin Lee <cheeselee@fedoraproject.org> - 2019.01.28-2
 - Set deepin type to Fedora
 - Own some unowned directories
