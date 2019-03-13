@@ -1,18 +1,19 @@
 %global md5() {$(echo -n %1 | md5sum | awk '{print$1}')}
+%global fedora_release_name f30
 
 Name:           deepin-wallpapers
 Version:        1.7.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Deepin Wallpapers provides wallpapers of dde
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-wallpapers
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-# Follow Fedora default wallpaper
-Source1:        10_com.deepin.dde.appearance.fedora.gschema.override
 BuildArch:      noarch
 BuildRequires:  deepin-api
-# for /usr/share/backgrounds/default.png
-Requires:       desktop-backgrounds-compat
+# convert default Fedora wallpaper to jpg format
+BuildRequires:  /usr/bin/convert
+# for the current default wallpaper
+BuildRequires:  %{fedora_release_name}-backgrounds-base
 
 %description
 %{summary}.
@@ -22,6 +23,9 @@ Requires:       desktop-backgrounds-compat
 sed -i 's|lib|libexec|' Makefile
 
 %build
+mv deepin/desktop.jpg deepin/deepin-desktop.jpg
+convert %{_datadir}/backgrounds/%{fedora_release_name}/default/standard/%{fedora_release_name}.png \
+        deepin/desktop.jpg
 %make_build
 
 %install
@@ -37,7 +41,16 @@ ln -sv ../../wallpapers/deepin/Hummingbird_by_Shu_Le.jpg \
 ln -sv %{md5 %{_datadir}/wallpapers/deepin/Hummingbird_by_Shu_Le.jpg}.jpg \
   %{buildroot}%{_var}/cache/image-blur/%{md5 %{_datadir}/backgrounds/deepin/desktop.jpg}.jpg
 
-install -m 644 -D %{SOURCE1} ${RPM_BUILD_ROOT}%{_datadir}/glib-2.0/schemas/10_com.deepin.dde.appearance.fedora.gschema.override
+%preun
+if [ $1 -eq 0 ]; then
+  %{_sbindir}/alternatives --remove deepin-deepin-background %{_datadir}/wallpapers/deepin/desktop.jpg
+fi
+
+%post
+if [ $1 -ge 1 ]; then
+  %{_sbindir}/alternatives --install %{_datadir}/backgrounds/default_background.jpg \
+    deepin-default-background %{_datadir}/wallpapers/deepin/desktop.jpg 50
+fi
 
 %files
 %doc README.md
@@ -45,9 +58,13 @@ install -m 644 -D %{SOURCE1} ${RPM_BUILD_ROOT}%{_datadir}/glib-2.0/schemas/10_co
 %{_datadir}/backgrounds/deepin/
 %{_datadir}/wallpapers/deepin/
 %{_var}/cache/image-blur/
-%{_datadir}/glib-2.0/schemas/10_com.deepin.dde.appearance.fedora.gschema.override
 
 %changelog
+* Wed Mar 13 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.7.6-4
+- Convert default wallpaper to jpg instead of schema override, since some other
+  deepin packages hard coded the desktop.jpg path.
+- Follow upstream to add an alternative 'deepin-default-background'
+
 * Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.7.6-3
 - Follow Fedora default wallpaper
 
