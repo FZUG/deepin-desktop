@@ -1,6 +1,6 @@
 Name:           deepin-clone
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Disk and partition backup/restore tool
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-clone
@@ -17,6 +17,8 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  qt5-qtbase-private-devel
+%{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
 Requires:       hicolor-icon-theme
 Requires:       partclone
 # Check app/src/fixboot/bootdoctor.cpp
@@ -52,6 +54,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_polkit_qt_policydir}/com.deepin.pkexec.%{name}.policy
 
 %changelog
+* Wed Mar 13 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.1.0-2
+- Requires private Qt symbols
+
 * Mon Mar 11 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.1.0-1
 - Add ExclusiveArch
 - Requires partclone

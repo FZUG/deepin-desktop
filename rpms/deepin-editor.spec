@@ -1,6 +1,6 @@
 Name:           deepin-editor
 Version:        1.2.6.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Simple editor for Linux Deepin
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-editor
@@ -22,6 +22,8 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  qt5-linguist
+BuildRequires:  qt5-qtbase-private-devel
+%{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
 Requires:       deepin-notifications
 Requires:       deepin-qt5integration
 
@@ -52,6 +54,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Mar 13 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.2.6.3-3
+- Requires private Qt symbols
+
 * Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 1.2.6.3-2
 - Fix translations
 
