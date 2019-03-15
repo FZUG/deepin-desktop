@@ -1,6 +1,6 @@
 Name:           dtkcore
 Version:        2.0.9.17
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin tool kit core modules
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dtkcore
@@ -9,6 +9,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  annobin
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(gsettings-qt)
+Obsoletes:      deepin-tool-kit <= 0.3.3
+Obsoletes:      deepin-tool-kit-devel <= 0.3.3
+Obsoletes:      dtksettings <= 0.1.7
+Obsoletes:      dtksettings-devel <= 0.1.7
 
 %description
 Deepin tool kit core modules.
@@ -65,6 +69,9 @@ export PATH=%{_qt5_bindir}:$PATH
 %{_libdir}/libdtkcore.so
 
 %changelog
+* Fri Mar 15 2019 Robin Lee <cheeselee@fedoraproject.org> - 2.0.9.17-2
+- Obsoletes deepin-tool-kit and dtksettings
+
 * Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 2.0.9.17-1
 - Update to 2.0.9.17
 
