@@ -6,7 +6,7 @@
 
 Name:           deepin-daemon
 Version:        3.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Daemon handling the DDE session settings
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/dde-daemon
@@ -144,6 +144,9 @@ ExecStart=%{_libexecdir}/%{name}/dde-lockservice
 WantedBy=graphical.target
 EOF
 
+# Replace reference of google-chrome to chromium-browser
+sed -i 's/google-chrome/chromium-browser/g' misc/dde-daemon/mime/data.json
+
 %build
 export GOPATH="$(pwd)/build:%{gopath}"
 BUILDID="0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
@@ -222,6 +225,9 @@ fi
 %{_var}/lib/polkit-1/localauthority/10-vendor.d/com.deepin.daemon.Grub2.pkla
 
 %changelog
+* Thu Mar 21 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.23.0-2
+- Replace reference of google-chrome to chromium-browser
+
 * Tue Feb 26 2019 Robin Lee <cheeselee@fedoraproject.org> - 3.23.0-1
 - Update to 3.23.0
 - default-settings update to 2019.1.30
